@@ -92,6 +92,12 @@
     </Compile>
     <Compile Include="Classes\DataControl\UserConrol.cs" />
     <Compile Include="Classes\HelperStatic.cs" />
+    <Compile Include="Classes\Models\Equipment.cs" />
+    <Compile Include="Classes\Models\EquipmentType.cs" />
+    <Compile Include="Classes\Models\LoginLog.cs" />
+    <Compile Include="Classes\Models\Unit.cs" />
+    <Compile Include="Classes\Models\User.cs" />
+    <Compile Include="Classes\Models\UserPermission.cs" />
     <Compile Include="Classes\RefDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -181,9 +187,7 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Classes\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="ExternalProject\Mainpaint\Mainpaint.csproj">
       <Project>{816040e1-e3dc-443a-988f-bfb16488808a}</Project>
