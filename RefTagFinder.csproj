@@ -103,6 +103,272 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RefDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\Program.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\Properties\AssemblyInfo.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\File.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Folder.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Interface\IFile.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Interface\IFolderable.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Interface\IFolderableHost.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Interface\IIoObject.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\IoObject.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Model.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Properties\Annotations.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Properties\AssemblyInfo.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\StaticImageUtils.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\AdjustmentOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\CropOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\Alignment.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\ColorType.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\Format.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\InterpolationMode.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\NameType.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\RawHighlightMode.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\ResizeMode.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\Rotation.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\WatermarkType.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\Enums\WhiteBalanceMode.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\ModelProgressUpdate.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\OptionSet.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\OutputOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\RawOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\ResizeOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Types\WatermarkOptions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\Utility\ObjectCopier.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\App.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Controls\SplitButton.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Controls\VirtualizingWrapPanel.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\EntryPoint.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\GlobalSuppressions.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\DwmApiInteropt.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\HookEventArgs.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\HookType.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\LocalWindowsHook.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\Natives.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\ShellContextMenu.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Native\ShellContextMenuException.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\.NETFramework,Version=v4.5.AssemblyAttributes.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\App.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\App.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\BatchImageProcessor_Content.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\BatchImageProcessor_Content.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\Controls\SplitButton.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\Controls\SplitButton.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\GeneratedInternalTypeHelper.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\GeneratedInternalTypeHelper.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\View\AboutBox.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\View\AboutBox.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\View\RenameFileDialog.g.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\View\RenameFileDialog.g.i.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\Annotations.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\AssemblyInfo.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\Resources.Designer.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\Settings.Designer.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\BooleanConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\BooleanToEffectConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\BooleanToOpacityConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\EnumBooleanConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\EnumStringConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Converters\EnumVisibilityConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\EnumStringConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\EnumVisibilityConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Extensions\EnumerationExtension.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\FileCollectionView.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\FileWrapper.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\FolderCollectionView.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\FolderWrapper.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\Services\NavigationService.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\TypeConverter.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\ViewModel.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\ViewModel\WeakThumbnail.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\AboutBox.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\FileOptions.xaml.cs">
+      <DependentUpon>FileOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\MainWindow.cs" />
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\RawOptions.xaml.cs">
+      <DependentUpon>RawOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\RenameFileDialog.cs" />
+    <Compile Include="ExternalProject\Mainpaint\DrawingSpace.cs" />
+    <Compile Include="ExternalProject\Mainpaint\Effects.cs" />
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\BalanceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\BalanceWindow.Designer.cs">
+      <DependentUpon>BalanceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Bitonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Bitonal.Designer.cs">
+      <DependentUpon>Bitonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Brightness_Contrast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Brightness_Contrast.Designer.cs">
+      <DependentUpon>Brightness_Contrast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\CartoonFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\CartoonFilter.Designer.cs">
+      <DependentUpon>CartoonFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\ColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\ErodeFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\ErodeFilter.Designer.cs">
+      <DependentUpon>ErodeFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\gamma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\gamma.Designer.cs">
+      <DependentUpon>gamma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Gaussian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Gaussian.Designer.cs">
+      <DependentUpon>Gaussian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\GradientDetect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\GradientDetect.Designer.cs">
+      <DependentUpon>GradientDetect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\jitter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\jitter.Designer.cs">
+      <DependentUpon>jitter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\layerRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\layerRename.Designer.cs">
+      <DependentUpon>layerRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Median.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Median.Designer.cs">
+      <DependentUpon>Median.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\new layer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\new layer.Designer.cs">
+      <DependentUpon>new layer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Noise.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Noise.Designer.cs">
+      <DependentUpon>Noise.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\OilPaint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\OilPaint.Designer.cs">
+      <DependentUpon>OilPaint.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Pixelate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\Pixelate.Designer.cs">
+      <DependentUpon>Pixelate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\PixelDistort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\PixelDistort.Designer.cs">
+      <DependentUpon>PixelDistort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\StainedGlass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\StainedGlass.Designer.cs">
+      <DependentUpon>StainedGlass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\TextInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\EffectWindows\TextInputBox.Designer.cs">
+      <DependentUpon>TextInputBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\GradientColorPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\GradientColorPicker.Designer.cs">
+      <DependentUpon>GradientColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\misc.cs" />
+    <Compile Include="ExternalProject\Mainpaint\new_window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\new_window.Designer.cs">
+      <DependentUpon>new_window.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\obj\x86\Debug\.NETFramework,Version=v4.0,Profile=Client.AssemblyAttributes.cs" />
+    <Compile Include="ExternalProject\Mainpaint\obj\x86\Release\.NETFramework,Version=v4.0,Profile=Client.AssemblyAttributes.cs" />
+    <Compile Include="ExternalProject\Mainpaint\Other\CustomControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\GradientColor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\GradientColor.Designer.cs">
+      <DependentUpon>GradientColor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\GradientColorHolder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\GradientColorHolder.Designer.cs">
+      <DependentUpon>GradientColorHolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\infoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\infoForm.Designer.cs">
+      <DependentUpon>infoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\LayerContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\LayerContainer.Designer.cs">
+      <DependentUpon>LayerContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\LayerRow.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Other\LayerRow.Designer.cs">
+      <DependentUpon>LayerRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalProject\Mainpaint\Program.cs" />
+    <Compile Include="ExternalProject\Mainpaint\Properties\AssemblyInfo.cs" />
+    <Compile Include="ExternalProject\Mainpaint\Properties\Resources.Designer.cs" />
+    <Compile Include="ExternalProject\Mainpaint\Properties\Settings.Designer.cs" />
+    <Compile Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\Program.cs" />
+    <Compile Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,10 +402,238 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="2EB2FBJ.ico" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\.gitattributes" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\.gitignore" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\BatchImageProcessor.Model.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\BatchImageProcessor.Model.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\bipcli.exe" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\bipcli.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\NDesk.Options.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\BatchImageProcessor.CLI.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\bipcli.exe" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\bipcli.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\bin\Debug\BatchImageProcessor.Model.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\bin\Debug\BatchImageProcessor.Model.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\BatchImageProcessor.Model.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\BatchImageProcessor.Model.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\BatchImageProcessor.Model.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.sln" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Exec\dcraw.exe" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\24\image-export.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\32\cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\32\image-transition.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-045.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-090.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-135.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-180.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-225.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-270.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-315.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-circle-180.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-circle-ccwise.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-circle-cwise.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-noturn--auto.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-noturn.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow-transition.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\arrow.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\bin.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\circle.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\color-adjustment--cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\color-adjustment.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\edit.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\folder--plus.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\folder-import.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\folder.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image--pencil.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-crop--cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-crop.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-export.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-greyscale.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-import.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-resize-actual--cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-resize-actual.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-resize-exact.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-resize.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-rotate--asterisk.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-rotate.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-saturation--cross.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-saturation.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-sepia.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image-vertical.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\image.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ImageRotator.ico" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ImageRotator.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\information.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\refresh.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\selection-exclude.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\selection-select.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\selection.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ui-check-box-uncheck.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ui-check-box.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ui-check-boxes.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\ui-text-field.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Images\wrench-screwdriver.png" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\BatchImageProcessor.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Resources\image-export.ico" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net35\WPFToolkit.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net35\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\de\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\es\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\fr\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\hu\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\it\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\pt-BR\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\ro\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\ru\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\sv\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.DataGrid.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\Xceed.Wpf.Toolkit.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\lib\net40\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.XML" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.pdb" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.XML" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.xml" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.XML" />
+    <Content Include="ExternalProject\BatchImageProcessor-master\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll" />
+    <Content Include="ExternalProject\Mainpaint\bin\Debug\Mainpaint.vshost.exe" />
+    <Content Include="ExternalProject\Mainpaint\bin\Release\app.publish\Mainpaint.exe" />
+    <Content Include="ExternalProject\Mainpaint\bin\Release\Mainpaint.exe" />
+    <Content Include="ExternalProject\Mainpaint\bin\Release\Mainpaint.pdb" />
+    <Content Include="ExternalProject\Mainpaint\Mainpaint.csproj.user" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Debug\Mainpaint.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.exe" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.pdb" />
+    <Content Include="ExternalProject\Mainpaint\obj\x86\Release\TempPE\Properties.Resources.Designer.cs.dll" />
+    <Content Include="ExternalProject\Mainpaint\ReftagFinder.sln" />
+    <Content Include="ExternalProject\Mainpaint\Resources\bold.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\bold1.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\bold2.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\bold3.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\brush.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\bucket.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\center.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\clone.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\close.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\color_select.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\color_wheel.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\color_wheel_260x260.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\color_wheel_300x300.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\color_wheel_400x400.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\copy.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\copy1.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\down.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\ellipse.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\eraser.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\error.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\gradient.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\help.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\italic.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\italic1.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\italic2.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\layer_visibility.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\left.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\line.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\measure.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\move.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\new.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\open.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\pencil.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\picker.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\rect.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\redo.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\rest_select.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\right.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\rotate.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\save.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\strike.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\strike1.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\text.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\tools.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\transparent.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\underline.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\underline1.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\undo.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\up.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\wand.png" />
+    <Content Include="ExternalProject\Mainpaint\Resources\warning.png" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\bin\Release\pdf2image.SautinSoft.PdfFocus.exe" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\bin\Release\pdf2image.SautinSoft.PdfFocus.pdb" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\bin\Release\SautinSoft.PdfFocus.dll" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Debug\pdf2image.SautinSoft.PdfFocus.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\pdf2image.SautinSoft.PdfFocus.csproj.FileListAbsolute.txt" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\pdf2image.SautinSoft.PdfFocus.exe" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\pdf2image.SautinSoft.PdfFocus.pdb" />
+    <Content Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\SautinSoft.PdfFocus.dll" />
     <Content Include="Resources\2EB2FBJ.ico" />
     <Content Include="Resources\2EB2FBJ.png" />
     <Content Include="Resources\qr.png" />
     <Content Include="Resources\qWhite.jpeg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\App.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\BatchImageProcessor.CLI.csproj" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Debug\bipcli.exe.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\BatchImageProcessor.CLI.csproj.CopyComplete" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\BatchImageProcessor.CLI.csproj.CoreCompileInputs.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\BatchImageProcessor.CLI.csprojAssemblyReference.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\packages.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\BatchImageProcessor.Model.csproj" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\BatchImageProcessor.Model.csproj.CoreCompileInputs.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\BatchImageProcessor.Model.csprojAssemblyReference.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\App.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\BatchImageProcessor.csproj" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\BatchImageProcessor_TemporaryKey.pfx" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\BatchImageProcessor.csprojAssemblyReference.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\Controls\SplitButton.baml" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\View\AboutBox.baml" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\packages.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\Settings.settings" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\.signature.p7s" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\Extended.Wpf.Toolkit.2.4.nupkg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Extended.Wpf.Toolkit.2.4\tools\install.ps1" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\Microsoft.WindowsAPICodePack-Core.1.1.0.0.nupkg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\.signature.p7s" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\Microsoft.WindowsAPICodePack-Core.1.1.0.2.nupkg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\Microsoft.WindowsAPICodePack-Shell.1.1.0.0.nupkg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\NDesk.Options.0.2.1\.signature.p7s" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\NDesk.Options.0.2.1\NDesk.Options.0.2.1.nupkg" />
+    <None Include="ExternalProject\BatchImageProcessor-master\packages\repositories.config" />
+    <None Include="ExternalProject\BatchImageProcessor-master\README.md" />
+    <None Include="ExternalProject\Mainpaint\bin\Debug\Mainpaint.vshost.exe.manifest" />
+    <None Include="ExternalProject\Mainpaint\bin\Release\Mainpaint.application" />
+    <None Include="ExternalProject\Mainpaint\bin\Release\Mainpaint.exe.manifest" />
+    <None Include="ExternalProject\Mainpaint\Mainpaint.csproj" />
+    <None Include="ExternalProject\Mainpaint\Mainpaint.suo" />
+    <None Include="ExternalProject\Mainpaint\Mainpaint_TemporaryKey.pfx" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Debug\CoreCompileInputs.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Debug\Mainpaint.csprojResolveAssemblyReference.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\GenerateResource.read.1.tlog" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\GenerateResource.write.1.tlog" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.application" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.csproj.CoreCompileInputs.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.csproj.GenerateResource.cache" />
+    <None Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.exe.manifest" />
+    <None Include="ExternalProject\Mainpaint\Properties\Settings.settings" />
+    <None Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\pdf2image.SautinSoft.PdfFocus.csproj.CopyComplete" />
+    <None Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\pdf2image.SautinSoft.PdfFocus.csproj.CoreCompileInputs.cache" />
+    <None Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\pdf2image.SautinSoft.PdfFocus.csproj" />
     <None Include="Resources\qWhite1.jpeg" />
     <None Include="Resources\Gardooneh.png" />
     <None Include="DBs\Ref5thDBsqlite.db" />
@@ -170,6 +664,114 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Properties\Resources.resx" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\BalanceWindow.resx">
+      <DependentUpon>BalanceWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Bitonal.resx">
+      <DependentUpon>Bitonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Brightness_Contrast.resx">
+      <DependentUpon>Brightness_Contrast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\CartoonFilter.resx">
+      <DependentUpon>CartoonFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\ErodeFilter.resx">
+      <DependentUpon>ErodeFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\gamma.resx">
+      <DependentUpon>gamma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Gaussian.resx">
+      <DependentUpon>Gaussian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\GradientDetect.resx">
+      <DependentUpon>GradientDetect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\jitter.resx">
+      <DependentUpon>jitter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\layerRename.resx">
+      <DependentUpon>layerRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Median.resx">
+      <DependentUpon>Median.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\new layer.resx">
+      <DependentUpon>new layer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Noise.resx">
+      <DependentUpon>Noise.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\OilPaint.resx">
+      <DependentUpon>OilPaint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\Pixelate.resx">
+      <DependentUpon>Pixelate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\PixelDistort.resx">
+      <DependentUpon>PixelDistort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\StainedGlass.resx">
+      <DependentUpon>StainedGlass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\EffectWindows\TextInputBox.resx">
+      <DependentUpon>TextInputBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\GradientColorPicker.resx">
+      <DependentUpon>GradientColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\new_window.resx">
+      <DependentUpon>new_window.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.BalanceWindow.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Color_picker.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.Bitonal.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.Brightness_Contrast.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.CartoonFilter.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.gamma.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.GaussianWindow.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.GradientDetect.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.jitter.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.Median.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.Noise.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.OilPaint.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.Pixelate.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.PixelDistort.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.EffectWindows.StainedGlass.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.ErodeFilter.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Form1.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.GradientColorPicker.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.LayerContainer.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.layerRename.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.LayerRow.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.new_layer.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.new_window.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Other.GradientColor.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Other.GradientColorHolder.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Other.infoForm.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.Properties.Resources.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\obj\x86\Release\Mainpaint.TextInputBox.resources" />
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Other\GradientColor.resx">
+      <DependentUpon>GradientColor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Other\GradientColorHolder.resx">
+      <DependentUpon>GradientColorHolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Other\infoForm.resx">
+      <DependentUpon>infoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Other\LayerContainer.resx">
+      <DependentUpon>LayerContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Other\LayerRow.resx">
+      <DependentUpon>LayerRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExternalProject\Mainpaint\Properties\Resources.resx" />
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,7 +789,36 @@
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\Controls\SplitButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\AboutBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\FileOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\RawOptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\View\RenameFileDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ExternalProject\Mainpaint\Mainpaint.csproj">
       <Project>{816040e1-e3dc-443a-988f-bfb16488808a}</Project>
@@ -221,6 +852,16 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\bin\Release\" />
+    <Folder Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.CLI\obj\Debug\TempPE\" />
+    <Folder Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor.Model\obj\Debug\TempPE\" />
+    <Folder Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\bin\Debug\" />
+    <Folder Include="ExternalProject\BatchImageProcessor-master\BatchImageProcessor\obj\Debug\TempPE\" />
+    <Folder Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\bin\Debug\" />
+    <Folder Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Debug\TempPE\" />
+    <Folder Include="ExternalProject\pdf2image.SautinSoft.PdfFocus\obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
