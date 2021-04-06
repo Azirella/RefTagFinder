@@ -47,10 +47,13 @@ namespace RefTagFinder
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -79,6 +82,7 @@ namespace RefTagFinder
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Maroon;
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -93,6 +97,7 @@ namespace RefTagFinder
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 28);
             this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(3);
             this.pictureBox1.Size = new System.Drawing.Size(697, 125);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
@@ -120,7 +125,7 @@ namespace RefTagFinder
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // panel2
@@ -155,12 +160,28 @@ namespace RefTagFinder
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 28);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(3);
+            this.panel3.Size = new System.Drawing.Size(697, 33);
+            this.panel3.TabIndex = 2;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(55, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(233, 24);
+            this.comboBox1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(697, 473);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -169,6 +190,8 @@ namespace RefTagFinder
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.Opacity = 0.9D;
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RefTagFinder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -182,6 +205,7 @@ namespace RefTagFinder
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -195,5 +219,7 @@ namespace RefTagFinder
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
