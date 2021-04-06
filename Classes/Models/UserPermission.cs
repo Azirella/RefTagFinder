@@ -28,5 +28,9 @@ namespace RefTagFinder.Classes.Models
 			this.UserID = UserID_;
 			this.PermissionCode = PermissionCode_;
 		}
+        public UserPermission()
+        {
+
+        }
 	}
 }

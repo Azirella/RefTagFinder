@@ -44,5 +44,10 @@ namespace RefTagFinder.Classes.Models
 			this.X = X_;
 			this.Y = Y_;
 		}
+
+        public EquipmentType()
+        {
+
+        }
 	}
 }

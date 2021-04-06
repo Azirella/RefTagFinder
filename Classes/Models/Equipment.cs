@@ -84,5 +84,9 @@ namespace RefTagFinder.Classes.Models
 			this.IsDatum = IsDatum_;
 			this.Tag = Tag_;
 		}
+        public Equipment()
+        {
+
+        }
 	}
 }

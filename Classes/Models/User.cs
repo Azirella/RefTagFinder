@@ -44,5 +44,9 @@ namespace RefTagFinder.Classes.Models
 			this.Password = Password_;
 			this.TimeOfRegister = TimeOfRegister_;
 		}
+        public User()
+        {
+
+        }
 	}
 }

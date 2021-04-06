@@ -36,5 +36,10 @@ namespace RefTagFinder.Classes.Models
 			this.TimeOfLogin = TimeOfLogin_;
 			this.TimeOfLogout = TimeOfLogout_;
 		}
+
+        public LoginLog()
+        {
+
+        }
 	}
 }

@@ -44,5 +44,9 @@ namespace RefTagFinder.Classes.Models
 			this.PIDPath = PIDPath_;
 			this.ImagePath = ImagePath_;
 		}
+        public Unit()
+        {
+
+        }
 	}
 }
