@@ -103,6 +103,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RefDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmTagFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTagFinder.Designer.cs">
+      <DependentUpon>frmTagFinder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmTagFinder.resx">
+      <DependentUpon>frmTagFinder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
