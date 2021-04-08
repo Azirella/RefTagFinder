@@ -15,22 +15,14 @@ namespace RefTagFinder
 {
     public partial class frmAddUnit : Form
     {
-        /*SqlConnection con1;
-        SqlCommand cmd1;
-        SqlDataAdapter da1;*/
+       
         public frmAddUnit()
         {
             InitializeComponent();
 
             
         }
-        //private var info = 1234;
-        
-        OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\\DBs\\db_users.mdb");
-        OleDbCommand cmd = new OleDbCommand();
-        OleDbDataAdapter da = new OleDbDataAdapter();
-
-        //string cnnStr = HelperStatic.LoadConnectionString("LocalDBConnectionString");
+       
         
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -47,8 +39,13 @@ namespace RefTagFinder
             btnMinimize.Top = 0;
             btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
 
-            pnlTop.Height = btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
+            btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
+            pnlTop.Height = btnExit.Height + 2;
             
+            this.btnExit.Font     =
+            this.btnMinimize.Font =
+                new System.Drawing.Font
+                ("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -59,6 +56,16 @@ namespace RefTagFinder
         private void OKButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pidBrowseButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ImageBrowseButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

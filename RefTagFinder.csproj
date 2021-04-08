@@ -109,17 +109,17 @@
     <Compile Include="Forms\frmAddUnit.Designer.cs">
       <DependentUpon>frmAddUnit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmTagFinder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmTagFinder.Designer.cs">
-      <DependentUpon>frmTagFinder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTagFinder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTagFinder.Designer.cs">
+      <DependentUpon>frmTagFinder.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmRegister.cs">
       <SubType>Form</SubType>
@@ -191,11 +191,11 @@
     <EmbeddedResource Include="Forms\frmAddUnit.resx">
       <DependentUpon>frmAddUnit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmTagFinder.resx">
-      <DependentUpon>frmTagFinder.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTagFinder.resx">
+      <DependentUpon>frmTagFinder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
