@@ -56,7 +56,7 @@ namespace RefTagFinder
 
             if (dr.Read() == true)
             {
-                RefTagFinder.MainForm fff = new RefTagFinder.MainForm();
+                RefTagFinder.frmTagFinder fff = new RefTagFinder.frmTagFinder();
                 fff.Owner = this;
                 fff.Show();
                 this.Hide();
