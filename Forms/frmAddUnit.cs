@@ -13,12 +13,12 @@ using System.Data.SqlClient;
 
 namespace RefTagFinder
 {
-    public partial class frmTagFinder : Form
+    public partial class frmAddUnit : Form
     {
         /*SqlConnection con1;
         SqlCommand cmd1;
         SqlDataAdapter da1;*/
-        public frmTagFinder()
+        public frmAddUnit()
         {
             InitializeComponent();
 
@@ -56,14 +56,9 @@ namespace RefTagFinder
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OKButton_Click(object sender, EventArgs e)
         {
-            frmAddUnit f = new frmAddUnit();
-            f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK)
-            {
-                frmTagFinder_Load(sender, e);
-            }
+            this.Close();
         }
     }
 }
