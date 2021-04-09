@@ -35,7 +35,8 @@ namespace RefTagFinder
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            Application.Exit();
         }
 
         private void frmTagFinder_Load(object sender, EventArgs e)
@@ -64,6 +65,11 @@ namespace RefTagFinder
             {
                 frmTagFinder_Load(sender, e);
             }
+        }
+
+        private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //unitNameComboBox.
         }
     }
 }

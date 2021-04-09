@@ -37,60 +37,60 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imagePathTextBox = new System.Windows.Forms.TextBox();
+            this.pIDPathTextBox = new System.Windows.Forms.TextBox();
+            this.unitNameTextBox = new System.Windows.Forms.TextBox();
+            this.unitIDLabel1 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.ImageBrowseButton = new System.Windows.Forms.Button();
             this.pidBrowseButton = new System.Windows.Forms.Button();
-            this.imagePathTextBox = new System.Windows.Forms.TextBox();
-            this.pIDPathTextBox = new System.Windows.Forms.TextBox();
-            this.unitNameComboBox = new System.Windows.Forms.ComboBox();
-            this.unitIDLabel1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             unitIDLabel = new System.Windows.Forms.Label();
             unitNameLabel = new System.Windows.Forms.Label();
             pIDPathLabel = new System.Windows.Forms.Label();
             imagePathLabel = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // unitIDLabel
             // 
             unitIDLabel.AutoSize = true;
-            unitIDLabel.Location = new System.Drawing.Point(12, 6);
+            unitIDLabel.Location = new System.Drawing.Point(34, 24);
             unitIDLabel.Name = "unitIDLabel";
             unitIDLabel.Size = new System.Drawing.Size(72, 23);
-            unitIDLabel.TabIndex = 1;
+            unitIDLabel.TabIndex = 22;
             unitIDLabel.Text = "Unit ID:";
             // 
             // unitNameLabel
             // 
             unitNameLabel.AutoSize = true;
-            unitNameLabel.Location = new System.Drawing.Point(12, 42);
+            unitNameLabel.Location = new System.Drawing.Point(34, 72);
             unitNameLabel.Name = "unitNameLabel";
             unitNameLabel.Size = new System.Drawing.Size(101, 23);
-            unitNameLabel.TabIndex = 3;
+            unitNameLabel.TabIndex = 23;
             unitNameLabel.Text = "Unit Name:";
             // 
             // pIDPathLabel
             // 
             pIDPathLabel.AutoSize = true;
-            pIDPathLabel.Location = new System.Drawing.Point(12, 78);
+            pIDPathLabel.Location = new System.Drawing.Point(34, 120);
             pIDPathLabel.Name = "pIDPathLabel";
             pIDPathLabel.Size = new System.Drawing.Size(78, 23);
-            pIDPathLabel.TabIndex = 5;
+            pIDPathLabel.TabIndex = 24;
             pIDPathLabel.Text = "PIDPath:";
             // 
             // imagePathLabel
             // 
             imagePathLabel.AutoSize = true;
-            imagePathLabel.Location = new System.Drawing.Point(12, 114);
+            imagePathLabel.Location = new System.Drawing.Point(34, 168);
             imagePathLabel.Name = "imagePathLabel";
             imagePathLabel.Size = new System.Drawing.Size(105, 23);
-            imagePathLabel.TabIndex = 7;
+            imagePathLabel.TabIndex = 25;
             imagePathLabel.Text = "Image Path:";
             // 
             // btnExit
@@ -103,7 +103,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(843, 0);
+            this.btnExit.Location = new System.Drawing.Point(1007, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(56, 37);
             this.btnExit.TabIndex = 18;
@@ -114,9 +114,9 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 429);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(899, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1063, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -127,7 +127,7 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(899, 45);
+            this.pnlTop.Size = new System.Drawing.Size(1063, 45);
             this.pnlTop.TabIndex = 20;
             // 
             // btnMinimize
@@ -147,42 +147,73 @@
             this.btnMinimize.UseVisualStyleBackColor = false;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.Models.Unit);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.panel2.Controls.Add(this.OKButton);
-            this.panel2.Controls.Add(this.ImageBrowseButton);
-            this.panel2.Controls.Add(this.pidBrowseButton);
             this.panel2.Controls.Add(imagePathLabel);
             this.panel2.Controls.Add(this.imagePathTextBox);
             this.panel2.Controls.Add(pIDPathLabel);
             this.panel2.Controls.Add(this.pIDPathTextBox);
             this.panel2.Controls.Add(unitNameLabel);
-            this.panel2.Controls.Add(this.unitNameComboBox);
+            this.panel2.Controls.Add(this.unitNameTextBox);
             this.panel2.Controls.Add(unitIDLabel);
             this.panel2.Controls.Add(this.unitIDLabel1);
+            this.panel2.Controls.Add(this.OKButton);
+            this.panel2.Controls.Add(this.ImageBrowseButton);
+            this.panel2.Controls.Add(this.pidBrowseButton);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(899, 384);
+            this.panel2.Size = new System.Drawing.Size(1063, 494);
             this.panel2.TabIndex = 21;
+            // 
+            // imagePathTextBox
+            // 
+            this.imagePathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "ImagePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.imagePathTextBox.Location = new System.Drawing.Point(204, 165);
+            this.imagePathTextBox.Name = "imagePathTextBox";
+            this.imagePathTextBox.ReadOnly = true;
+            this.imagePathTextBox.Size = new System.Drawing.Size(731, 29);
+            this.imagePathTextBox.TabIndex = 26;
+            // 
+            // pIDPathTextBox
+            // 
+            this.pIDPathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "PIDPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.pIDPathTextBox.Location = new System.Drawing.Point(204, 117);
+            this.pIDPathTextBox.Name = "pIDPathTextBox";
+            this.pIDPathTextBox.ReadOnly = true;
+            this.pIDPathTextBox.Size = new System.Drawing.Size(731, 29);
+            this.pIDPathTextBox.TabIndex = 25;
+            // 
+            // unitNameTextBox
+            // 
+            this.unitNameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitNameTextBox.Location = new System.Drawing.Point(204, 69);
+            this.unitNameTextBox.Name = "unitNameTextBox";
+            this.unitNameTextBox.Size = new System.Drawing.Size(264, 29);
+            this.unitNameTextBox.TabIndex = 24;
+            // 
+            // unitIDLabel1
+            // 
+            this.unitIDLabel1.Location = new System.Drawing.Point(200, 24);
+            this.unitIDLabel1.Name = "unitIDLabel1";
+            this.unitIDLabel1.Size = new System.Drawing.Size(100, 23);
+            this.unitIDLabel1.TabIndex = 23;
+            this.unitIDLabel1.Text = "label1";
             // 
             // OKButton
             // 
-            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OKButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
             this.OKButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OKButton.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.unitBindingSource, "IsValid", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.OKButton.FlatAppearance.BorderSize = 0;
             this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OKButton.ForeColor = System.Drawing.Color.White;
-            this.OKButton.Location = new System.Drawing.Point(806, 351);
+            this.OKButton.Location = new System.Drawing.Point(973, 461);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(90, 30);
             this.OKButton.TabIndex = 22;
@@ -192,7 +223,7 @@
             // 
             // ImageBrowseButton
             // 
-            this.ImageBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImageBrowseButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ImageBrowseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
             this.ImageBrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ImageBrowseButton.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -200,7 +231,7 @@
             this.ImageBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImageBrowseButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImageBrowseButton.ForeColor = System.Drawing.Color.White;
-            this.ImageBrowseButton.Location = new System.Drawing.Point(806, 110);
+            this.ImageBrowseButton.Location = new System.Drawing.Point(969, 164);
             this.ImageBrowseButton.Name = "ImageBrowseButton";
             this.ImageBrowseButton.Size = new System.Drawing.Size(90, 30);
             this.ImageBrowseButton.TabIndex = 21;
@@ -210,7 +241,7 @@
             // 
             // pidBrowseButton
             // 
-            this.pidBrowseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pidBrowseButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pidBrowseButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
             this.pidBrowseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pidBrowseButton.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -218,7 +249,7 @@
             this.pidBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pidBrowseButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pidBrowseButton.ForeColor = System.Drawing.Color.White;
-            this.pidBrowseButton.Location = new System.Drawing.Point(806, 75);
+            this.pidBrowseButton.Location = new System.Drawing.Point(970, 116);
             this.pidBrowseButton.Name = "pidBrowseButton";
             this.pidBrowseButton.Size = new System.Drawing.Size(90, 30);
             this.pidBrowseButton.TabIndex = 20;
@@ -226,48 +257,19 @@
             this.pidBrowseButton.UseVisualStyleBackColor = false;
             this.pidBrowseButton.Click += new System.EventHandler(this.pidBrowseButton_Click);
             // 
-            // imagePathTextBox
-            // 
-            this.imagePathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "ImagePath", true));
-            this.imagePathTextBox.Location = new System.Drawing.Point(143, 111);
-            this.imagePathTextBox.Name = "imagePathTextBox";
-            this.imagePathTextBox.Size = new System.Drawing.Size(657, 29);
-            this.imagePathTextBox.TabIndex = 8;
-            // 
-            // pIDPathTextBox
-            // 
-            this.pIDPathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "PIDPath", true));
-            this.pIDPathTextBox.Location = new System.Drawing.Point(143, 75);
-            this.pIDPathTextBox.Name = "pIDPathTextBox";
-            this.pIDPathTextBox.Size = new System.Drawing.Size(657, 29);
-            this.pIDPathTextBox.TabIndex = 6;
-            // 
-            // unitNameComboBox
-            // 
-            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitName", true));
-            this.unitNameComboBox.FormattingEnabled = true;
-            this.unitNameComboBox.Location = new System.Drawing.Point(143, 39);
-            this.unitNameComboBox.Name = "unitNameComboBox";
-            this.unitNameComboBox.Size = new System.Drawing.Size(121, 29);
-            this.unitNameComboBox.TabIndex = 4;
-            // 
-            // unitIDLabel1
-            // 
-            this.unitIDLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitID", true));
-            this.unitIDLabel1.Location = new System.Drawing.Point(143, 6);
-            this.unitIDLabel1.Name = "unitIDLabel1";
-            this.unitIDLabel1.Size = new System.Drawing.Size(100, 23);
-            this.unitIDLabel1.TabIndex = 2;
-            this.unitIDLabel1.Text = "label1";
-            // 
             // pictureBox1
             // 
-            this.pictureBox1.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.unitBindingSource, "ImagePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 156);
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.Location = new System.Drawing.Point(16, 203);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(348, 198);
+            this.pictureBox1.Size = new System.Drawing.Size(475, 288);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
             // 
             // frmAddUnit
             // 
@@ -276,7 +278,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(899, 451);
+            this.ClientSize = new System.Drawing.Size(1063, 561);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.statusStrip1);
@@ -291,10 +293,10 @@
             this.Text = "Tag Finder";
             this.Load += new System.EventHandler(this.frmTagFinder_Load);
             this.pnlTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,14 +308,14 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button ImageBrowseButton;
         private System.Windows.Forms.Button pidBrowseButton;
         private System.Windows.Forms.TextBox imagePathTextBox;
+        private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.TextBox pIDPathTextBox;
-        private System.Windows.Forms.ComboBox unitNameComboBox;
+        private System.Windows.Forms.TextBox unitNameTextBox;
         private System.Windows.Forms.Label unitIDLabel1;
     }
 }

@@ -36,8 +36,26 @@ namespace RefTagFinder.Classes.Models
 			set { _ImagePath = value; }
 		}
 
+        public bool IsValid 
+		{ 
+			get 
+			{ 
+				bool check = false;
+                try
+                {
 
-		public Unit(int UnitID_, string UnitName_, string PIDPath_, string ImagePath_)
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+				return check;
+			} 
+			 
+		}
+
+        public Unit(int UnitID_, string UnitName_, string PIDPath_, string ImagePath_)
 		{
 			this.UnitID = UnitID_;
 			this.UnitName = UnitName_;
