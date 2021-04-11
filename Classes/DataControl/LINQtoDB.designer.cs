@@ -20,9 +20,9 @@ namespace RefTagFinder.Classes.DataControl
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
+    using System.IO;
+
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
 	public partial class LINQtoDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -245,16 +245,18 @@ namespace RefTagFinder.Classes.DataControl
 		{
 			get
 			{
-				bool check = true;
+				bool check = false;
 				try
 				{
+					if (File.Exists(ImagePath) && File.Exists(PIDPath) && !string.IsNullOrEmpty(UnitName))
+						check = true;
 
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
 
-					throw;
-				}
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
 				return check;
 			}
 

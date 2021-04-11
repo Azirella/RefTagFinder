@@ -59,7 +59,7 @@ namespace RefTagFinder
 
         private void button1_Click(object sender, EventArgs e)
         {
-            frmAddUnit f = new frmAddUnit();
+            FrmAddUnit f = new FrmAddUnit();
             f.ShowDialog();
             if (f.DialogResult == DialogResult.OK)
             {

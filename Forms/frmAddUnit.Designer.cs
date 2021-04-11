@@ -1,6 +1,6 @@
 ﻿namespace RefTagFinder
 {
-    partial class frmAddUnit
+    partial class FrmAddUnit
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlTop = new System.Windows.Forms.Panel();
-            this.btnMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.imagePathTextBox = new System.Windows.Forms.TextBox();
             this.pIDPathTextBox = new System.Windows.Forms.TextBox();
@@ -46,6 +45,8 @@
             this.ImageBrowseButton = new System.Windows.Forms.Button();
             this.pidBrowseButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lblConverting = new System.Windows.Forms.Label();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             unitIDLabel = new System.Windows.Forms.Label();
             unitNameLabel = new System.Windows.Forms.Label();
@@ -122,7 +123,6 @@
             // 
             // pnlTop
             // 
-            this.pnlTop.Controls.Add(this.btnMinimize);
             this.pnlTop.Controls.Add(this.btnExit);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
@@ -130,26 +130,10 @@
             this.pnlTop.Size = new System.Drawing.Size(1063, 45);
             this.pnlTop.TabIndex = 20;
             // 
-            // btnMinimize
-            // 
-            this.btnMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimize.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnMinimize.FlatAppearance.BorderSize = 0;
-            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimize.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinimize.ForeColor = System.Drawing.Color.White;
-            this.btnMinimize.Location = new System.Drawing.Point(1007, 0);
-            this.btnMinimize.Name = "btnMinimize";
-            this.btnMinimize.Size = new System.Drawing.Size(56, 37);
-            this.btnMinimize.TabIndex = 19;
-            this.btnMinimize.Text = "_";
-            this.btnMinimize.UseVisualStyleBackColor = false;
-            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.panel2.Controls.Add(this.lblConverting);
             this.panel2.Controls.Add(imagePathLabel);
             this.panel2.Controls.Add(this.imagePathTextBox);
             this.panel2.Controls.Add(pIDPathLabel);
@@ -267,11 +251,26 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "PDF|*.pdf";
+            // 
+            // lblConverting
+            // 
+            this.lblConverting.AutoSize = true;
+            this.lblConverting.Font = new System.Drawing.Font("Nirmala UI", 40.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConverting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblConverting.Location = new System.Drawing.Point(497, 270);
+            this.lblConverting.Name = "lblConverting";
+            this.lblConverting.Size = new System.Drawing.Size(0, 91);
+            this.lblConverting.TabIndex = 27;
+            // 
             // unitBindingSource
             // 
             this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
             // 
-            // frmAddUnit
+            // FrmAddUnit
             // 
             this.AcceptButton = this.OKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -287,11 +286,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmAddUnit";
+            this.Name = "FrmAddUnit";
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tag Finder";
-            this.Load += new System.EventHandler(this.frmTagFinder_Load);
+            this.Load += new System.EventHandler(this.FrmTagFinder_Load);
             this.pnlTop.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -307,7 +306,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Button ImageBrowseButton;
@@ -317,5 +315,7 @@
         private System.Windows.Forms.TextBox pIDPathTextBox;
         private System.Windows.Forms.TextBox unitNameTextBox;
         private System.Windows.Forms.Label unitIDLabel1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label lblConverting;
     }
 }

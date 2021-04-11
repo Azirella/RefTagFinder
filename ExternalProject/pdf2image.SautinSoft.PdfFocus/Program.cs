@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using SautinSoft;
+//using System.Threading.Task;
 
 namespace pdf2image.SautinSoft.PdfFocus
 {
@@ -80,9 +82,9 @@ namespace pdf2image.SautinSoft.PdfFocus
             global::SautinSoft.PdfFocus pdfFocus = new global::SautinSoft.PdfFocus();
 
             pdfFocus.OpenPdf(pdfInputPath);
-
+            //Task
+            
             byte[] img = pdfFocus.ToImage(1);
-
             //byte[] bmp = pdfFocus.ToImage(1);
 
             pdfFocus.ClosePdf();
