@@ -25,7 +25,7 @@ namespace RefTagFinder
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new RefTagFinder.FrmAddUnit());
+			Application.Run(new frmTagFinder());
 		}
 		
 	}

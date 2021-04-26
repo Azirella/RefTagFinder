@@ -43,7 +43,7 @@ namespace RefTagFinder
                 new System.Drawing.Font
                 ("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             unitIDTextBox.Focus();
-            unitIDTextBox.SelectAll();
+            //unitIDTextBox.SelectAll();
             #endregion
 
             #region Binding
@@ -96,12 +96,19 @@ namespace RefTagFinder
                 MessageBox.Show(ex.Message);
             }
 
-            if (MessageBox.Show("Exit",
-                "Do you want to exit OR\n \t Add another unit information???",
+            if (MessageBox.Show("Do you want to exit OR\n \t Add another unit information???",
+                "Exit",
                 MessageBoxButtons.YesNoCancel,
                 MessageBoxIcon.Information)
                 == DialogResult.Yes)
-            { this.Close(); }
+            { 
+                this.Close();
+            }
+            else
+            {
+                _mainFormUnit = new Unit();
+                FrmTagFinder_Load(sender, e);
+            }
         }
 
         private void pidBrowseButton_Click(object sender, EventArgs e)
@@ -131,7 +138,8 @@ namespace RefTagFinder
                         Directory.CreateDirectory(OutputPath);
                     }
                     new Bitmap(pictureBox1.Image).Save(OutputPath+"\\"+Path.GetFileNameWithoutExtension(_mainFormUnit.PIDPath)+".jpg", ImageFormat.Jpeg);
-                    MessageBox.Show("Convert Completed");
+                    //MessageBox.Show("Convert Completed");
+                    lblConverting.Text = "Convert Completed";
                     imagePathTextBox.Text = OutputPath + "\\" + Path.GetFileNameWithoutExtension(_mainFormUnit.PIDPath) + ".jpg";
 
                 }
@@ -149,6 +157,29 @@ namespace RefTagFinder
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+       
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    string sql = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormUnit.UnitID}";
+                    cnn.Execute(sql);
+                }
+                string DeletePath = Application.StartupPath + @"\Data\Units\image\" + "\\" + _mainFormUnit.UnitID + ".jpg";
+                File.Delete(DeletePath);
+                DeletePath = Application.StartupPath + @"\Data\Units\pid\" + "\\" + _mainFormUnit.UnitID + ".pdf";
+                File.Delete(DeletePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             this.Close();
         }
     }

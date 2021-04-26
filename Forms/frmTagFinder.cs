@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Configuration;
 using System.Data.SqlClient;
+using Dapper;
+using RefTagFinder.Classes.DataControl;
+using System.Threading;
 
 namespace RefTagFinder
 {
@@ -17,22 +20,21 @@ namespace RefTagFinder
     {
         /*SqlConnection con1;
         SqlCommand cmd1;
-        SqlDataAdapter da1;*/
+        SqlDataAdapter da1;
+        OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\\DBs\\db_users.mdb");
+        OleDbCommand cmd = new OleDbCommand();
+        OleDbDataAdapter da = new OleDbDataAdapter();*/
+
+        List<Unit> AllUnins;
+        Unit CurrentUnit;
+
+
         public frmTagFinder()
         {
             InitializeComponent();
 
-            
+
         }
-        //private var info = 1234;
-        
-        OleDbConnection con = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=.\\DBs\\db_users.mdb");
-        OleDbCommand cmd = new OleDbCommand();
-        OleDbDataAdapter da = new OleDbDataAdapter();
-
-        //string cnnStr = HelperStatic.LoadConnectionString("LocalDBConnectionString");
-        
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             //this.Close();
@@ -42,6 +44,7 @@ namespace RefTagFinder
         private void frmTagFinder_Load(object sender, EventArgs e)
         {
 
+            #region reposition
             btnExit.Top = 0;
             btnExit.Left = this.Width - btnExit.Width;
 
@@ -49,7 +52,27 @@ namespace RefTagFinder
             btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
 
             pnlTop.Height = btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
-            
+
+            unitImagePictureBox.Dock = DockStyle.Fill;
+            #endregion
+
+            #region loadAllUnits
+            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            {
+                var p = new DynamicParameters();
+                p.Add("@tblName", "Unit");
+                string sql = "[dbo].[SelectTable]";
+                AllUnins = cnn.Query<Unit>(sql, p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            #endregion
+
+            /*#region Binding
+            unitBindingSource.DataSource = CurrentUnit;
+            unitBindingSource.ResetBindings(true);
+            #endregion*/
+
+            unitNameComboBox.DataSource = AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -61,15 +84,17 @@ namespace RefTagFinder
         {
             FrmAddUnit f = new FrmAddUnit();
             f.ShowDialog();
-            if (f.DialogResult == DialogResult.OK)
+            /*if (f.DialogResult == DialogResult.OK)
             {
                 frmTagFinder_Load(sender, e);
-            }
+            }*/
+            frmTagFinder_Load(sender, e);
         }
 
         private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //unitNameComboBox.
+            CurrentUnit = AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+            unitImagePictureBox.ImageLocation = CurrentUnit.ImagePath;
         }
     }
 }

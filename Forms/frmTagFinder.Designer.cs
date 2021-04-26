@@ -33,18 +33,28 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.unitNameComboBox = new System.Windows.Forms.ComboBox();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.unitNameComboBox = new System.Windows.Forms.ComboBox();
+            this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.toolsPnl = new System.Windows.Forms.Panel();
             unitNameLabel = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // unitNameLabel
+            // 
+            unitNameLabel.AutoSize = true;
+            unitNameLabel.Location = new System.Drawing.Point(12, 10);
+            unitNameLabel.Name = "unitNameLabel";
+            unitNameLabel.Size = new System.Drawing.Size(101, 23);
+            unitNameLabel.TabIndex = 21;
+            unitNameLabel.Text = "Unit Name:";
             // 
             // btnExit
             // 
@@ -86,6 +96,21 @@
             this.pnlTop.Size = new System.Drawing.Size(1145, 66);
             this.pnlTop.TabIndex = 20;
             // 
+            // unitNameComboBox
+            // 
+            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.unitBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitNameComboBox.FormattingEnabled = true;
+            this.unitNameComboBox.Location = new System.Drawing.Point(119, 7);
+            this.unitNameComboBox.Name = "unitNameComboBox";
+            this.unitNameComboBox.Size = new System.Drawing.Size(202, 29);
+            this.unitNameComboBox.TabIndex = 22;
+            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
@@ -126,43 +151,33 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.toolsPnl);
+            this.panel2.Controls.Add(this.unitImagePictureBox);
             this.panel2.Location = new System.Drawing.Point(12, 45);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1121, 440);
             this.panel2.TabIndex = 21;
             // 
-            // pictureBox1
+            // unitImagePictureBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(4, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(305, 155);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.unitImagePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.unitImagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.unitBindingSource, "ImagePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitImagePictureBox.Location = new System.Drawing.Point(4, 6);
+            this.unitImagePictureBox.Name = "unitImagePictureBox";
+            this.unitImagePictureBox.Size = new System.Drawing.Size(305, 155);
+            this.unitImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.unitImagePictureBox.TabIndex = 0;
+            this.unitImagePictureBox.TabStop = false;
             // 
-            // unitBindingSource
+            // toolsPnl
             // 
-            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
-            // 
-            // unitNameLabel
-            // 
-            unitNameLabel.AutoSize = true;
-            unitNameLabel.Location = new System.Drawing.Point(12, 10);
-            unitNameLabel.Name = "unitNameLabel";
-            unitNameLabel.Size = new System.Drawing.Size(101, 23);
-            unitNameLabel.TabIndex = 21;
-            unitNameLabel.Text = "Unit Name:";
-            // 
-            // unitNameComboBox
-            // 
-            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.unitBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.unitNameComboBox.FormattingEnabled = true;
-            this.unitNameComboBox.Location = new System.Drawing.Point(119, 7);
-            this.unitNameComboBox.Name = "unitNameComboBox";
-            this.unitNameComboBox.Size = new System.Drawing.Size(202, 29);
-            this.unitNameComboBox.TabIndex = 22;
-            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            this.toolsPnl.BackColor = System.Drawing.Color.Purple;
+            this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.toolsPnl.Location = new System.Drawing.Point(1032, 0);
+            this.toolsPnl.Name = "toolsPnl";
+            this.toolsPnl.Size = new System.Drawing.Size(89, 440);
+            this.toolsPnl.TabIndex = 1;
             // 
             // frmTagFinder
             // 
@@ -187,9 +202,9 @@
             this.Load += new System.EventHandler(this.frmTagFinder_Load);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,8 +217,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox unitImagePictureBox;
         private System.Windows.Forms.ComboBox unitNameComboBox;
         private System.Windows.Forms.BindingSource unitBindingSource;
+        private System.Windows.Forms.Panel toolsPnl;
     }
 }
