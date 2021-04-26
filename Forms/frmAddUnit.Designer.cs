@@ -37,16 +37,16 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblConverting = new System.Windows.Forms.Label();
             this.imagePathTextBox = new System.Windows.Forms.TextBox();
             this.pIDPathTextBox = new System.Windows.Forms.TextBox();
             this.unitNameTextBox = new System.Windows.Forms.TextBox();
-            this.unitIDLabel1 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.ImageBrowseButton = new System.Windows.Forms.Button();
             this.pidBrowseButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblConverting = new System.Windows.Forms.Label();
+            this.unitIDTextBox = new System.Windows.Forms.TextBox();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             unitIDLabel = new System.Windows.Forms.Label();
             unitNameLabel = new System.Windows.Forms.Label();
@@ -64,7 +64,7 @@
             unitIDLabel.Location = new System.Drawing.Point(34, 24);
             unitIDLabel.Name = "unitIDLabel";
             unitIDLabel.Size = new System.Drawing.Size(72, 23);
-            unitIDLabel.TabIndex = 22;
+            unitIDLabel.TabIndex = 100;
             unitIDLabel.Text = "Unit ID:";
             // 
             // unitNameLabel
@@ -104,7 +104,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(1007, 0);
+            this.btnExit.Location = new System.Drawing.Point(1027, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(56, 37);
             this.btnExit.TabIndex = 18;
@@ -115,9 +115,9 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 539);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 556);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1063, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1083, 22);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -127,12 +127,13 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1063, 45);
+            this.pnlTop.Size = new System.Drawing.Size(1083, 45);
             this.pnlTop.TabIndex = 20;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.panel2.Controls.Add(this.unitIDTextBox);
             this.panel2.Controls.Add(this.lblConverting);
             this.panel2.Controls.Add(imagePathLabel);
             this.panel2.Controls.Add(this.imagePathTextBox);
@@ -141,7 +142,6 @@
             this.panel2.Controls.Add(unitNameLabel);
             this.panel2.Controls.Add(this.unitNameTextBox);
             this.panel2.Controls.Add(unitIDLabel);
-            this.panel2.Controls.Add(this.unitIDLabel1);
             this.panel2.Controls.Add(this.OKButton);
             this.panel2.Controls.Add(this.ImageBrowseButton);
             this.panel2.Controls.Add(this.pidBrowseButton);
@@ -149,8 +149,18 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1063, 494);
+            this.panel2.Size = new System.Drawing.Size(1083, 511);
             this.panel2.TabIndex = 21;
+            // 
+            // lblConverting
+            // 
+            this.lblConverting.AutoSize = true;
+            this.lblConverting.Font = new System.Drawing.Font("Nirmala UI", 40.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConverting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.lblConverting.Location = new System.Drawing.Point(497, 270);
+            this.lblConverting.Name = "lblConverting";
+            this.lblConverting.Size = new System.Drawing.Size(0, 91);
+            this.lblConverting.TabIndex = 27;
             // 
             // imagePathTextBox
             // 
@@ -158,7 +168,7 @@
             this.imagePathTextBox.Location = new System.Drawing.Point(204, 165);
             this.imagePathTextBox.Name = "imagePathTextBox";
             this.imagePathTextBox.ReadOnly = true;
-            this.imagePathTextBox.Size = new System.Drawing.Size(731, 29);
+            this.imagePathTextBox.Size = new System.Drawing.Size(783, 29);
             this.imagePathTextBox.TabIndex = 26;
             // 
             // pIDPathTextBox
@@ -167,8 +177,8 @@
             this.pIDPathTextBox.Location = new System.Drawing.Point(204, 117);
             this.pIDPathTextBox.Name = "pIDPathTextBox";
             this.pIDPathTextBox.ReadOnly = true;
-            this.pIDPathTextBox.Size = new System.Drawing.Size(731, 29);
-            this.pIDPathTextBox.TabIndex = 25;
+            this.pIDPathTextBox.Size = new System.Drawing.Size(783, 29);
+            this.pIDPathTextBox.TabIndex = 7;
             // 
             // unitNameTextBox
             // 
@@ -176,15 +186,7 @@
             this.unitNameTextBox.Location = new System.Drawing.Point(204, 69);
             this.unitNameTextBox.Name = "unitNameTextBox";
             this.unitNameTextBox.Size = new System.Drawing.Size(264, 29);
-            this.unitNameTextBox.TabIndex = 24;
-            // 
-            // unitIDLabel1
-            // 
-            this.unitIDLabel1.Location = new System.Drawing.Point(200, 24);
-            this.unitIDLabel1.Name = "unitIDLabel1";
-            this.unitIDLabel1.Size = new System.Drawing.Size(100, 23);
-            this.unitIDLabel1.TabIndex = 23;
-            this.unitIDLabel1.Text = "label1";
+            this.unitNameTextBox.TabIndex = 1;
             // 
             // OKButton
             // 
@@ -197,10 +199,10 @@
             this.OKButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OKButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OKButton.ForeColor = System.Drawing.Color.White;
-            this.OKButton.Location = new System.Drawing.Point(973, 461);
+            this.OKButton.Location = new System.Drawing.Point(993, 478);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(90, 30);
-            this.OKButton.TabIndex = 22;
+            this.OKButton.TabIndex = 4;
             this.OKButton.Text = "OK";
             this.OKButton.UseVisualStyleBackColor = false;
             this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
@@ -215,10 +217,10 @@
             this.ImageBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ImageBrowseButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImageBrowseButton.ForeColor = System.Drawing.Color.White;
-            this.ImageBrowseButton.Location = new System.Drawing.Point(969, 164);
+            this.ImageBrowseButton.Location = new System.Drawing.Point(993, 164);
             this.ImageBrowseButton.Name = "ImageBrowseButton";
             this.ImageBrowseButton.Size = new System.Drawing.Size(90, 30);
-            this.ImageBrowseButton.TabIndex = 21;
+            this.ImageBrowseButton.TabIndex = 3;
             this.ImageBrowseButton.Text = "Browse";
             this.ImageBrowseButton.UseVisualStyleBackColor = false;
             this.ImageBrowseButton.Click += new System.EventHandler(this.ImageBrowseButton_Click);
@@ -233,10 +235,10 @@
             this.pidBrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pidBrowseButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pidBrowseButton.ForeColor = System.Drawing.Color.White;
-            this.pidBrowseButton.Location = new System.Drawing.Point(970, 116);
+            this.pidBrowseButton.Location = new System.Drawing.Point(993, 116);
             this.pidBrowseButton.Name = "pidBrowseButton";
             this.pidBrowseButton.Size = new System.Drawing.Size(90, 30);
-            this.pidBrowseButton.TabIndex = 20;
+            this.pidBrowseButton.TabIndex = 2;
             this.pidBrowseButton.Text = "Browse";
             this.pidBrowseButton.UseVisualStyleBackColor = false;
             this.pidBrowseButton.Click += new System.EventHandler(this.pidBrowseButton_Click);
@@ -244,7 +246,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Location = new System.Drawing.Point(16, 203);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 211);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(475, 288);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -256,15 +258,13 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "PDF|*.pdf";
             // 
-            // lblConverting
+            // unitIDTextBox
             // 
-            this.lblConverting.AutoSize = true;
-            this.lblConverting.Font = new System.Drawing.Font("Nirmala UI", 40.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConverting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.lblConverting.Location = new System.Drawing.Point(497, 270);
-            this.lblConverting.Name = "lblConverting";
-            this.lblConverting.Size = new System.Drawing.Size(0, 91);
-            this.lblConverting.TabIndex = 27;
+            this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitIDTextBox.Location = new System.Drawing.Point(204, 21);
+            this.unitIDTextBox.Name = "unitIDTextBox";
+            this.unitIDTextBox.Size = new System.Drawing.Size(264, 29);
+            this.unitIDTextBox.TabIndex = 0;
             // 
             // unitBindingSource
             // 
@@ -277,7 +277,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(1063, 561);
+            this.ClientSize = new System.Drawing.Size(1083, 578);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.statusStrip1);
@@ -314,8 +314,8 @@
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.TextBox pIDPathTextBox;
         private System.Windows.Forms.TextBox unitNameTextBox;
-        private System.Windows.Forms.Label unitIDLabel1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblConverting;
+        private System.Windows.Forms.TextBox unitIDTextBox;
     }
 }

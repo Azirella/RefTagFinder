@@ -86,7 +86,7 @@ namespace RefTagFinder
         }
 
 
-        public static string LoadConnectionString(string id = "Default")
+        public static string LoadConnectionString(string id = "LocalDBConnectionString")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
             

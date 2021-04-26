@@ -248,7 +248,7 @@ namespace RefTagFinder.Classes.DataControl
 				bool check = false;
 				try
 				{
-					if (File.Exists(ImagePath) && File.Exists(PIDPath) && !string.IsNullOrEmpty(UnitName))
+					if (File.Exists(ImagePath) && File.Exists(PIDPath) && !string.IsNullOrEmpty(UnitName) && UnitID > 0)
 						check = true;
 
 				}

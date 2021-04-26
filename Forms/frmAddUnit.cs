@@ -15,6 +15,7 @@ using static pdf2image.SautinSoft.PdfFocus.Program;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
+using Dapper;
 //using RefTagFinder.Classes.Models;
 namespace RefTagFinder
 {
@@ -37,17 +38,12 @@ namespace RefTagFinder
             #region RePositionControl
             btnExit.Top = 0;
             btnExit.Left = this.Width - btnExit.Width;
-
-            //btnMinimize.Top = 0;
-            //btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
-
-            //btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
             pnlTop.Height = btnExit.Height + 2;
-            
             this.btnExit.Font     =
-            //this.btnMinimize.Font =
                 new System.Drawing.Font
                 ("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            unitIDTextBox.Focus();
+            unitIDTextBox.SelectAll();
             #endregion
 
             #region Binding
@@ -63,16 +59,49 @@ namespace RefTagFinder
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-            //using (LINQtoDBDataContext dbtemp = new LINQtoDBDataContext())
-            //{
-            //    _mainFormUnit.UnitID = 103;
-            //    //Unit uuu = new Unit() { UnitName=unitNameTextBox.Text};
 
-            //    dbtemp.Units.InsertOnSubmit(_mainFormUnit);
-            //    dbtemp.SubmitChanges();
-            //}
-           
-            this.Close();
+            try
+            {
+                string OutputPath = Application.StartupPath + @"\Data\Units\pid\";
+                if (!Directory.Exists(OutputPath))
+                {
+                    Directory.CreateDirectory(OutputPath);
+                }
+                OutputPath += _mainFormUnit.UnitID + Path.GetExtension(_mainFormUnit.PIDPath);
+                File.Copy(_mainFormUnit.PIDPath, OutputPath, true);
+                _mainFormUnit.PIDPath = OutputPath;
+
+                OutputPath = Application.StartupPath + @"\Data\Units\image\";
+                if (!Directory.Exists(OutputPath))
+                {
+                    Directory.CreateDirectory(OutputPath);
+                }
+                OutputPath += _mainFormUnit.UnitID + Path.GetExtension(_mainFormUnit.ImagePath);
+                File.Copy(_mainFormUnit.ImagePath, OutputPath, true);
+                _mainFormUnit.ImagePath = OutputPath;
+
+                using (IDbConnection cnn = new SqlConnection(RefTagFinder.HelperStatic.LoadConnectionString()))
+                {
+                    string sql1 = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormUnit.UnitID}";
+                    cnn.Execute(sql1);
+
+                    sql1 = $@"INSERT INTO Unit (UnitID,UnitName,PIDPath,ImagePath) 
+                                VALUES (@UnitID,@UnitName,@PIDPath,@ImagePath)";
+                    cnn.Execute(sql1, _mainFormUnit);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+            if (MessageBox.Show("Exit",
+                "Do you want to exit OR\n \t Add another unit information???",
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Information)
+                == DialogResult.Yes)
+            { this.Close(); }
         }
 
         private void pidBrowseButton_Click(object sender, EventArgs e)
