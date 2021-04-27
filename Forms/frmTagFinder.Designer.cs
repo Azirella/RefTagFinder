@@ -40,9 +40,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.equipmentControl1 = new RefTagFinder.Forms.EquipmentControl();
             this.toolsPnl = new System.Windows.Forms.Panel();
             this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.test_Timer = new System.Windows.Forms.Timer(this.components);
+            this.equipmentControl1 = new RefTagFinder.Forms.User_Controls.EquipmentControl();
             unitNameLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -189,14 +190,6 @@
             this.panel2.Size = new System.Drawing.Size(1121, 440);
             this.panel2.TabIndex = 21;
             // 
-            // equipmentControl1
-            // 
-            this.equipmentControl1.Location = new System.Drawing.Point(512, 349);
-            this.equipmentControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.equipmentControl1.Name = "equipmentControl1";
-            this.equipmentControl1.Size = new System.Drawing.Size(31, 23);
-            this.equipmentControl1.TabIndex = 2;
-            // 
             // toolsPnl
             // 
             this.toolsPnl.BackColor = System.Drawing.Color.Purple;
@@ -217,6 +210,19 @@
             this.unitImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.unitImagePictureBox.TabIndex = 0;
             this.unitImagePictureBox.TabStop = false;
+            // 
+            // test_Timer
+            // 
+            this.test_Timer.Interval = 2000;
+            this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
+            // 
+            // equipmentControl1
+            // 
+            this.equipmentControl1.Location = new System.Drawing.Point(512, 349);
+            this.equipmentControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.equipmentControl1.Name = "equipmentControl1";
+            this.equipmentControl1.Size = new System.Drawing.Size(31, 23);
+            this.equipmentControl1.TabIndex = 2;
             // 
             // frmTagFinder
             // 
@@ -262,8 +268,9 @@
         private System.Windows.Forms.ComboBox unitNameComboBox;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.Panel toolsPnl;
-        private Forms.EquipmentControl equipmentControl1;
+        private Forms.User_Controls.EquipmentControl equipmentControl1;
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Timer test_Timer;
     }
 }

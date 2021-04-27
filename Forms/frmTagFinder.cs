@@ -73,6 +73,8 @@ namespace RefTagFinder
             #endregion*/
 
             unitNameComboBox.DataSource = _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+
+            test_Timer.Start();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -102,6 +104,12 @@ namespace RefTagFinder
             FrmAddUnit f = new FrmAddUnit(_CurrentUnit);
             f.ShowDialog();
             frmTagFinder_Load(sender, e);
+        }
+
+        private void test_Timer_Tick(object sender, EventArgs e)
+        {
+            equipmentControl1.Top += 10;
+            equipmentControl1.Left += 10;
         }
     }
 }
