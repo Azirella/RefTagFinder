@@ -32,15 +32,19 @@
             System.Windows.Forms.Label unitNameLabel;
             this.btnExit = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.unitNameComboBox = new System.Windows.Forms.ComboBox();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
+            this.equipmentControl1 = new RefTagFinder.Forms.EquipmentControl();
             this.toolsPnl = new System.Windows.Forms.Panel();
+            this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
             unitNameLabel = new System.Windows.Forms.Label();
+            this.statusStrip1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -77,17 +81,26 @@
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Location = new System.Drawing.Point(0, 488);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 484);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1145, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1145, 26);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnEdit);
             this.pnlTop.Controls.Add(unitNameLabel);
             this.pnlTop.Controls.Add(this.unitNameComboBox);
-            this.pnlTop.Controls.Add(this.button1);
+            this.pnlTop.Controls.Add(this.btnAdd);
             this.pnlTop.Controls.Add(this.btnMinimize);
             this.pnlTop.Controls.Add(this.btnExit);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
@@ -95,6 +108,23 @@
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1145, 66);
             this.pnlTop.TabIndex = 20;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(391, -1);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(60, 37);
+            this.btnEdit.TabIndex = 23;
+            this.btnEdit.Text = "&Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // unitNameComboBox
             // 
@@ -111,22 +141,22 @@
             // 
             this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(327, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(58, 37);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "&Add";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(327, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(58, 37);
+            this.btnAdd.TabIndex = 21;
+            this.btnAdd.Text = "&Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnMinimize
             // 
@@ -151,12 +181,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.panel2.Controls.Add(this.equipmentControl1);
             this.panel2.Controls.Add(this.toolsPnl);
             this.panel2.Controls.Add(this.unitImagePictureBox);
             this.panel2.Location = new System.Drawing.Point(12, 45);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1121, 440);
             this.panel2.TabIndex = 21;
+            // 
+            // equipmentControl1
+            // 
+            this.equipmentControl1.Location = new System.Drawing.Point(512, 349);
+            this.equipmentControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.equipmentControl1.Name = "equipmentControl1";
+            this.equipmentControl1.Size = new System.Drawing.Size(31, 23);
+            this.equipmentControl1.TabIndex = 2;
+            // 
+            // toolsPnl
+            // 
+            this.toolsPnl.BackColor = System.Drawing.Color.Purple;
+            this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
+            this.toolsPnl.Location = new System.Drawing.Point(1032, 0);
+            this.toolsPnl.Name = "toolsPnl";
+            this.toolsPnl.Size = new System.Drawing.Size(89, 440);
+            this.toolsPnl.TabIndex = 1;
             // 
             // unitImagePictureBox
             // 
@@ -169,15 +217,6 @@
             this.unitImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.unitImagePictureBox.TabIndex = 0;
             this.unitImagePictureBox.TabStop = false;
-            // 
-            // toolsPnl
-            // 
-            this.toolsPnl.BackColor = System.Drawing.Color.Purple;
-            this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
-            this.toolsPnl.Location = new System.Drawing.Point(1032, 0);
-            this.toolsPnl.Name = "toolsPnl";
-            this.toolsPnl.Size = new System.Drawing.Size(89, 440);
-            this.toolsPnl.TabIndex = 1;
             // 
             // frmTagFinder
             // 
@@ -200,6 +239,8 @@
             this.Text = "Tag Finder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmTagFinder_Load);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
@@ -216,10 +257,13 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox unitImagePictureBox;
         private System.Windows.Forms.ComboBox unitNameComboBox;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.Panel toolsPnl;
+        private Forms.EquipmentControl equipmentControl1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

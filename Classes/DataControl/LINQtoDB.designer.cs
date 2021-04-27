@@ -241,6 +241,7 @@ namespace RefTagFinder.Classes.DataControl
 			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
 			OnCreated();
 		}
+
 		public bool IsValid
 		{
 			get
@@ -252,21 +253,22 @@ namespace RefTagFinder.Classes.DataControl
 						File.Exists(ImagePath) &&
 						File.Exists(PIDPath) &&
 						!string.IsNullOrEmpty(UnitName) &&
-						100 <= UnitID && UnitID <= 999 && UnitID.GetType() == typeof(int)
+						100 <= UnitID && UnitID <= 9999 && UnitID.GetType() == typeof(int)
 						) { check = true; }
-						
-						
+
+
 
 				}
 				catch (Exception ex)
 				{
 
-                    System.Windows.Forms.MessageBox.Show(ex.Message);
-                }
+					System.Windows.Forms.MessageBox.Show(ex.Message);
+				}
 				return check;
 			}
 
 		}
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int UnitID
 		{
@@ -856,7 +858,7 @@ namespace RefTagFinder.Classes.DataControl
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int EquipmentID
 		{
 			get
@@ -1024,7 +1026,7 @@ namespace RefTagFinder.Classes.DataControl
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tag", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tag", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string Tag
 		{
 			get

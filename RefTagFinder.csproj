@@ -102,6 +102,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RefDataClasses.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EquipmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\EquipmentControl.Designer.cs">
+      <DependentUpon>EquipmentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmAddUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +201,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\EquipmentControl.resx">
+      <DependentUpon>EquipmentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmAddUnit.resx">
       <DependentUpon>frmAddUnit.cs</DependentUpon>
     </EmbeddedResource>

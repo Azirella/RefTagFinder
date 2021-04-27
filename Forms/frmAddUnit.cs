@@ -22,10 +22,13 @@ namespace RefTagFinder
     public partial class FrmAddUnit : Form
     {
        
-        public FrmAddUnit()
+        public FrmAddUnit(Unit unit = null)
         {
             InitializeComponent();
-
+            if (unit != null)
+            {
+                _mainFormUnit = unit;
+            }
             
         }
 

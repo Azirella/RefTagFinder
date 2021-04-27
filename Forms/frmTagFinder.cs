@@ -25,8 +25,8 @@ namespace RefTagFinder
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataAdapter da = new OleDbDataAdapter();*/
 
-        List<Unit> AllUnins;
-        Unit CurrentUnit;
+        List<Unit> _AllUnins;
+        Unit _CurrentUnit;
 
 
         public frmTagFinder()
@@ -62,7 +62,7 @@ namespace RefTagFinder
                 var p = new DynamicParameters();
                 p.Add("@tblName", "Unit");
                 string sql = "[dbo].[SelectTable]";
-                AllUnins = cnn.Query<Unit>(sql, p,
+                _AllUnins = cnn.Query<Unit>(sql, p,
                     commandType: CommandType.StoredProcedure).ToList();
             }
             #endregion
@@ -72,7 +72,7 @@ namespace RefTagFinder
             unitBindingSource.ResetBindings(true);
             #endregion*/
 
-            unitNameComboBox.DataSource = AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+            unitNameComboBox.DataSource = _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -80,7 +80,7 @@ namespace RefTagFinder
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmAddUnit f = new FrmAddUnit();
             f.ShowDialog();
@@ -93,8 +93,15 @@ namespace RefTagFinder
 
         private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CurrentUnit = AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
-            unitImagePictureBox.ImageLocation = CurrentUnit.ImagePath;
+            _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+            unitImagePictureBox.ImageLocation = _CurrentUnit.ImagePath;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            FrmAddUnit f = new FrmAddUnit(_CurrentUnit);
+            f.ShowDialog();
+            frmTagFinder_Load(sender, e);
         }
     }
 }

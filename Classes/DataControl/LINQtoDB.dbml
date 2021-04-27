@@ -45,7 +45,7 @@
   </Table>
   <Table Name="dbo.Equipment" Member="Equipments">
     <Type Name="Equipment">
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
@@ -53,7 +53,7 @@
       <Column Name="XOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Tag" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
       <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
     </Type>
