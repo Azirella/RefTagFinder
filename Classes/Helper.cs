@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Configuration;
+using System.IO;
 
 namespace RefTagFinder
 {
@@ -63,7 +64,6 @@ namespace RefTagFinder
             }
         }
 
-
         public static string EncryptMD5(string Value)
         {
             using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
@@ -85,14 +85,43 @@ namespace RefTagFinder
             }
         }
 
-
         public static string LoadConnectionString(string id = "LocalDBConnectionString")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
-            
         }
-    
-        
-
     }
+}
+namespace RefTagFinder.Classes.DataControl
+{
+    public partial class Unit
+    {
+        public bool IsValid
+        {
+            get
+            {
+                bool check = false;
+                try
+                {
+                    if (
+                        File.Exists(ImagePath) &&
+                        File.Exists(PIDPath) &&
+                        !string.IsNullOrEmpty(UnitName) &&
+                        100 <= UnitID && UnitID <= 9999 && UnitID.GetType() == typeof(int)
+                        ) { check = true; }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.Message);
+                }
+                return check;
+            }
+
+        }
+    }
+
+    public partial class EquipmentType
+    {
+        
+    }
+
 }

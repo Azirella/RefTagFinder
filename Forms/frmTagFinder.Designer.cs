@@ -43,7 +43,7 @@
             this.toolsPnl = new System.Windows.Forms.Panel();
             this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
             this.test_Timer = new System.Windows.Forms.Timer(this.components);
-            this.equipmentControl1 = new RefTagFinder.Forms.User_Controls.EquipmentControl();
+            this.btnAddEquipmentType = new System.Windows.Forms.Button();
             unitNameLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.pnlTop.SuspendLayout();
@@ -98,6 +98,7 @@
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnAddEquipmentType);
             this.pnlTop.Controls.Add(this.btnEdit);
             this.pnlTop.Controls.Add(unitNameLabel);
             this.pnlTop.Controls.Add(this.unitNameComboBox);
@@ -182,7 +183,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.panel2.Controls.Add(this.equipmentControl1);
             this.panel2.Controls.Add(this.toolsPnl);
             this.panel2.Controls.Add(this.unitImagePictureBox);
             this.panel2.Location = new System.Drawing.Point(12, 45);
@@ -216,13 +216,22 @@
             this.test_Timer.Interval = 2000;
             this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
             // 
-            // equipmentControl1
+            // btnAddEquipmentType
             // 
-            this.equipmentControl1.Location = new System.Drawing.Point(512, 349);
-            this.equipmentControl1.Margin = new System.Windows.Forms.Padding(4);
-            this.equipmentControl1.Name = "equipmentControl1";
-            this.equipmentControl1.Size = new System.Drawing.Size(31, 23);
-            this.equipmentControl1.TabIndex = 2;
+            this.btnAddEquipmentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnAddEquipmentType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddEquipmentType.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAddEquipmentType.FlatAppearance.BorderSize = 0;
+            this.btnAddEquipmentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEquipmentType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEquipmentType.ForeColor = System.Drawing.Color.White;
+            this.btnAddEquipmentType.Location = new System.Drawing.Point(750, -1);
+            this.btnAddEquipmentType.Name = "btnAddEquipmentType";
+            this.btnAddEquipmentType.Size = new System.Drawing.Size(58, 37);
+            this.btnAddEquipmentType.TabIndex = 24;
+            this.btnAddEquipmentType.Text = "Add";
+            this.btnAddEquipmentType.UseVisualStyleBackColor = false;
+            this.btnAddEquipmentType.Click += new System.EventHandler(this.btnAddEquipmentType_Click);
             // 
             // frmTagFinder
             // 
@@ -272,5 +281,6 @@
         public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Timer test_Timer;
+        private System.Windows.Forms.Button btnAddEquipmentType;
     }
 }

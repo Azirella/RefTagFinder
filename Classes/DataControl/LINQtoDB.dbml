@@ -6,6 +6,7 @@
       <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Member="isValid" Type="System.String" CanBeNull="false" />
       <Association Name="Unit_Equipment" Member="Equipments" ThisKey="UnitID" OtherKey="UnitID" Type="Equipment" />
     </Type>
   </Table>
@@ -34,15 +35,6 @@
       <Association Name="User_LoginLog" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
-    <Type Name="EquipmentType">
-      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="EquipmentName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="X_" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Y_" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
-    </Type>
-  </Table>
   <Table Name="dbo.Equipment" Member="Equipments">
     <Type Name="Equipment">
       <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -54,8 +46,17 @@
       <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
       <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
+      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
+    <Type Name="EquipmentType">
+      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipmentName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="X_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Y_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
     </Type>
   </Table>
   <Function Name="dbo.SelectTable" Method="SelectTable">

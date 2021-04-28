@@ -108,8 +108,14 @@ namespace RefTagFinder
 
         private void test_Timer_Tick(object sender, EventArgs e)
         {
-            equipmentControl1.Top += 10;
-            equipmentControl1.Left += 10;
+            /*equipmentControl1.Top += 10;
+            equipmentControl1.Left += 10;*/
+        }
+
+        private void btnAddEquipmentType_Click(object sender, EventArgs e)
+        {
+            Forms.FrmAddEquipmentType f = new Forms.FrmAddEquipmentType();
+            f.ShowDialog();
         }
     }
 }

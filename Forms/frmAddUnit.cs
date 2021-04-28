@@ -21,7 +21,8 @@ namespace RefTagFinder
 {
     public partial class FrmAddUnit : Form
     {
-       
+        Unit _mainFormUnit = new Unit();
+
         public FrmAddUnit(Unit unit = null)
         {
             InitializeComponent();
@@ -31,10 +32,6 @@ namespace RefTagFinder
             }
             
         }
-
-        Unit _mainFormUnit = new Unit();
-        
-        
 
         private void FrmTagFinder_Load(object sender, EventArgs e)
         {

@@ -95,12 +95,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LINQtoDB.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\DataControl\UserConrol.cs" />
-    <Compile Include="Classes\HelperStatic.cs" />
+    <Compile Include="Classes\Helper.cs" />
     <Compile Include="Classes\RefDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RefDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmAddEquipmentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAddEquipmentType.Designer.cs">
+      <DependentUpon>FrmAddEquipmentType.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User_Controls\EquipmentControl.cs">
       <SubType>UserControl</SubType>
@@ -201,6 +206,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FrmAddEquipmentType.resx">
+      <DependentUpon>FrmAddEquipmentType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\User_Controls\EquipmentControl.resx">
       <DependentUpon>EquipmentControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -21,6 +21,7 @@ namespace RefTagFinder.Classes.DataControl
 	using System.ComponentModel;
 	using System;
     using System.IO;
+    using System.Windows.Forms;
 
     [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
 	public partial class LINQtoDBDataContext : System.Data.Linq.DataContext
@@ -36,12 +37,12 @@ namespace RefTagFinder.Classes.DataControl
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertEquipmentType(EquipmentType instance);
-    partial void UpdateEquipmentType(EquipmentType instance);
-    partial void DeleteEquipmentType(EquipmentType instance);
     partial void InsertEquipment(Equipment instance);
     partial void UpdateEquipment(Equipment instance);
     partial void DeleteEquipment(Equipment instance);
+    partial void InsertEquipmentType(EquipmentType instance);
+    partial void UpdateEquipmentType(EquipmentType instance);
+    partial void DeleteEquipmentType(EquipmentType instance);
     #endregion
 		
 		public LINQtoDBDataContext() : 
@@ -106,19 +107,19 @@ namespace RefTagFinder.Classes.DataControl
 			}
 		}
 		
-		public System.Data.Linq.Table<EquipmentType> EquipmentTypes
-		{
-			get
-			{
-				return this.GetTable<EquipmentType>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Equipment> Equipments
 		{
 			get
 			{
 				return this.GetTable<Equipment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentType> EquipmentTypes
+		{
+			get
+			{
+				return this.GetTable<EquipmentType>();
 			}
 		}
 		
@@ -234,6 +235,8 @@ namespace RefTagFinder.Classes.DataControl
     partial void OnPIDPathChanged();
     partial void OnImagePathChanging(string value);
     partial void OnImagePathChanged();
+    partial void OnisValidChanging(string value);
+    partial void OnisValidChanged();
     #endregion
 		
 		public Unit()
@@ -241,34 +244,7 @@ namespace RefTagFinder.Classes.DataControl
 			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
 			OnCreated();
 		}
-
-		public bool IsValid
-		{
-			get
-			{
-				bool check = false;
-				try
-				{
-					if (
-						File.Exists(ImagePath) &&
-						File.Exists(PIDPath) &&
-						!string.IsNullOrEmpty(UnitName) &&
-						100 <= UnitID && UnitID <= 9999 && UnitID.GetType() == typeof(int)
-						) { check = true; }
-
-
-
-				}
-				catch (Exception ex)
-				{
-
-					System.Windows.Forms.MessageBox.Show(ex.Message);
-				}
-				return check;
-			}
-
-		}
-
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int UnitID
 		{
@@ -349,6 +325,9 @@ namespace RefTagFinder.Classes.DataControl
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isValid", CanBeNull=false)]
+		
+
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Unit_Equipment", Storage="_Equipments", ThisKey="UnitID", OtherKey="UnitID")]
 		public EntitySet<Equipment> Equipments
 		{
@@ -637,168 +616,6 @@ namespace RefTagFinder.Classes.DataControl
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentType")]
-	public partial class EquipmentType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _EquipmentTypeID;
-		
-		private string _EquipmentName;
-		
-		private System.Nullable<int> _X_;
-		
-		private System.Nullable<int> _Y_;
-		
-		private EntitySet<Equipment> _Equipments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEquipmentTypeIDChanging(int value);
-    partial void OnEquipmentTypeIDChanged();
-    partial void OnEquipmentNameChanging(string value);
-    partial void OnEquipmentNameChanged();
-    partial void OnX_Changing(System.Nullable<int> value);
-    partial void OnX_Changed();
-    partial void OnY_Changing(System.Nullable<int> value);
-    partial void OnY_Changed();
-    #endregion
-		
-		public EquipmentType()
-		{
-			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentTypeID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int EquipmentTypeID
-		{
-			get
-			{
-				return this._EquipmentTypeID;
-			}
-			set
-			{
-				if ((this._EquipmentTypeID != value))
-				{
-					this.OnEquipmentTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentTypeID = value;
-					this.SendPropertyChanged("EquipmentTypeID");
-					this.OnEquipmentTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string EquipmentName
-		{
-			get
-			{
-				return this._EquipmentName;
-			}
-			set
-			{
-				if ((this._EquipmentName != value))
-				{
-					this.OnEquipmentNameChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentName = value;
-					this.SendPropertyChanged("EquipmentName");
-					this.OnEquipmentNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_X_", DbType="Int")]
-		public System.Nullable<int> X_
-		{
-			get
-			{
-				return this._X_;
-			}
-			set
-			{
-				if ((this._X_ != value))
-				{
-					this.OnX_Changing(value);
-					this.SendPropertyChanging();
-					this._X_ = value;
-					this.SendPropertyChanged("X_");
-					this.OnX_Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Y_", DbType="Int")]
-		public System.Nullable<int> Y_
-		{
-			get
-			{
-				return this._Y_;
-			}
-			set
-			{
-				if ((this._Y_ != value))
-				{
-					this.OnY_Changing(value);
-					this.SendPropertyChanging();
-					this._Y_ = value;
-					this.SendPropertyChanged("Y_");
-					this.OnY_Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_Equipments", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID")]
-		public EntitySet<Equipment> Equipments
-		{
-			get
-			{
-				return this._Equipments;
-			}
-			set
-			{
-				this._Equipments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentType = this;
-		}
-		
-		private void detach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentType = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Equipment")]
 	public partial class Equipment : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -823,9 +640,9 @@ namespace RefTagFinder.Classes.DataControl
 		
 		private string _Tag;
 		
-		private EntityRef<EquipmentType> _EquipmentType;
-		
 		private EntityRef<Unit> _Unit;
+		
+		private EntityRef<EquipmentType> _EquipmentType;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -853,8 +670,8 @@ namespace RefTagFinder.Classes.DataControl
 		
 		public Equipment()
 		{
-			this._EquipmentType = default(EntityRef<EquipmentType>);
 			this._Unit = default(EntityRef<Unit>);
+			this._EquipmentType = default(EntityRef<EquipmentType>);
 			OnCreated();
 		}
 		
@@ -1046,40 +863,6 @@ namespace RefTagFinder.Classes.DataControl
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_EquipmentType", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID", IsForeignKey=true)]
-		public EquipmentType EquipmentType
-		{
-			get
-			{
-				return this._EquipmentType.Entity;
-			}
-			set
-			{
-				EquipmentType previousValue = this._EquipmentType.Entity;
-				if (((previousValue != value) 
-							|| (this._EquipmentType.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EquipmentType.Entity = null;
-						previousValue.Equipments.Remove(this);
-					}
-					this._EquipmentType.Entity = value;
-					if ((value != null))
-					{
-						value.Equipments.Add(this);
-						this._EquipmentTypeID = value.EquipmentTypeID;
-					}
-					else
-					{
-						this._EquipmentTypeID = default(int);
-					}
-					this.SendPropertyChanged("EquipmentType");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Unit_Equipment", Storage="_Unit", ThisKey="UnitID", OtherKey="UnitID", IsForeignKey=true)]
 		public Unit Unit
 		{
@@ -1114,6 +897,40 @@ namespace RefTagFinder.Classes.DataControl
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_EquipmentType", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID", IsForeignKey=true)]
+		public EquipmentType EquipmentType
+		{
+			get
+			{
+				return this._EquipmentType.Entity;
+			}
+			set
+			{
+				EquipmentType previousValue = this._EquipmentType.Entity;
+				if (((previousValue != value) 
+							|| (this._EquipmentType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EquipmentType.Entity = null;
+						previousValue.Equipments.Remove(this);
+					}
+					this._EquipmentType.Entity = value;
+					if ((value != null))
+					{
+						value.Equipments.Add(this);
+						this._EquipmentTypeID = value.EquipmentTypeID;
+					}
+					else
+					{
+						this._EquipmentTypeID = default(int);
+					}
+					this.SendPropertyChanged("EquipmentType");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1132,6 +949,191 @@ namespace RefTagFinder.Classes.DataControl
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentType")]
+	public partial class EquipmentType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EquipmentTypeID;
+		
+		private string _EquipmentName;
+		
+		private System.Nullable<int> _X_;
+		
+		private System.Nullable<int> _Y_;
+		
+		private EntitySet<Equipment> _Equipments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEquipmentTypeIDChanging(int value);
+    partial void OnEquipmentTypeIDChanged();
+    partial void OnEquipmentNameChanging(string value);
+    partial void OnEquipmentNameChanged();
+    partial void OnX_Changing(System.Nullable<int> value);
+    partial void OnX_Changed();
+    partial void OnY_Changing(System.Nullable<int> value);
+    partial void OnY_Changed();
+    #endregion
+		
+		public EquipmentType()
+		{
+			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
+			OnCreated();
+		}
+
+		public bool IsValid
+		{
+			get
+			{
+				bool check = false;
+                try
+                {
+                    if (
+                                EquipmentName.Length > 5 &&
+                                X_ > 1 && Y_ > 1 && X_ < 99 && Y_ < 99
+                                )
+                    { check = true; }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+				return check;
+			}
+		}
+
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentTypeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EquipmentTypeID
+		{
+			get
+			{
+				return this._EquipmentTypeID;
+			}
+			set
+			{
+				if ((this._EquipmentTypeID != value))
+				{
+					this.OnEquipmentTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentTypeID = value;
+					this.SendPropertyChanged("EquipmentTypeID");
+					this.OnEquipmentTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string EquipmentName
+		{
+			get
+			{
+				return this._EquipmentName;
+			}
+			set
+			{
+				if ((this._EquipmentName != value))
+				{
+					this.OnEquipmentNameChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentName = value;
+					this.SendPropertyChanged("EquipmentName");
+					this.OnEquipmentNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_X_", DbType="Int")]
+		public System.Nullable<int> X_
+		{
+			get
+			{
+				return this._X_;
+			}
+			set
+			{
+				if ((this._X_ != value))
+				{
+					this.OnX_Changing(value);
+					this.SendPropertyChanging();
+					this._X_ = value;
+					this.SendPropertyChanged("X_");
+					this.OnX_Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Y_", DbType="Int")]
+		public System.Nullable<int> Y_
+		{
+			get
+			{
+				return this._Y_;
+			}
+			set
+			{
+				if ((this._Y_ != value))
+				{
+					this.OnY_Changing(value);
+					this.SendPropertyChanging();
+					this._Y_ = value;
+					this.SendPropertyChanged("Y_");
+					this.OnY_Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_Equipments", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID")]
+		public EntitySet<Equipment> Equipments
+		{
+			get
+			{
+				return this._Equipments;
+			}
+			set
+			{
+				this._Equipments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentType = this;
+		}
+		
+		private void detach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentType = null;
 		}
 	}
 	
