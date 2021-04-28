@@ -34,6 +34,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnAddEquipmentType = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.unitNameComboBox = new System.Windows.Forms.ComboBox();
             this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -43,12 +44,13 @@
             this.toolsPnl = new System.Windows.Forms.Panel();
             this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
             this.test_Timer = new System.Windows.Forms.Timer(this.components);
-            this.btnAddEquipmentType = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             unitNameLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
+            this.toolsPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,6 +112,23 @@
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1145, 66);
             this.pnlTop.TabIndex = 20;
+            // 
+            // btnAddEquipmentType
+            // 
+            this.btnAddEquipmentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnAddEquipmentType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddEquipmentType.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAddEquipmentType.FlatAppearance.BorderSize = 0;
+            this.btnAddEquipmentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEquipmentType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEquipmentType.ForeColor = System.Drawing.Color.White;
+            this.btnAddEquipmentType.Location = new System.Drawing.Point(750, -1);
+            this.btnAddEquipmentType.Name = "btnAddEquipmentType";
+            this.btnAddEquipmentType.Size = new System.Drawing.Size(58, 37);
+            this.btnAddEquipmentType.TabIndex = 24;
+            this.btnAddEquipmentType.Text = "Add";
+            this.btnAddEquipmentType.UseVisualStyleBackColor = false;
+            this.btnAddEquipmentType.Click += new System.EventHandler(this.btnAddEquipmentType_Click);
             // 
             // btnEdit
             // 
@@ -193,6 +212,7 @@
             // toolsPnl
             // 
             this.toolsPnl.BackColor = System.Drawing.Color.Purple;
+            this.toolsPnl.Controls.Add(this.btnRefresh);
             this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.toolsPnl.Location = new System.Drawing.Point(1032, 0);
             this.toolsPnl.Name = "toolsPnl";
@@ -216,22 +236,16 @@
             this.test_Timer.Interval = 2000;
             this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
             // 
-            // btnAddEquipmentType
+            // btnRefresh
             // 
-            this.btnAddEquipmentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
-            this.btnAddEquipmentType.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddEquipmentType.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnAddEquipmentType.FlatAppearance.BorderSize = 0;
-            this.btnAddEquipmentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddEquipmentType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddEquipmentType.ForeColor = System.Drawing.Color.White;
-            this.btnAddEquipmentType.Location = new System.Drawing.Point(750, -1);
-            this.btnAddEquipmentType.Name = "btnAddEquipmentType";
-            this.btnAddEquipmentType.Size = new System.Drawing.Size(58, 37);
-            this.btnAddEquipmentType.TabIndex = 24;
-            this.btnAddEquipmentType.Text = "Add";
-            this.btnAddEquipmentType.UseVisualStyleBackColor = false;
-            this.btnAddEquipmentType.Click += new System.EventHandler(this.btnAddEquipmentType_Click);
+            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRefresh.Location = new System.Drawing.Point(0, 407);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(89, 33);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // frmTagFinder
             // 
@@ -260,6 +274,7 @@
             this.pnlTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.toolsPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -282,5 +297,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Timer test_Timer;
         private System.Windows.Forms.Button btnAddEquipmentType;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

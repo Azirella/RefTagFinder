@@ -37,8 +37,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.unitIDTextBox = new System.Windows.Forms.TextBox();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblConverting = new System.Windows.Forms.Label();
             this.imagePathTextBox = new System.Windows.Forms.TextBox();
             this.pIDPathTextBox = new System.Windows.Forms.TextBox();
@@ -48,15 +48,15 @@
             this.pidBrowseButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             unitIDLabel = new System.Windows.Forms.Label();
             unitNameLabel = new System.Windows.Forms.Label();
             pIDPathLabel = new System.Windows.Forms.Label();
             imagePathLabel = new System.Windows.Forms.Label();
             this.pnlTop.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // unitIDLabel
@@ -100,7 +100,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.FlatAppearance.BorderSize = 0;
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,6 +154,24 @@
             this.panel2.Size = new System.Drawing.Size(1083, 511);
             this.panel2.TabIndex = 21;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(897, 478);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(90, 30);
+            this.btnDelete.TabIndex = 102;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // unitIDTextBox
             // 
             this.unitIDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.unitBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -161,10 +179,6 @@
             this.unitIDTextBox.Name = "unitIDTextBox";
             this.unitIDTextBox.Size = new System.Drawing.Size(264, 29);
             this.unitIDTextBox.TabIndex = 0;
-            // 
-            // unitBindingSource
-            // 
-            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
             // 
             // lblConverting
             // 
@@ -272,23 +286,9 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "PDF|*.pdf";
             // 
-            // btnDelete
+            // unitBindingSource
             // 
-            this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
-            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(897, 478);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(90, 30);
-            this.btnDelete.TabIndex = 102;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
             // 
             // FrmAddUnit
             // 
@@ -310,12 +310,13 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tag Finder";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddUnit_FormClosed);
             this.Load += new System.EventHandler(this.FrmTagFinder_Load);
             this.pnlTop.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

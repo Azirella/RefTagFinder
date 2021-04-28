@@ -20,23 +20,26 @@ namespace RefTagFinder.Forms
 {
     public partial class FrmAddEquipmentType : Form
     {
-        Equipment _mainFormEquipment = new Equipment();
+        EquipmentType _mainFormEquipmentType = new EquipmentType();
 
-        public FrmAddEquipmentType(Equipment equipment = null)
+        public FrmAddEquipmentType(EquipmentType equipmentType = null)
         {
             InitializeComponent();
-            if (equipment != null)
+            if (equipmentType != null)
             {
-                _mainFormEquipment = equipment;
+                _mainFormEquipmentType = equipmentType;
             }
+            
         }
 
         private void FrmTagFinder_Load(object sender, EventArgs e)
         {
+            
             #region Binding
-            equipmentTypeBindingSource.DataSource = _mainFormEquipment;
-            equipmentTypeBindingSource.ResetBindings(true);
+            equipmentTypeBindingSource.DataSource = _mainFormEquipmentType;
+            equipmentTypeBindingSource.ResetBindings(true); 
             #endregion
+            
            
             
         }
@@ -53,7 +56,7 @@ namespace RefTagFinder.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

@@ -993,19 +993,28 @@ namespace RefTagFinder.Classes.DataControl
 			get
 			{
 				bool check = false;
-                try
-                {
-                    if (
-                                EquipmentName.Length > 5 &&
-                                X_ > 1 && Y_ > 1 && X_ < 99 && Y_ < 99
-                                )
-                    { check = true; }
-                }
-                catch (Exception ex)
-                {
+				try
+				{
+					int tttnumber;
+					if (!string.IsNullOrEmpty(EquipmentName) &&
+						Int32.TryParse(X_.ToString(), out tttnumber) &&
+						Int32.TryParse(Y_.ToString(), out tttnumber)
+						)
+					{
+						if (
+							EquipmentName.Length >= 5 &&
+							X_ > 1 && Y_ > 1 && X_ < 99 && Y_ < 99
+							)
+						{
+							check = true;
+						}
+					}
+				}
+				catch (Exception ex)
+				{
 
-                    throw ex;
-                }
+					throw ex;
+				}
 				return check;
 			}
 		}

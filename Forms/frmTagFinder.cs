@@ -41,7 +41,7 @@ namespace RefTagFinder
             Application.Exit();
         }
 
-        private void frmTagFinder_Load(object sender, EventArgs e)
+        public void frmTagFinder_Load(object sender, EventArgs e)
         {
 
             #region reposition
@@ -85,23 +85,28 @@ namespace RefTagFinder
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FrmAddUnit f = new FrmAddUnit();
-            f.ShowDialog();
+            f.Show();// Dialog();
             /*if (f.DialogResult == DialogResult.OK)
             {
                 frmTagFinder_Load(sender, e);
             }*/
-            frmTagFinder_Load(sender, e);
+            //frmTagFinder_Load(sender, e);
         }
 
         private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
-            unitImagePictureBox.ImageLocation = _CurrentUnit.ImagePath;
+
+            if (0 < unitNameComboBox.SelectedIndex)
+            {
+                _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+                unitImagePictureBox.ImageLocation = _CurrentUnit.ImagePath; 
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             FrmAddUnit f = new FrmAddUnit(_CurrentUnit);
+            unitNameComboBox.SelectedIndex = -1;
             f.ShowDialog();
             frmTagFinder_Load(sender, e);
         }
@@ -116,6 +121,11 @@ namespace RefTagFinder
         {
             Forms.FrmAddEquipmentType f = new Forms.FrmAddEquipmentType();
             f.ShowDialog();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            frmTagFinder_Load(sender, e);
         }
     }
 }

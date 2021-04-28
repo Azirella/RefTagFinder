@@ -141,7 +141,7 @@ namespace RefTagFinder
                     //MessageBox.Show("Convert Completed");
                     lblConverting.Text = "Convert Completed";
                     imagePathTextBox.Text = OutputPath + "\\" + Path.GetFileNameWithoutExtension(_mainFormUnit.PIDPath) + ".jpg";
-
+                    ImageBrowseButton.Focus();
                 }
             }
         }
@@ -181,6 +181,12 @@ namespace RefTagFinder
                 MessageBox.Show(ex.Message);
             }
             this.Close();
+        }
+
+        private void FrmAddUnit_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmTagFinder_Load(sender, e);
+            //RefTagFinder.frmTagFinder.fr
         }
     }
 }
