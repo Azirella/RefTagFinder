@@ -28,6 +28,8 @@ namespace RefTagFinder
         List<Unit> _AllUnins;
         Unit _CurrentUnit;
 
+        List<EquipmentType> _AllEquipmentType;
+        EquipmentType _CurrentEquipmentType;
 
         public frmTagFinder()
         {
@@ -67,12 +69,25 @@ namespace RefTagFinder
             }
             #endregion
 
+            #region loadAllEquipmentType
+            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            {
+                var p = new DynamicParameters();
+                p.Add("@tblName", "EquipmentType");
+                string sql = "[dbo].[SelectTable]";
+                _AllEquipmentType = cnn.Query<EquipmentType>(sql, p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            #endregion
+
             /*#region Binding
             unitBindingSource.DataSource = CurrentUnit;
             unitBindingSource.ResetBindings(true);
             #endregion*/
 
             unitNameComboBox.DataSource = _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+            equipmentNameComboBox.DataSource = _AllEquipmentType.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+
 
             test_Timer.Start();
         }
@@ -126,6 +141,14 @@ namespace RefTagFinder
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             frmTagFinder_Load(sender, e);
+        }
+
+        private void equipmentNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (0 < equipmentNameComboBox.SelectedIndex)
+            {
+                MessageBox.Show(equipmentNameComboBox.DisplayMember.ToString());
+            }
         }
     }
 }

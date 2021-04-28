@@ -121,7 +121,36 @@ namespace RefTagFinder.Classes.DataControl
 
     public partial class EquipmentType
     {
-        
+        public bool IsValid
+        {
+            get
+            {
+                bool check = false;
+                try
+                {
+                    int tttnumber;
+                    if (!string.IsNullOrEmpty(EquipmentName) &&
+                        Int32.TryParse(X_.ToString(), out tttnumber) &&
+                        Int32.TryParse(Y_.ToString(), out tttnumber)
+                        )
+                    {
+                        if (
+                            EquipmentName.Length >= 3 &&
+                            X_ > 0 && Y_ > 0 && X_ < 99 && Y_ < 99
+                            )
+                        {
+                            check = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+                return check;
+            }
+        }
     }
 
 }

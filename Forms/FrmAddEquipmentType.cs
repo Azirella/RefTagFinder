@@ -51,12 +51,38 @@ namespace RefTagFinder.Forms
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    string sql = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormEquipmentType.EquipmentTypeID}";
+                    cnn.Execute(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    string sql = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormEquipmentType.EquipmentTypeID}";
+                    cnn.Execute(sql);
+
+                    sql = $@"INSERT INTO [dbo].[EquipmentType] (EquipmentName,X_,Y_)
+                        VALUES (@EquipmentName,@X_,@Y_)";
+                    cnn.Execute(sql, _mainFormEquipmentType);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

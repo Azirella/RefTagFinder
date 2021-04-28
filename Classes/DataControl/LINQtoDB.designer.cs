@@ -988,36 +988,7 @@ namespace RefTagFinder.Classes.DataControl
 			OnCreated();
 		}
 
-		public bool IsValid
-		{
-			get
-			{
-				bool check = false;
-				try
-				{
-					int tttnumber;
-					if (!string.IsNullOrEmpty(EquipmentName) &&
-						Int32.TryParse(X_.ToString(), out tttnumber) &&
-						Int32.TryParse(Y_.ToString(), out tttnumber)
-						)
-					{
-						if (
-							EquipmentName.Length >= 5 &&
-							X_ > 1 && Y_ > 1 && X_ < 99 && Y_ < 99
-							)
-						{
-							check = true;
-						}
-					}
-				}
-				catch (Exception ex)
-				{
-
-					throw ex;
-				}
-				return check;
-			}
-		}
+		
 
 
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentTypeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
