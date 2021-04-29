@@ -107,6 +107,18 @@
     <Compile Include="Forms\FrmAddEquipmentType.Designer.cs">
       <DependentUpon>FrmAddEquipmentType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEquipment.Designer.cs">
+      <DependentUpon>frmEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\User_Controls\EquipmentControlBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\User_Controls\EquipmentControlBar.Designer.cs">
+      <DependentUpon>EquipmentControlBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User_Controls\EquipmentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -211,6 +223,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\FrmAddEquipmentType.resx">
       <DependentUpon>FrmAddEquipmentType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEquipment.resx">
+      <DependentUpon>frmEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\User_Controls\EquipmentControlBar.resx">
+      <DependentUpon>EquipmentControlBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User_Controls\EquipmentControl.resx">
       <DependentUpon>EquipmentControl.cs</DependentUpon>

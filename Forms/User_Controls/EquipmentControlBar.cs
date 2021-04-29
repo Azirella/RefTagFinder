@@ -12,9 +12,9 @@ using System.Windows.Forms;
 namespace RefTagFinder.Forms.User_Controls
 
 {
-    public partial class EquipmentControl : UserControl
+    public partial class EquipmentControlBar : UserControl
     {
-        public EquipmentControl(Equipment equipment = null)
+        public EquipmentControlBar(Equipment equipment = null)
         {
             InitializeComponent();
             if (equipment != null)
@@ -77,5 +77,9 @@ namespace RefTagFinder.Forms.User_Controls
             this.Left = left1;
         }
 
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

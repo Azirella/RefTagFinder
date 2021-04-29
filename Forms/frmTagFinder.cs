@@ -29,13 +29,24 @@ namespace RefTagFinder
         List<Unit> _AllUnins;
         Unit _CurrentUnit;
 
-        List<EquipmentType> _AllEquipmentType;
+        List<EquipmentType> _AllEquipmentTypes;
         EquipmentType _CurrentEquipmentType;
 
-        enum ClickedTask
+        List<Equipment> _AllEquipments;
+        Equipment _CurrentEquipment;
+
+        public enum ClickedTask
         {
             AddEquipment, DeleteEquipment, nulll
         }
+
+        ClickedTask my_clickedTask;
+        public ClickedTask MyProperty 
+        {
+            get { return my_clickedTask; } 
+            set { my_clickedTask = value; } 
+        }
+
         public frmTagFinder()
         {
             InitializeComponent();
@@ -63,6 +74,17 @@ namespace RefTagFinder
             unitImagePictureBox.Dock = DockStyle.Fill;
             #endregion
 
+            #region Binding
+            /*unitBindingSource.DataSource = _CurrentUnit;
+            unitBindingSource.ResetBindings(true);*/
+
+            /*equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
+            equipmentTypeBindingSource.ResetBindings(true);*/
+
+            /*equipmentBindingSource.DataSource = _CurrentEquipment;
+            equipmentBindingSource.ResetBindings(true);*/
+            #endregion
+
             #region loadAllUnits
             using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
             {
@@ -80,18 +102,28 @@ namespace RefTagFinder
                 var p = new DynamicParameters();
                 p.Add("@tblName", "EquipmentType");
                 string sql = "[dbo].[SelectTable]";
-                _AllEquipmentType = cnn.Query<EquipmentType>(sql, p,
+                _AllEquipmentTypes = cnn.Query<EquipmentType>(sql, p,
                     commandType: CommandType.StoredProcedure).ToList();
             }
             #endregion
 
-            /*#region Binding
-            unitBindingSource.DataSource = CurrentUnit;
-            unitBindingSource.ResetBindings(true);
-            #endregion*/
+            #region loadAllEquipment
+            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            {
+                var p = new DynamicParameters();
+                p.Add("@tblName", "Equipment");
+                string sql = "[dbo].[SelectTable]";
+                _AllEquipments = cnn.Query<Equipment>(sql, p,
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+            #endregion
 
-            unitNameComboBox.DataSource = _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
-            equipmentNameComboBox.DataSource = _AllEquipmentType.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+            unitNameComboBox1.DataSource =
+             unitNameComboBox.DataSource =
+                _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+            equipmentNameComboBox1.DataSource =
+             equipmentNameComboBox.DataSource =
+                _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
 
 
             test_Timer.Start();
@@ -152,7 +184,7 @@ namespace RefTagFinder
         {
             if (0 <= equipmentNameComboBox.SelectedIndex)
             {
-                _CurrentEquipmentType = _AllEquipmentType.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
+                _CurrentEquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
             }
         }
 
@@ -171,7 +203,26 @@ namespace RefTagFinder
 
         private void unitImagePictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button != System.Windows.Forms.MouseButtons.Middle)
+            toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
+                                            $"  Button: {e.Button}  Clicks:{e.Clicks}";
+            EquipmentControl equipmentControl = new EquipmentControl();
+            
+
+            //equipmentControl.Location = new Point(e.X, e.Y);
+            /*equipmentControl.my_Equipment.IsDatum = true;
+            equipmentControl.my_Equipment.Latitude = "13213";
+            equipmentControl.my_Equipment.Longitude = "1111111";*/
+
+            equipmentControl.BringToFront();
+            unitImagePictureBox.Controls.Add(equipmentControl);
+
+            equipmentControl.Top = e.X;
+            equipmentControl.Left = e.Y;// + (sender as Button).Width;
+
+            //equipmentControl._Move(e.X, e.Y);
+            toolStripStatusLabelInfo.Text += $"____ eqTop : {equipmentControl.Top}, eqLeft : {equipmentControl.Left}";
+
+            /*if (e.Button != System.Windows.Forms.MouseButtons.Middle)
             {
                 switch (e.Button)
                 {
@@ -182,10 +233,13 @@ namespace RefTagFinder
                         me.Text = new Point(e.X, e.Y).ToString();
                         me.Name = new Point(e.X, e.Y).ToString();
                         me.Size = new Size(20, 20);
-                        me.Location = new Point(e.X, e.Y);
+                        me.Location = new Point(1000, 1000); //new Point(e.X, e.Y);
                         me.Enabled = me.Visible = true;
                         me.Click += new EventHandler(btnDynamic_click);
+
                         unitImagePictureBox.Controls.Add(me);
+
+                        btnDynamic_click(me, e);
 
 
                         toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
@@ -197,16 +251,20 @@ namespace RefTagFinder
                         
                 }
 
-            }
+            }*/
         }
 
         private void btnDynamic_click(object sender, EventArgs e)
         {
+            MessageBox.Show($"top: {(sender as Button).Top}\nleft: {(sender as Button).Left}");
+
             EquipmentControl equipmentControl = new EquipmentControl();
             equipmentControl.Top = (sender as Button).Top;
             equipmentControl.Left = (sender as Button).Left + (sender as Button).Width;
             unitImagePictureBox.Controls.Add(equipmentControl);
-                //this.Close();
+
+            
+            //this.Close();
         }
     }
 }
