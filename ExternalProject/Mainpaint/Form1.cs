@@ -1623,6 +1623,11 @@ namespace Mainpaint
             ifr.ShowDialog();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void rotate90CounterclockwisrToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Size tmps = new Size(pictureBox1.Height, pictureBox1.Width);

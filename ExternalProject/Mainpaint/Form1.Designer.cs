@@ -42,9 +42,8 @@
             this.pictureBox1 = new Mainpaint.Controls.DoubleBufferedPictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,8 +56,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.ToolDrawMode = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -191,12 +191,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSize)).BeginInit();
-            this.tabPage6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -249,11 +249,11 @@
             this.toolStripContainer1.ContentPanel.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel3);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(4);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1539, 830);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
-            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(1539, 938);
             this.toolStripContainer1.TabIndex = 0;
@@ -261,9 +261,9 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip1);
             this.toolStripContainer1.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form1_DragDrop);
             this.toolStripContainer1.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form1_DragEnter);
             // 
@@ -303,7 +303,7 @@
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1174, 830);
             this.panel3.TabIndex = 2;
@@ -315,7 +315,7 @@
             // 
             this.pictureBox8.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox8.Location = new System.Drawing.Point(0, 37);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(40, 793);
             this.pictureBox8.TabIndex = 4;
@@ -326,7 +326,7 @@
             // 
             this.pictureBox7.Dock = System.Windows.Forms.DockStyle.Top;
             this.pictureBox7.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(1174, 37);
             this.pictureBox7.TabIndex = 3;
@@ -339,12 +339,13 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1174, 830);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             this.pictureBox1.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragDrop);
             this.pictureBox1.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBox1_DragEnter);
             this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
@@ -360,7 +361,7 @@
             this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(1174, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(365, 830);
             this.panel1.TabIndex = 0;
@@ -375,46 +376,39 @@
             this.tabControl2.ImageList = this.imageList1;
             this.tabControl2.ItemSize = new System.Drawing.Size(32, 32);
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
-            this.tabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(365, 387);
             this.tabControl2.TabIndex = 1;
             // 
-            // tabPage4
+            // tabPage6
             // 
-            this.tabPage4.Controls.Add(this.listBox1);
-            this.tabPage4.Controls.Add(this.panel2);
-            this.tabPage4.ImageKey = "brushes.png";
-            this.tabPage4.Location = new System.Drawing.Point(4, 4);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage4.Size = new System.Drawing.Size(357, 347);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage6.Controls.Add(this.pictureBox5);
+            this.tabPage6.ImageKey = "color.png";
+            this.tabPage6.Location = new System.Drawing.Point(4, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage6.Size = new System.Drawing.Size(357, 347);
+            this.tabPage6.TabIndex = 3;
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // pictureBox5
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(4, 51);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(349, 292);
-            this.listBox1.TabIndex = 1;
-            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(349, 47);
-            this.panel2.TabIndex = 0;
+            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox5.Image = global::Mainpaint.Properties.Resources.color_wheel_260x260;
+            this.pictureBox5.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(349, 339);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox5_Paint);
+            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseDown);
+            this.pictureBox5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseMove);
+            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseUp);
             // 
             // tabPage5
             // 
@@ -431,7 +425,7 @@
             this.tabPage5.Controls.Add(this.label6);
             this.tabPage5.ImageKey = "tools.png";
             this.tabPage5.Location = new System.Drawing.Point(4, 4);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(357, 347);
             this.tabPage5.TabIndex = 2;
@@ -444,7 +438,7 @@
             "Smooth",
             "Sharp"});
             this.comboBox2.Location = new System.Drawing.Point(117, 188);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(213, 24);
             this.comboBox2.TabIndex = 14;
@@ -469,7 +463,7 @@
             "Rectangular",
             "Circular"});
             this.comboBox1.Location = new System.Drawing.Point(117, 155);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(213, 24);
             this.comboBox1.TabIndex = 12;
@@ -490,7 +484,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(45, 287);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(245, 75);
@@ -501,7 +495,7 @@
             // 
             this.trackBar2.BackColor = System.Drawing.Color.White;
             this.trackBar2.Location = new System.Drawing.Point(108, 92);
-            this.trackBar2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackBar2.Margin = new System.Windows.Forms.Padding(4);
             this.trackBar2.Maximum = 255;
             this.trackBar2.Name = "trackBar2";
             this.trackBar2.Size = new System.Drawing.Size(201, 56);
@@ -522,7 +516,7 @@
             // BrushSize
             // 
             this.BrushSize.Location = new System.Drawing.Point(108, 50);
-            this.BrushSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BrushSize.Margin = new System.Windows.Forms.Padding(4);
             this.BrushSize.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -555,7 +549,7 @@
             "Border only",
             "Filled"});
             this.ToolDrawMode.Location = new System.Drawing.Point(81, 15);
-            this.ToolDrawMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ToolDrawMode.Margin = new System.Windows.Forms.Padding(4);
             this.ToolDrawMode.Name = "ToolDrawMode";
             this.ToolDrawMode.Size = new System.Drawing.Size(261, 24);
             this.ToolDrawMode.TabIndex = 1;
@@ -573,33 +567,40 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Mode: ";
             // 
-            // tabPage6
+            // tabPage4
             // 
-            this.tabPage6.Controls.Add(this.pictureBox5);
-            this.tabPage6.ImageKey = "color.png";
-            this.tabPage6.Location = new System.Drawing.Point(4, 4);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage6.Size = new System.Drawing.Size(357, 347);
-            this.tabPage6.TabIndex = 3;
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.tabPage4.Controls.Add(this.listBox1);
+            this.tabPage4.Controls.Add(this.panel2);
+            this.tabPage4.ImageKey = "brushes.png";
+            this.tabPage4.Location = new System.Drawing.Point(4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage4.Size = new System.Drawing.Size(357, 347);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // pictureBox5
+            // listBox1
             // 
-            this.pictureBox5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox5.Image = global::Mainpaint.Properties.Resources.color_wheel_260x260;
-            this.pictureBox5.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(349, 339);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox5_Paint);
-            this.pictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseDown);
-            this.pictureBox5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseMove);
-            this.pictureBox5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox5_MouseUp);
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Location = new System.Drawing.Point(4, 51);
+            this.listBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(349, 292);
+            this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(349, 47);
+            this.panel2.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -611,7 +612,7 @@
             this.tabControl1.ImageList = this.imageList1;
             this.tabControl1.ItemSize = new System.Drawing.Size(30, 32);
             this.tabControl1.Location = new System.Drawing.Point(0, 387);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(365, 443);
@@ -634,9 +635,9 @@
             this.tabPage1.Controls.Add(this.pictureBox2);
             this.tabPage1.ImageKey = "color.png";
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(357, 403);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -645,7 +646,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pictureBox3.Location = new System.Drawing.Point(9, 11);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(100, 92);
             this.pictureBox3.TabIndex = 13;
@@ -657,7 +658,7 @@
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Mainpaint.Properties.Resources.undo;
             this.pictureBox4.Location = new System.Drawing.Point(113, 12);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(20, 18);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -668,7 +669,7 @@
             // AVal
             // 
             this.AVal.Location = new System.Drawing.Point(81, 263);
-            this.AVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AVal.Margin = new System.Windows.Forms.Padding(4);
             this.AVal.Maximum = new decimal(new int[] {
             255,
             0,
@@ -682,7 +683,7 @@
             // BVal
             // 
             this.BVal.Location = new System.Drawing.Point(81, 236);
-            this.BVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BVal.Margin = new System.Windows.Forms.Padding(4);
             this.BVal.Maximum = new decimal(new int[] {
             255,
             0,
@@ -696,7 +697,7 @@
             // GVal
             // 
             this.GVal.Location = new System.Drawing.Point(81, 209);
-            this.GVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GVal.Margin = new System.Windows.Forms.Padding(4);
             this.GVal.Maximum = new decimal(new int[] {
             255,
             0,
@@ -710,7 +711,7 @@
             // RVal
             // 
             this.RVal.Location = new System.Drawing.Point(81, 182);
-            this.RVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.RVal.Margin = new System.Windows.Forms.Padding(4);
             this.RVal.Maximum = new decimal(new int[] {
             255,
             0,
@@ -724,7 +725,7 @@
             // HexVal
             // 
             this.HexVal.Location = new System.Drawing.Point(81, 151);
-            this.HexVal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.HexVal.Margin = new System.Windows.Forms.Padding(4);
             this.HexVal.Name = "HexVal";
             this.HexVal.Size = new System.Drawing.Size(261, 22);
             this.HexVal.TabIndex = 7;
@@ -788,7 +789,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Black;
             this.pictureBox2.Location = new System.Drawing.Point(45, 34);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(100, 92);
             this.pictureBox2.TabIndex = 0;
@@ -801,9 +802,9 @@
             this.tabPage2.Controls.Add(this.toolStrip3);
             this.tabPage2.ImageKey = "layers.png";
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(357, 403);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -812,7 +813,7 @@
             // 
             this.layerContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layerContainer1.Location = new System.Drawing.Point(4, 31);
-            this.layerContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.layerContainer1.Margin = new System.Windows.Forms.Padding(5);
             this.layerContainer1.MasterWindow = null;
             this.layerContainer1.Name = "layerContainer1";
             this.layerContainer1.SelectedLayer = null;
@@ -902,7 +903,7 @@
             this.tabPage7.Controls.Add(this.label13);
             this.tabPage7.ImageKey = "gradient.png";
             this.tabPage7.Location = new System.Drawing.Point(4, 4);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(357, 403);
             this.tabPage7.TabIndex = 2;
@@ -911,7 +912,7 @@
             // pictureBox6
             // 
             this.pictureBox6.Location = new System.Drawing.Point(21, 58);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(315, 290);
             this.pictureBox6.TabIndex = 4;
@@ -920,7 +921,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(93, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(247, 28);
             this.button1.TabIndex = 3;
@@ -1759,7 +1760,7 @@
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Mainpaint";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1784,13 +1785,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BrushSize)).EndInit();
-            this.tabPage6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -33,30 +33,34 @@
             System.Windows.Forms.Label equipmentNameLabel;
             this.btnExit = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelInfo = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnEditEquipmentType = new System.Windows.Forms.Button();
+            this.equipmentNameComboBox = new System.Windows.Forms.ComboBox();
+            this.equipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddEquipmentType = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.unitNameComboBox = new System.Windows.Forms.ComboBox();
+            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.toolsPnl = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
             this.test_Timer = new System.Windows.Forms.Timer(this.components);
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.unitBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.equipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.equipmentNameComboBox = new System.Windows.Forms.ComboBox();
+            this.btnAddEquipment = new System.Windows.Forms.Button();
+            this.lblTest = new System.Windows.Forms.Label();
+            this.btnCopy = new System.Windows.Forms.Button();
             unitNameLabel = new System.Windows.Forms.Label();
             equipmentNameLabel = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.toolsPnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentTypeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // unitNameLabel
@@ -67,6 +71,15 @@
             unitNameLabel.Size = new System.Drawing.Size(101, 23);
             unitNameLabel.TabIndex = 21;
             unitNameLabel.Text = "Unit Name:";
+            // 
+            // equipmentNameLabel
+            // 
+            equipmentNameLabel.AutoSize = true;
+            equipmentNameLabel.Location = new System.Drawing.Point(457, 7);
+            equipmentNameLabel.Name = "equipmentNameLabel";
+            equipmentNameLabel.Size = new System.Drawing.Size(155, 23);
+            equipmentNameLabel.TabIndex = 24;
+            equipmentNameLabel.Text = "Equipment Name:";
             // 
             // btnExit
             // 
@@ -90,21 +103,22 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
+            this.toolStripStatusLabelInfo});
             this.statusStrip1.Location = new System.Drawing.Point(0, 485);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1165, 26);
             this.statusStrip1.TabIndex = 19;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // toolStripStatusLabelInfo
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.toolStripStatusLabelInfo.Name = "toolStripStatusLabelInfo";
+            this.toolStripStatusLabelInfo.Size = new System.Drawing.Size(151, 20);
+            this.toolStripStatusLabelInfo.Text = "toolStripStatusLabel1";
             // 
             // pnlTop
             // 
+            this.pnlTop.Controls.Add(this.btnEditEquipmentType);
             this.pnlTop.Controls.Add(equipmentNameLabel);
             this.pnlTop.Controls.Add(this.equipmentNameComboBox);
             this.pnlTop.Controls.Add(this.btnAddEquipmentType);
@@ -119,6 +133,38 @@
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(1165, 67);
             this.pnlTop.TabIndex = 20;
+            // 
+            // btnEditEquipmentType
+            // 
+            this.btnEditEquipmentType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.btnEditEquipmentType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditEquipmentType.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnEditEquipmentType.FlatAppearance.BorderSize = 0;
+            this.btnEditEquipmentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditEquipmentType.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditEquipmentType.ForeColor = System.Drawing.Color.White;
+            this.btnEditEquipmentType.Location = new System.Drawing.Point(872, 0);
+            this.btnEditEquipmentType.Name = "btnEditEquipmentType";
+            this.btnEditEquipmentType.Size = new System.Drawing.Size(60, 37);
+            this.btnEditEquipmentType.TabIndex = 26;
+            this.btnEditEquipmentType.Text = "Edit";
+            this.btnEditEquipmentType.UseVisualStyleBackColor = false;
+            this.btnEditEquipmentType.Click += new System.EventHandler(this.btnEditEquipmentType_Click);
+            // 
+            // equipmentNameComboBox
+            // 
+            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("DisplayMember", this.equipmentTypeBindingSource, "EquipmentName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentTypeBindingSource, "EquipmentTypeID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.equipmentNameComboBox.FormattingEnabled = true;
+            this.equipmentNameComboBox.Location = new System.Drawing.Point(618, 4);
+            this.equipmentNameComboBox.Name = "equipmentNameComboBox";
+            this.equipmentNameComboBox.Size = new System.Drawing.Size(184, 29);
+            this.equipmentNameComboBox.TabIndex = 25;
+            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            // 
+            // equipmentTypeBindingSource
+            // 
+            this.equipmentTypeBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.EquipmentType);
             // 
             // btnAddEquipmentType
             // 
@@ -165,6 +211,10 @@
             this.unitNameComboBox.TabIndex = 22;
             this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
             // 
+            // unitBindingSource
+            // 
+            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
+            // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
@@ -205,6 +255,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(174)))));
+            this.panel2.Controls.Add(this.btnCopy);
+            this.panel2.Controls.Add(this.lblTest);
             this.panel2.Controls.Add(this.toolsPnl);
             this.panel2.Controls.Add(this.unitImagePictureBox);
             this.panel2.Location = new System.Drawing.Point(12, 45);
@@ -215,29 +267,13 @@
             // toolsPnl
             // 
             this.toolsPnl.BackColor = System.Drawing.Color.Purple;
+            this.toolsPnl.Controls.Add(this.btnAddEquipment);
             this.toolsPnl.Controls.Add(this.btnRefresh);
             this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
             this.toolsPnl.Location = new System.Drawing.Point(1052, 0);
             this.toolsPnl.Name = "toolsPnl";
             this.toolsPnl.Size = new System.Drawing.Size(89, 441);
             this.toolsPnl.TabIndex = 1;
-            // 
-            // unitImagePictureBox
-            // 
-            this.unitImagePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.unitImagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.unitBindingSource, "ImagePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.unitImagePictureBox.Location = new System.Drawing.Point(4, 6);
-            this.unitImagePictureBox.Name = "unitImagePictureBox";
-            this.unitImagePictureBox.Size = new System.Drawing.Size(305, 156);
-            this.unitImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.unitImagePictureBox.TabIndex = 0;
-            this.unitImagePictureBox.TabStop = false;
-            // 
-            // test_Timer
-            // 
-            this.test_Timer.Interval = 2000;
-            this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
             // 
             // btnRefresh
             // 
@@ -250,33 +286,67 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // unitBindingSource
+            // unitImagePictureBox
             // 
-            this.unitBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.Unit);
+            this.unitImagePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.unitImagePictureBox.DataBindings.Add(new System.Windows.Forms.Binding("ImageLocation", this.unitBindingSource, "ImagePath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitImagePictureBox.Location = new System.Drawing.Point(4, 6);
+            this.unitImagePictureBox.Name = "unitImagePictureBox";
+            this.unitImagePictureBox.Size = new System.Drawing.Size(305, 156);
+            this.unitImagePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.unitImagePictureBox.TabIndex = 0;
+            this.unitImagePictureBox.TabStop = false;
+            this.unitImagePictureBox.Click += new System.EventHandler(this.unitImagePictureBox_Click);
+            this.unitImagePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.unitImagePictureBox_MouseDown);
             // 
-            // equipmentTypeBindingSource
+            // test_Timer
             // 
-            this.equipmentTypeBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.EquipmentType);
+            this.test_Timer.Interval = 2000;
+            this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
             // 
-            // equipmentNameLabel
+            // btnAddEquipment
             // 
-            equipmentNameLabel.AutoSize = true;
-            equipmentNameLabel.Location = new System.Drawing.Point(457, 7);
-            equipmentNameLabel.Name = "equipmentNameLabel";
-            equipmentNameLabel.Size = new System.Drawing.Size(155, 23);
-            equipmentNameLabel.TabIndex = 24;
-            equipmentNameLabel.Text = "Equipment Name:";
+            this.btnAddEquipment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnAddEquipment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddEquipment.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnAddEquipment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddEquipment.FlatAppearance.BorderSize = 0;
+            this.btnAddEquipment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddEquipment.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddEquipment.ForeColor = System.Drawing.Color.White;
+            this.btnAddEquipment.Location = new System.Drawing.Point(0, 0);
+            this.btnAddEquipment.Name = "btnAddEquipment";
+            this.btnAddEquipment.Size = new System.Drawing.Size(89, 37);
+            this.btnAddEquipment.TabIndex = 27;
+            this.btnAddEquipment.Text = "Add";
+            this.btnAddEquipment.UseVisualStyleBackColor = false;
             // 
-            // equipmentNameComboBox
+            // lblTest
             // 
-            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("DisplayMember", this.equipmentTypeBindingSource, "EquipmentName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentTypeBindingSource, "EquipmentTypeID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.equipmentNameComboBox.FormattingEnabled = true;
-            this.equipmentNameComboBox.Location = new System.Drawing.Point(618, 4);
-            this.equipmentNameComboBox.Name = "equipmentNameComboBox";
-            this.equipmentNameComboBox.Size = new System.Drawing.Size(184, 29);
-            this.equipmentNameComboBox.TabIndex = 25;
-            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(987, 58);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(59, 23);
+            this.lblTest.TabIndex = 28;
+            this.lblTest.Text = "label1";
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnCopy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCopy.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnCopy.FlatAppearance.BorderSize = 0;
+            this.btnCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCopy.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCopy.ForeColor = System.Drawing.Color.Yellow;
+            this.btnCopy.Location = new System.Drawing.Point(976, 125);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(70, 37);
+            this.btnCopy.TabIndex = 29;
+            this.btnCopy.Text = "1111";
+            this.btnCopy.UseVisualStyleBackColor = false;
             // 
             // frmTagFinder
             // 
@@ -303,11 +373,12 @@
             this.statusStrip1.PerformLayout();
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.equipmentTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.toolsPnl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.unitImagePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipmentTypeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,18 +390,22 @@
         private System.Windows.Forms.Panel pnlTop;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.PictureBox unitImagePictureBox;
         private System.Windows.Forms.ComboBox unitNameComboBox;
         private System.Windows.Forms.BindingSource unitBindingSource;
         private System.Windows.Forms.Panel toolsPnl;
-        private Forms.User_Controls.EquipmentControl equipmentControl1;
-        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        //private Forms.User_Controls.EquipmentControl equipmentControl1;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelInfo;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Timer test_Timer;
         private System.Windows.Forms.Button btnAddEquipmentType;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ComboBox equipmentNameComboBox;
         private System.Windows.Forms.BindingSource equipmentTypeBindingSource;
+        private System.Windows.Forms.Button btnEditEquipmentType;
+        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Button btnAddEquipment;
+        public System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCopy;
     }
 }

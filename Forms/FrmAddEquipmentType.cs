@@ -40,8 +40,6 @@ namespace RefTagFinder.Forms
             equipmentTypeBindingSource.ResetBindings(true); 
             #endregion
             
-           
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
