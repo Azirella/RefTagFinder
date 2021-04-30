@@ -185,18 +185,18 @@ namespace RefTagFinder.Forms
             this.btnExit.Location = new System.Drawing.Point(402, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(56, 37);
-            this.btnExit.TabIndex = 19;
+            this.btnExit.TabIndex = 10;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // tagTextBox
             // 
-            this.tagTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Tag", true));
+            this.tagTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Tag", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tagTextBox.Location = new System.Drawing.Point(183, 7);
             this.tagTextBox.Name = "tagTextBox";
             this.tagTextBox.Size = new System.Drawing.Size(214, 29);
-            this.tagTextBox.TabIndex = 21;
+            this.tagTextBox.TabIndex = 0;
             // 
             // equipmentBindingSource
             // 
@@ -204,68 +204,66 @@ namespace RefTagFinder.Forms
             // 
             // equipmentNameComboBox
             // 
-            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "EquipmentType.EquipmentName", true));
+            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "EquipmentType.EquipmentName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentBindingSource, "EquipmentTypeID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.equipmentNameComboBox.DataSource = this.equipmentBindingSource;
             this.equipmentNameComboBox.FormattingEnabled = true;
             this.equipmentNameComboBox.Location = new System.Drawing.Point(183, 76);
             this.equipmentNameComboBox.Name = "equipmentNameComboBox";
             this.equipmentNameComboBox.Size = new System.Drawing.Size(214, 29);
-            this.equipmentNameComboBox.TabIndex = 22;
-            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            this.equipmentNameComboBox.TabIndex = 2;
             // 
             // unitNameComboBox
             // 
-            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Unit.UnitName", true));
+            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Unit.UnitName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.unitNameComboBox.FormattingEnabled = true;
             this.unitNameComboBox.Location = new System.Drawing.Point(183, 111);
             this.unitNameComboBox.Name = "unitNameComboBox";
             this.unitNameComboBox.Size = new System.Drawing.Size(214, 29);
-            this.unitNameComboBox.TabIndex = 23;
-            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            this.unitNameComboBox.TabIndex = 3;
             // 
             // isDatumCheckBox
             // 
-            this.isDatumCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipmentBindingSource, "IsDatum", true));
+            this.isDatumCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.isDatumCheckBox.Location = new System.Drawing.Point(183, 46);
             this.isDatumCheckBox.Name = "isDatumCheckBox";
             this.isDatumCheckBox.Size = new System.Drawing.Size(104, 24);
-            this.isDatumCheckBox.TabIndex = 24;
+            this.isDatumCheckBox.TabIndex = 1;
             this.isDatumCheckBox.Text = "Is Datum";
             this.isDatumCheckBox.UseVisualStyleBackColor = true;
             // 
             // latitudeTextBox
             // 
-            this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Latitude", true));
+            this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Latitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.latitudeTextBox.Location = new System.Drawing.Point(183, 147);
             this.latitudeTextBox.Name = "latitudeTextBox";
             this.latitudeTextBox.Size = new System.Drawing.Size(214, 29);
-            this.latitudeTextBox.TabIndex = 25;
+            this.latitudeTextBox.TabIndex = 4;
             // 
             // longitudeTextBox
             // 
-            this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Longitude", true));
+            this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Longitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.longitudeTextBox.Location = new System.Drawing.Point(183, 182);
             this.longitudeTextBox.Name = "longitudeTextBox";
             this.longitudeTextBox.Size = new System.Drawing.Size(214, 29);
-            this.longitudeTextBox.TabIndex = 26;
+            this.longitudeTextBox.TabIndex = 5;
             // 
             // xOffsetTextBox
             // 
-            this.xOffsetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "XOffset", true));
+            this.xOffsetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "XOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.xOffsetTextBox.Location = new System.Drawing.Point(183, 217);
             this.xOffsetTextBox.Name = "xOffsetTextBox";
             this.xOffsetTextBox.Size = new System.Drawing.Size(214, 29);
-            this.xOffsetTextBox.TabIndex = 27;
+            this.xOffsetTextBox.TabIndex = 6;
             // 
             // yOffsetTextBox
             // 
-            this.yOffsetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "YOffset", true));
+            this.yOffsetTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "YOffset", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.yOffsetTextBox.Location = new System.Drawing.Point(183, 252);
             this.yOffsetTextBox.Name = "yOffsetTextBox";
             this.yOffsetTextBox.Size = new System.Drawing.Size(214, 29);
-            this.yOffsetTextBox.TabIndex = 28;
+            this.yOffsetTextBox.TabIndex = 7;
             // 
             // equipmentIDLabel1
             // 
@@ -299,6 +297,7 @@ namespace RefTagFinder.Forms
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(86)))), ((int)(((byte)(0)))));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsValid", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnSave.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -307,7 +306,7 @@ namespace RefTagFinder.Forms
             this.btnSave.Location = new System.Drawing.Point(393, 347);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(65, 37);
-            this.btnSave.TabIndex = 32;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -325,9 +324,10 @@ namespace RefTagFinder.Forms
             this.btnDelete.Location = new System.Drawing.Point(303, 347);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 37);
-            this.btnDelete.TabIndex = 33;
+            this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // toolStrip1
             // 

@@ -76,11 +76,31 @@ namespace RefTagFinder.Forms
             
              equipmentNameComboBox.DataSource =
                 _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+
+
+            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {_mainFormEquipment.EquipmentID}";
+                    cnn.Execute(sql);
 
+                    //INSERT INTO [dbo].[Equipment] (EquipmentID ,EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) VALUES (@EquipmentID ,@EquipmentTypeID2,@UnitID2,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)
+                    sql = $@"INSERT INTO [dbo].[Equipment] (EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) "+
+                          $@"VALUES (@EquipmentTypeID,@UnitID,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)";
+                    cnn.Execute(sql, _mainFormEquipment);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -121,6 +141,23 @@ namespace RefTagFinder.Forms
                 unitNameComboBox.Text = _CurrentUnit.UnitName;
             }
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {_mainFormEquipment.EquipmentID}";
+                    cnn.Execute(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            this.Close();
         }
     }
 }

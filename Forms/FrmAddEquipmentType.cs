@@ -53,7 +53,7 @@ namespace RefTagFinder.Forms
             {
                 using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
-                    string sql = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormEquipmentType.EquipmentTypeID}";
+                    string sql = $@"DELETE FROM  EquipmentType  WHERE EquipmentTypeID = {_mainFormEquipmentType.EquipmentTypeID}";
                     cnn.Execute(sql);
                 }
             }
@@ -69,7 +69,7 @@ namespace RefTagFinder.Forms
             {
                 using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
-                    string sql = $@"DELETE FROM  Unit  WHERE UnitID = {_mainFormEquipmentType.EquipmentTypeID}";
+                    string sql = $@"DELETE FROM  EquipmentType  WHERE EquipmentTypeID = {_mainFormEquipmentType.EquipmentTypeID}";
                     cnn.Execute(sql);
 
                     sql = $@"INSERT INTO [dbo].[EquipmentType] (EquipmentName,X_,Y_)

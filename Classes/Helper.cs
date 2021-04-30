@@ -153,4 +153,21 @@ namespace RefTagFinder.Classes.DataControl
         }
     }
 
+    public partial class Equipment
+    {
+        public bool IsValid
+        {
+            get
+            {
+                bool check = false;
+                if (!string.IsNullOrEmpty(Tag))
+                {
+
+                    check = true;
+                }
+                return check;
+            }
+        }
+    }
+
 }

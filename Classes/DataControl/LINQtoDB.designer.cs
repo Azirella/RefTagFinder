@@ -674,7 +674,9 @@ namespace RefTagFinder.Classes.DataControl
 			this._EquipmentType = default(EntityRef<EquipmentType>);
 			OnCreated();
 		}
+
 		
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int EquipmentID
 		{

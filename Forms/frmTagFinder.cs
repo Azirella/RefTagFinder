@@ -27,15 +27,16 @@ namespace RefTagFinder
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataAdapter da = new OleDbDataAdapter();*/
 
-        List<Unit> _AllUnins;
-        Unit _CurrentUnit;
+        List<Unit> _AllUnins = new List<Unit>();
+        Unit _CurrentUnit = new Unit();
 
-        List<EquipmentType> _AllEquipmentTypes;
-        EquipmentType _CurrentEquipmentType;
+        List<EquipmentType> _AllEquipmentTypes = new List<EquipmentType>();
+        EquipmentType _CurrentEquipmentType = new EquipmentType();
 
-        List<Equipment> _AllEquipments;
-        Equipment _CurrentEquipment;
+        List<Equipment> _AllEquipments = new List<Equipment>();
+        Equipment _CurrentEquipment = new Equipment();
 
+        bool loadIsFinished = false;
         public enum ClickedTask
         {
             AddEquipment, DeleteEquipment, nulll
@@ -72,14 +73,14 @@ namespace RefTagFinder
             #endregion
 
             #region Binding
-            /*unitBindingSource.DataSource = _CurrentUnit;
-            unitBindingSource.ResetBindings(true);*/
+            unitBindingSource.DataSource = _CurrentUnit;
+            unitBindingSource.ResetBindings(true);
 
-            /*equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
-            equipmentTypeBindingSource.ResetBindings(true);*/
+            equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
+            equipmentTypeBindingSource.ResetBindings(true);
 
-            /*equipmentBindingSource.DataSource = _CurrentEquipment;
-            equipmentBindingSource.ResetBindings(true);*/
+            equipmentBindingSource.DataSource = _CurrentEquipment;
+            equipmentBindingSource.ResetBindings(true);
             #endregion
 
             #region loadAllUnits
@@ -104,6 +105,12 @@ namespace RefTagFinder
             }
             #endregion
 
+            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            equipmentNameComboBox_SelectedIndexChanged(sender, null);
+            unitNameComboBox_SelectedIndexChanged(sender, null);
+
+
             #region loadAllEquipment
             using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
             {
@@ -112,17 +119,30 @@ namespace RefTagFinder
                 string sql = "[dbo].[SelectTable]";
                 _AllEquipments = cnn.Query<Equipment>(sql, p,
                     commandType: CommandType.StoredProcedure).ToList();
+                foreach (Equipment equipment in _AllEquipments)
+                {
+                    int x = 0;
+                    Int32.TryParse(equipment.XOffset.ToString(),out x);
+                    int y = 0;
+                    Int32.TryParse(equipment.YOffset.ToString(), out y);
+                    MouseEventArgs e1 = new MouseEventArgs(MouseButtons.Left, 1, x, y, 1);
+                    my_clickedTask = ClickedTask.AddEquipment;
+                    unitImagePictureBox_MouseDown(sender, e1);
+                    //e1.X = equipment.XOffset;
+                }
             }
             #endregion
 
-            unitNameComboBox1.DataSource =
+            
              unitNameComboBox.DataSource =
                 _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
-            equipmentNameComboBox1.DataSource =
+            
              equipmentNameComboBox.DataSource =
                 _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
 
 
+            
+            loadIsFinished = true;
             //test_Timer.Start();
         }
 
@@ -192,12 +212,7 @@ namespace RefTagFinder
             frmTagFinder_Load(sender, e);
         }
 
-        private void unitImagePictureBox_Click(object sender, EventArgs e)
-        {
-            /*
-            */
-        }
-
+        
         private void unitImagePictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
@@ -209,25 +224,32 @@ namespace RefTagFinder
                 {
                     case MouseButtons.Left:
 
-                        Button me = new Button();
-                        me.Text = new Point(e.X, e.Y).ToString();
-                        me.Name = new Point(e.X, e.Y).ToString();
-                        me.Size = new Size(20, 20);
-                        me.Location = new Point(e.X, e.Y); 
-                        me.Enabled = me.Visible = true;
-                        
-                        me.Click += new EventHandler(btnDynamic_click);
+                        if (my_clickedTask == ClickedTask.AddEquipment)
+                        {
+                            Button me = new Button();
+                            me.Text = new Point(e.X, e.Y).ToString();
+                            me.Name = new Point(e.X, e.Y).ToString();
+                            me.Size = new Size(20, 20);
+                            me.Location = new Point(e.X, e.Y);
+                            me.Enabled = me.Visible = true;
 
-                        unitImagePictureBox.Controls.Add(me);
+                            me.Click += new EventHandler(btnDynamic_click);
+                            unitImagePictureBox.Controls.Add(me);
+                            if (loadIsFinished)
+                            {
+                                btnDynamic_click(me, e);
+                            }
+                            
 
-                        //btnDynamic_click(me, e);
-
-
-                        toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
-                                                        $"  Button: {e.Button}  Clicks:{e.Clicks}  Delta:{e.Delta}";
+                            toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
+                                                            $"  Button: {e.Button}  Clicks:{e.Clicks}  Delta:{e.Delta}";
+                            
+                            my_clickedTask = ClickedTask.nulll;
+                        }
                         break;
                     case MouseButtons.Right:
-                        lblTest.Text = $"Button: {e.Button}\n Clicks:{e.Clicks}\n Delta:{e.Delta}";
+                        toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
+                                                        $"  Button: {e.Button}  Clicks:{e.Clicks}  Delta:{e.Delta}";
                         break;
 
                 }
@@ -237,9 +259,11 @@ namespace RefTagFinder
 
         private void btnDynamic_click(object sender, EventArgs e)
         {
-            _CurrentEquipment = new Equipment();
+            //_CurrentEquipment = new Equipment();
+
             _CurrentEquipment.XOffset = (sender as Button).Location.X;
             _CurrentEquipment.YOffset = (sender as Button).Location.Y;
+            _CurrentEquipment = _AllEquipments.Where(x => x.XOffset == _CurrentEquipment.XOffset && x.YOffset == _CurrentEquipment.YOffset).First();
             frmEquipment f = new frmEquipment(_CurrentEquipment);
             f.Location = new Point(10, 10);
             f.ShowDialog();
@@ -247,7 +271,6 @@ namespace RefTagFinder
 
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
-
             my_clickedTask = ClickedTask.AddEquipment;
         }
     }
