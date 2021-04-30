@@ -14,6 +14,7 @@ using Dapper;
 using RefTagFinder.Classes.DataControl;
 using System.Threading;
 using RefTagFinder.Forms.User_Controls;
+using RefTagFinder.Forms;
 
 namespace RefTagFinder
 {
@@ -40,12 +41,8 @@ namespace RefTagFinder
             AddEquipment, DeleteEquipment, nulll
         }
 
-        ClickedTask my_clickedTask;
-        public ClickedTask MyProperty 
-        {
-            get { return my_clickedTask; } 
-            set { my_clickedTask = value; } 
-        }
+        ClickedTask my_clickedTask = ClickedTask.nulll;
+
 
         public frmTagFinder()
         {
@@ -126,7 +123,7 @@ namespace RefTagFinder
                 _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
 
 
-            test_Timer.Start();
+            //test_Timer.Start();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -205,41 +202,25 @@ namespace RefTagFinder
         {
             toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
                                             $"  Button: {e.Button}  Clicks:{e.Clicks}";
-            EquipmentControl equipmentControl = new EquipmentControl();
-            
 
-            //equipmentControl.Location = new Point(e.X, e.Y);
-            /*equipmentControl.my_Equipment.IsDatum = true;
-            equipmentControl.my_Equipment.Latitude = "13213";
-            equipmentControl.my_Equipment.Longitude = "1111111";*/
-
-            equipmentControl.BringToFront();
-            unitImagePictureBox.Controls.Add(equipmentControl);
-
-            equipmentControl.Top = e.X;
-            equipmentControl.Left = e.Y;// + (sender as Button).Width;
-
-            //equipmentControl._Move(e.X, e.Y);
-            toolStripStatusLabelInfo.Text += $"____ eqTop : {equipmentControl.Top}, eqLeft : {equipmentControl.Left}";
-
-            /*if (e.Button != System.Windows.Forms.MouseButtons.Middle)
+            if (e.Button != System.Windows.Forms.MouseButtons.Middle)
             {
                 switch (e.Button)
                 {
                     case MouseButtons.Left:
-                        
-                        //Forms.User_Controls.My_Equipment me = new Forms.User_Controls.My_Equipment(new Forms.User_Controls.EquipmentControl());
+
                         Button me = new Button();
                         me.Text = new Point(e.X, e.Y).ToString();
                         me.Name = new Point(e.X, e.Y).ToString();
                         me.Size = new Size(20, 20);
-                        me.Location = new Point(1000, 1000); //new Point(e.X, e.Y);
+                        me.Location = new Point(e.X, e.Y); 
                         me.Enabled = me.Visible = true;
+                        
                         me.Click += new EventHandler(btnDynamic_click);
 
                         unitImagePictureBox.Controls.Add(me);
 
-                        btnDynamic_click(me, e);
+                        //btnDynamic_click(me, e);
 
 
                         toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
@@ -248,23 +229,26 @@ namespace RefTagFinder
                     case MouseButtons.Right:
                         lblTest.Text = $"Button: {e.Button}\n Clicks:{e.Clicks}\n Delta:{e.Delta}";
                         break;
-                        
+
                 }
 
-            }*/
+            }
         }
 
         private void btnDynamic_click(object sender, EventArgs e)
         {
-            MessageBox.Show($"top: {(sender as Button).Top}\nleft: {(sender as Button).Left}");
+            _CurrentEquipment = new Equipment();
+            _CurrentEquipment.XOffset = (sender as Button).Location.X;
+            _CurrentEquipment.YOffset = (sender as Button).Location.Y;
+            frmEquipment f = new frmEquipment(_CurrentEquipment);
+            f.Location = new Point(10, 10);
+            f.ShowDialog();
+        }
 
-            EquipmentControl equipmentControl = new EquipmentControl();
-            equipmentControl.Top = (sender as Button).Top;
-            equipmentControl.Left = (sender as Button).Left + (sender as Button).Width;
-            unitImagePictureBox.Controls.Add(equipmentControl);
+        private void btnAddEquipment_Click(object sender, EventArgs e)
+        {
 
-            
-            //this.Close();
+            my_clickedTask = ClickedTask.AddEquipment;
         }
     }
 }
