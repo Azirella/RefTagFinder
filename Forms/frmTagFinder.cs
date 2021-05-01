@@ -27,14 +27,14 @@ namespace RefTagFinder
         OleDbCommand cmd = new OleDbCommand();
         OleDbDataAdapter da = new OleDbDataAdapter();*/
 
-        List<Unit> _AllUnins = new List<Unit>();
-        Unit _CurrentUnit = new Unit();
+        List<Unit> _AllUnins;// = new List<Unit>();
+        Unit _CurrentUnit;// = new Unit();
 
-        List<EquipmentType> _AllEquipmentTypes = new List<EquipmentType>();
-        EquipmentType _CurrentEquipmentType = new EquipmentType();
+        List<EquipmentType> _AllEquipmentTypes;// = new List<EquipmentType>();
+        EquipmentType _CurrentEquipmentType;// = new EquipmentType();
 
-        List<Equipment> _AllEquipments = new List<Equipment>();
-        Equipment _CurrentEquipment = new Equipment();
+        List<Equipment> _AllEquipments;// = new List<Equipment>();
+        Equipment _CurrentEquipment;// = new Equipment();
 
         bool loadIsFinished = false;
         public enum ClickedTask
@@ -73,14 +73,14 @@ namespace RefTagFinder
             #endregion
 
             #region Binding
-            unitBindingSource.DataSource = _CurrentUnit;
+            /*unitBindingSource.DataSource = _CurrentUnit;
             unitBindingSource.ResetBindings(true);
 
             equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
             equipmentTypeBindingSource.ResetBindings(true);
 
             equipmentBindingSource.DataSource = _CurrentEquipment;
-            equipmentBindingSource.ResetBindings(true);
+            equipmentBindingSource.ResetBindings(true);*/
             #endregion
 
             #region loadAllUnits
@@ -259,12 +259,20 @@ namespace RefTagFinder
 
         private void btnDynamic_click(object sender, EventArgs e)
         {
-            //_CurrentEquipment = new Equipment();
+            Equipment tttEquipment;
+            tttEquipment = _AllEquipments.Where(x => x.XOffset == (sender as Button).Location.X &&
+                                                     x.YOffset == (sender as Button).Location.Y)
+                                               .FirstOrDefault();
+            if (tttEquipment == null)
+            {
+                tttEquipment = new Equipment();
+                tttEquipment.XOffset = (sender as Button).Location.X;
+                tttEquipment.YOffset = (sender as Button).Location.Y;
+                tttEquipment.Unit = _CurrentUnit;
+                tttEquipment.EquipmentType = _CurrentEquipmentType;
 
-            _CurrentEquipment.XOffset = (sender as Button).Location.X;
-            _CurrentEquipment.YOffset = (sender as Button).Location.Y;
-            _CurrentEquipment = _AllEquipments.Where(x => x.XOffset == _CurrentEquipment.XOffset && x.YOffset == _CurrentEquipment.YOffset).First();
-            frmEquipment f = new frmEquipment(_CurrentEquipment);
+            }
+            frmEquipment f = new frmEquipment(tttEquipment);
             f.Location = new Point(10, 10);
             f.ShowDialog();
         }

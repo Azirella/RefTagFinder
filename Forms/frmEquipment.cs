@@ -78,6 +78,11 @@ namespace RefTagFinder.Forms
                 _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
 
 
+            unitNameComboBox.Text = (_AllUnins.Where(x => x.UnitID == _mainFormEquipment.UnitID).First())
+                .UnitName;
+            equipmentNameComboBox.Text = (_AllEquipmentTypes.Where(x => x.EquipmentTypeID == _mainFormEquipment.EquipmentTypeID).First())
+                .EquipmentName;
+
             this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
             this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
         }
