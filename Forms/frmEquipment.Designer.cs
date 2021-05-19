@@ -236,6 +236,7 @@ namespace RefTagFinder.Forms
             // latitudeTextBox
             // 
             this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Latitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.latitudeTextBox.Location = new System.Drawing.Point(183, 147);
             this.latitudeTextBox.Name = "latitudeTextBox";
             this.latitudeTextBox.Size = new System.Drawing.Size(214, 29);
@@ -244,6 +245,7 @@ namespace RefTagFinder.Forms
             // longitudeTextBox
             // 
             this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Longitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.longitudeTextBox.Location = new System.Drawing.Point(183, 182);
             this.longitudeTextBox.Name = "longitudeTextBox";
             this.longitudeTextBox.Size = new System.Drawing.Size(214, 29);

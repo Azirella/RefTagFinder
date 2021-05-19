@@ -23,6 +23,33 @@ namespace RefTagFinder.Forms
         List<EquipmentType> _AllEquipmentTypes;
         List<Equipment> _AllEquipments;
 
+        List<Equipment> isDatums1 = new List<Equipment>();
+        isValidUintArea isValidUintArea1 = new isValidUintArea();
+
+        bool firstLoad = true;
+
+        struct isValidUintArea
+        {
+            public int top;
+            public int bottom;
+            public int left;
+            public int right;
+            public bool isValid 
+            {
+                get 
+                {
+                    bool returnValue = false;
+                    if (top != bottom &&
+                        right != left
+                        )
+                    {
+                        returnValue = true;
+                    }
+                    return returnValue;
+                }
+            }
+        }
+
         public frmEquipment(Equipment _FormEquipment = null)
         {
             InitializeComponent();
@@ -38,39 +65,66 @@ namespace RefTagFinder.Forms
             equipmentBindingSource.ResetBindings(true);
             #endregion
 
-            #region loadAllUnits
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            if (firstLoad)
             {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "Unit");
-                string sql = "[dbo].[SelectTable]";
-                _AllUnins = cnn.Query<Unit>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
-            }
-            #endregion
+                #region loadAllUnits
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "Unit");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllUnins = cnn.Query<Unit>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
+                }
+                #endregion
 
-            #region loadAllEquipmentType
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                #region loadAllEquipmentType
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "EquipmentType");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllEquipmentTypes = cnn.Query<EquipmentType>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
+                }
+                #endregion
+
+                #region loadAllEquipment
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "Equipment");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllEquipments = cnn.Query<Equipment>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
+                }
+                #endregion
+
+                
+
+                firstLoad = false;
+            }
+
+
+            isDatums1 = isDatums();
+            if (isDatums1.Count() < 4)
             {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "EquipmentType");
-                string sql = "[dbo].[SelectTable]";
-                _AllEquipmentTypes = cnn.Query<EquipmentType>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
+                _mainFormEquipment.IsDatum = true;
             }
-            #endregion
-
-            #region loadAllEquipment
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            if (isDatums1.Count() > 0)
             {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "Equipment");
-                string sql = "[dbo].[SelectTable]";
-                _AllEquipments = cnn.Query<Equipment>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
+                isValidUintArea1.top = isDatums1.Min(x => x.XOffset).Value;
+                isValidUintArea1.bottom = isDatums1.Max(x => x.XOffset).Value;
+                isValidUintArea1.left = isDatums1.Min(x => x.YOffset).Value;
+                isValidUintArea1.right = isDatums1.Max(x => x.YOffset).Value;
             }
-            #endregion
 
+            
+            
+            
+
+
+            #region comboBoxes_Binding
             unitNameComboBox.DataSource =
                 _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
             
@@ -78,19 +132,33 @@ namespace RefTagFinder.Forms
                 _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
 
 
-            unitNameComboBox.Text = (_AllUnins.Where(x => x.UnitID == _mainFormEquipment.UnitID).First())
+            unitNameComboBox.Text = (_AllUnins.Where(x => x.UnitID == _mainFormEquipment.UnitID).FirstOrDefault())
                 .UnitName;
-            equipmentNameComboBox.Text = (_AllEquipmentTypes.Where(x => x.EquipmentTypeID == _mainFormEquipment.EquipmentTypeID).First())
+            equipmentNameComboBox.Text = (_AllEquipmentTypes.Where(x => x.EquipmentTypeID == _mainFormEquipment.EquipmentTypeID).FirstOrDefault())
                 .EquipmentName;
 
-            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
-            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            this.unitNameComboBox.SelectedIndexChanged += new EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+            this.equipmentNameComboBox.SelectedIndexChanged += new EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+            #endregion
+
+
+        }
+
+        private List<Equipment> isDatums()
+        {
+            return _AllEquipments.Where(x => x.IsDatum == true && x.UnitID == _mainFormEquipment.UnitID).ToList();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
+                if (_mainFormEquipment.IsDatum == false && isValidUintArea1.isValid)
+                {
+                    _mainFormEquipment.Latitude = "0";
+                    _mainFormEquipment.Longitude = "0";
+
+                }
                 using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
                     string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {_mainFormEquipment.EquipmentID}";

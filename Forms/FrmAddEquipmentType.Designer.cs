@@ -38,12 +38,12 @@
             this.pnlTop = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.equipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnDelete = new System.Windows.Forms.Button();
             this.y_TextBox = new System.Windows.Forms.TextBox();
             this.x_TextBox = new System.Windows.Forms.TextBox();
             this.equipmentNameTextBox = new System.Windows.Forms.TextBox();
             this.equipmentTypeIDLabel1 = new System.Windows.Forms.Label();
-            this.equipmentTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             equipmentTypeIDLabel = new System.Windows.Forms.Label();
             equipmentNameLabel = new System.Windows.Forms.Label();
             x_Label = new System.Windows.Forms.Label();
@@ -162,6 +162,10 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // equipmentTypeBindingSource
+            // 
+            this.equipmentTypeBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.EquipmentType);
+            // 
             // btnDelete
             // 
             this.btnDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -178,6 +182,7 @@
             this.btnDelete.TabIndex = 103;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // y_TextBox
             // 
@@ -211,10 +216,6 @@
             this.equipmentTypeIDLabel1.Size = new System.Drawing.Size(100, 23);
             this.equipmentTypeIDLabel1.TabIndex = 1;
             this.equipmentTypeIDLabel1.Text = "label1";
-            // 
-            // equipmentTypeBindingSource
-            // 
-            this.equipmentTypeBindingSource.DataSource = typeof(RefTagFinder.Classes.DataControl.EquipmentType);
             // 
             // FrmAddEquipmentType
             // 
