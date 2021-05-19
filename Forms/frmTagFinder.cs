@@ -34,22 +34,19 @@ namespace RefTagFinder
         EquipmentType _CurrentEquipmentType;// = new EquipmentType();
 
         List<Equipment> _AllEquipments;// = new List<Equipment>();
-        Equipment _CurrentEquipment;// = new Equipment();
+        //Equipment _CurrentEquipment;// = new Equipment();
 
         bool loadIsFinished = false;
         public enum ClickedTask
         {
             AddEquipment, DeleteEquipment, nulll
         }
-
         ClickedTask my_clickedTask = ClickedTask.nulll;
 
 
         public frmTagFinder()
         {
             InitializeComponent();
-
-
         }
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -59,6 +56,7 @@ namespace RefTagFinder
 
         public void frmTagFinder_Load(object sender, EventArgs e)
         {
+            loadIsFinished = false;
 
             #region reposition
             btnExit.Top = 0;
@@ -68,6 +66,8 @@ namespace RefTagFinder
             btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
 
             pnlTop.Height = btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
+            pnlUnit.Width = btnEdit.Left + btnEdit.Width;
+            pnlEquipment.Width = btnEditEquipmentType.Left + btnEditEquipmentType.Width;
 
             unitImagePictureBox.Dock = DockStyle.Fill;
             #endregion

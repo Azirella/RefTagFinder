@@ -85,6 +85,11 @@ namespace RefTagFinder
             }
         }
 
+        
+        public static string latitudePATTERN = @"^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$";
+        public static string longitudePATTERN = @"^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$";
+
+
         public static string LoadConnectionString(string id = "LocalDBConnectionString")
         {
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

@@ -47,8 +47,8 @@ namespace RefTagFinder.Forms
             this.equipmentNameComboBox = new System.Windows.Forms.ComboBox();
             this.unitNameComboBox = new System.Windows.Forms.ComboBox();
             this.isDatumCheckBox = new System.Windows.Forms.CheckBox();
-            this.latitudeTextBox = new System.Windows.Forms.TextBox();
-            this.longitudeTextBox = new System.Windows.Forms.TextBox();
+            this.latitudeTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.longitudeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.xOffsetTextBox = new System.Windows.Forms.TextBox();
             this.yOffsetTextBox = new System.Windows.Forms.TextBox();
             this.equipmentIDLabel1 = new System.Windows.Forms.Label();
@@ -236,7 +236,9 @@ namespace RefTagFinder.Forms
             // latitudeTextBox
             // 
             this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Latitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.latitudeTextBox.Location = new System.Drawing.Point(183, 147);
+            this.latitudeTextBox.Mask = "00°00\'00.000\\\"E";
             this.latitudeTextBox.Name = "latitudeTextBox";
             this.latitudeTextBox.Size = new System.Drawing.Size(214, 29);
             this.latitudeTextBox.TabIndex = 4;
@@ -244,7 +246,9 @@ namespace RefTagFinder.Forms
             // longitudeTextBox
             // 
             this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Longitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.longitudeTextBox.Location = new System.Drawing.Point(183, 182);
+            this.longitudeTextBox.Mask = "00°00\'00.000\\\"N";
             this.longitudeTextBox.Name = "longitudeTextBox";
             this.longitudeTextBox.Size = new System.Drawing.Size(214, 29);
             this.longitudeTextBox.TabIndex = 5;
@@ -405,8 +409,8 @@ namespace RefTagFinder.Forms
         private System.Windows.Forms.ComboBox equipmentNameComboBox;
         private System.Windows.Forms.ComboBox unitNameComboBox;
         private System.Windows.Forms.CheckBox isDatumCheckBox;
-        private System.Windows.Forms.TextBox latitudeTextBox;
-        private System.Windows.Forms.TextBox longitudeTextBox;
+        private System.Windows.Forms.MaskedTextBox latitudeTextBox;
+        private System.Windows.Forms.MaskedTextBox longitudeTextBox;
         private System.Windows.Forms.TextBox xOffsetTextBox;
         private System.Windows.Forms.TextBox yOffsetTextBox;
         private System.Windows.Forms.Label equipmentIDLabel1;
