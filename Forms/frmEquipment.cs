@@ -48,6 +48,10 @@ namespace RefTagFinder.Forms
                     return returnValue;
                 }
             }
+            public string topLongitude;
+            public string bottomLongitude;
+            public string lefLatitudet;
+            public string rightLatitude;
         }
 
         public frmEquipment(Equipment _FormEquipment = null)
@@ -107,11 +111,6 @@ namespace RefTagFinder.Forms
 
 
             isDatums1 = isDatums();
-            _mainFormEquipment.IsDatum = false;
-            if (isDatums1.Count() < 3)
-            {
-                _mainFormEquipment.IsDatum = true;
-            }
 
             if (isDatums1.Count() > 0)
             {
@@ -119,6 +118,36 @@ namespace RefTagFinder.Forms
                 isValidUintArea1.bottom = isDatums1.Max(x => x.YOffset).Value;
                 isValidUintArea1.left = isDatums1.Min(x => x.XOffset).Value;
                 isValidUintArea1.right = isDatums1.Max(x => x.XOffset).Value;
+
+                if (_mainFormEquipment.IsDatum != true)
+                {
+                    if (!isValidUintArea1.isValid)
+                    {
+                        _mainFormEquipment.IsDatum = true;
+                    }
+                    else
+                    {
+                        _mainFormEquipment.IsDatum = false;
+                        _mainFormEquipment.XPercent = (double)(_mainFormEquipment.XOffset - isValidUintArea1.left) /
+                            (double)(isValidUintArea1.right - isValidUintArea1.left) * 100;
+                        _mainFormEquipment.YPercent = (double)(_mainFormEquipment.YOffset - isValidUintArea1.top) /
+                            (double)(isValidUintArea1.bottom - isValidUintArea1.top) * 100;
+
+                        isValidUintArea1.topLongitude = isDatums1.FirstOrDefault(c => c.YOffset == isValidUintArea1.top).Longitude;
+                        isValidUintArea1.bottomLongitude = isDatums1.FirstOrDefault(c => c.YOffset == isValidUintArea1.bottom).Longitude;
+                        isValidUintArea1.lefLatitudet = isDatums1.FirstOrDefault(c => c.XOffset == isValidUintArea1.left).Latitude;
+                        isValidUintArea1.rightLatitude = isDatums1.FirstOrDefault(c => c.XOffset == isValidUintArea1.right).Latitude;
+
+                        _mainFormEquipment.Longitude =
+                            CalculateLL(convertToDigit(isValidUintArea1.topLongitude),
+                            convertToDigit(isValidUintArea1.bottomLongitude),
+                            _mainFormEquipment.YPercent).ToString();
+                        _mainFormEquipment.Latitude =
+                            CalculateLL(convertToDigit(isValidUintArea1.lefLatitudet),
+                            convertToDigit(isValidUintArea1.rightLatitude),
+                            _mainFormEquipment.XPercent).ToString();
+                    } 
+                }
             }
 
             #region comboBoxes_Binding
@@ -140,6 +169,19 @@ namespace RefTagFinder.Forms
 
         }
 
+        private double CalculateLL(double v1, double v2, double? percent)
+        {
+            return (double)(v1 + ((v2 - v1) / percent / 100));
+        }
+
+        private double convertToDigit(string LL)
+        {
+            string hhh = LL.Substring(0, 2) + LL.Substring(3, 2) + LL.Substring(6, 6);
+            double returnValue;
+            double.TryParse(hhh, out returnValue);
+            return returnValue;
+        }
+
         private List<Equipment> isDatums()
         {
             return _AllEquipments.Where(x => x.IsDatum == true && x.UnitID == _mainFormEquipment.UnitID).ToList();
@@ -149,12 +191,6 @@ namespace RefTagFinder.Forms
         {
             try
             {
-                if (_mainFormEquipment.IsDatum == false && isValidUintArea1.isValid)
-                {
-                    _mainFormEquipment.Latitude = "0";
-                    _mainFormEquipment.Longitude = "0";
-
-                }
                 using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
                     string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {_mainFormEquipment.EquipmentID}";

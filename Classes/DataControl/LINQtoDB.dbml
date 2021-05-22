@@ -6,7 +6,7 @@
       <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Member="isValid" Type="System.String" CanBeNull="false" />
+      <Column Name="isValid" Type="System.String" CanBeNull="false" />
       <Association Name="Unit_Equipment" Member="Equipments" ThisKey="UnitID" OtherKey="UnitID" Type="Equipment" />
     </Type>
   </Table>
@@ -35,21 +35,6 @@
       <Association Name="User_LoginLog" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Equipment" Member="Equipments">
-    <Type Name="Equipment">
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="XOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
-      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
     <Type Name="EquipmentType">
       <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -59,10 +44,70 @@
       <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
     </Type>
   </Table>
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="XPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="YPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
+      <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.SelectTable" Method="SelectTable">
     <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
     <ElementType Name="SelectTableResult">
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.DeleteFromTable" Method="DeleteFromTable">
+    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.InsertToTable" Method="InsertToTable">
+    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UnitID" Parameter="unitID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UnitName" Parameter="unitName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="PIDPath" Parameter="pIDPath" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="ImagePath" Parameter="imagePath" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="TimeOfRegister" Parameter="timeOfRegister" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="TimeOfLogin" Parameter="timeOfLogin" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="TimeOfLogout" Parameter="timeOfLogout" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EquipmentTypeID" Parameter="equipmentTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EquipmentName" Parameter="equipmentName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="X_" Parameter="x_" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Y_" Parameter="y_" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EquipmentID" Parameter="equipmentID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="EquipmentTypeID2" Parameter="equipmentTypeID2" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UnitID2" Parameter="unitID2" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Latitude" Parameter="latitude" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="XOffset" Parameter="xOffset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="YOffset" Parameter="yOffset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="XPercent" Parameter="xPercent" Type="System.Double" DbType="Float" />
+    <Parameter Name="YPercent" Parameter="yPercent" Type="System.Double" DbType="Float" />
+    <Parameter Name="IsDatum" Parameter="isDatum" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Tag" Parameter="tag" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="UserID2" Parameter="userID2" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PermissionCode" Parameter="permissionCode" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="Temp" Parameter="temp" Type="System.Int32" DbType="Int" />
+    <ElementType Name="InsertToTableResult">
       <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
@@ -93,6 +138,8 @@
     <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="XOffset" Parameter="xOffset" Type="System.Int32" DbType="Int" />
     <Parameter Name="YOffset" Parameter="yOffset" Type="System.Int32" DbType="Int" />
+    <Parameter Name="XPercent" Parameter="xPercent" Type="System.Double" DbType="Float" />
+    <Parameter Name="YPercent" Parameter="yPercent" Type="System.Double" DbType="Float" />
     <Parameter Name="IsDatum" Parameter="isDatum" Type="System.Boolean" DbType="Bit" />
     <Parameter Name="Tag" Parameter="tag" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="UserID2" Parameter="userID2" Type="System.Int32" DbType="Int" />
@@ -104,45 +151,5 @@
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.InsertToTable" Method="InsertToTable">
-    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UnitName" Parameter="unitName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="PIDPath" Parameter="pIDPath" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="ImagePath" Parameter="imagePath" Type="System.String" DbType="NVarChar(MAX)" />
-    <Parameter Name="UserName" Parameter="userName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="TimeOfRegister" Parameter="timeOfRegister" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="TimeOfLogin" Parameter="timeOfLogin" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="TimeOfLogout" Parameter="timeOfLogout" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="EquipmentTypeID" Parameter="equipmentTypeID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="EquipmentName" Parameter="equipmentName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="X_" Parameter="x_" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Y_" Parameter="y_" Type="System.Int32" DbType="Int" />
-    <Parameter Name="EquipmentID" Parameter="equipmentID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="EquipmentTypeID2" Parameter="equipmentTypeID2" Type="System.Int32" DbType="Int" />
-    <Parameter Name="UnitID" Parameter="unitID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Latitude" Parameter="latitude" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="Longitude" Parameter="longitude" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="XOffset" Parameter="xOffset" Type="System.Int32" DbType="Int" />
-    <Parameter Name="YOffset" Parameter="yOffset" Type="System.Int32" DbType="Int" />
-    <Parameter Name="IsDatum" Parameter="isDatum" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Tag" Parameter="tag" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="UserID2" Parameter="userID2" Type="System.Int32" DbType="Int" />
-    <Parameter Name="PermissionCode" Parameter="permissionCode" Type="System.String" DbType="NVarChar(10)" />
-    <Parameter Name="Temp" Parameter="temp" Type="System.Int32" DbType="Int" />
-    <ElementType Name="InsertToTableResult">
-      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.DeleteFromTable" Method="DeleteFromTable">
-    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
   </Function>
 </Database>

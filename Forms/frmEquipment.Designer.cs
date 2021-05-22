@@ -41,6 +41,8 @@ namespace RefTagFinder.Forms
             System.Windows.Forms.Label equipmentIDLabel;
             System.Windows.Forms.Label equipmentTypeIDLabel;
             System.Windows.Forms.Label unitIDLabel;
+            System.Windows.Forms.Label xPercentLabel;
+            System.Windows.Forms.Label yPercentLabel;
             this.btnExit = new System.Windows.Forms.Button();
             this.tagTextBox = new System.Windows.Forms.TextBox();
             this.equipmentBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -58,6 +60,8 @@ namespace RefTagFinder.Forms
             this.btnDelete = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.xPercentLabel1 = new System.Windows.Forms.Label();
+            this.yPercentLabel1 = new System.Windows.Forms.Label();
             tagLabel = new System.Windows.Forms.Label();
             equipmentNameLabel = new System.Windows.Forms.Label();
             unitNameLabel = new System.Windows.Forms.Label();
@@ -69,6 +73,8 @@ namespace RefTagFinder.Forms
             equipmentIDLabel = new System.Windows.Forms.Label();
             equipmentTypeIDLabel = new System.Windows.Forms.Label();
             unitIDLabel = new System.Windows.Forms.Label();
+            xPercentLabel = new System.Windows.Forms.Label();
+            yPercentLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.equipmentBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -172,6 +178,24 @@ namespace RefTagFinder.Forms
             unitIDLabel.TabIndex = 30;
             unitIDLabel.Text = "Unit ID:";
             // 
+            // xPercentLabel
+            // 
+            xPercentLabel.AutoSize = true;
+            xPercentLabel.Location = new System.Drawing.Point(244, 290);
+            xPercentLabel.Name = "xPercentLabel";
+            xPercentLabel.Size = new System.Drawing.Size(85, 23);
+            xPercentLabel.TabIndex = 34;
+            xPercentLabel.Text = "XPercent:";
+            // 
+            // yPercentLabel
+            // 
+            yPercentLabel.AutoSize = true;
+            yPercentLabel.Location = new System.Drawing.Point(244, 320);
+            yPercentLabel.Name = "yPercentLabel";
+            yPercentLabel.Size = new System.Drawing.Size(84, 23);
+            yPercentLabel.TabIndex = 35;
+            yPercentLabel.Text = "YPercent:";
+            // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -182,7 +206,7 @@ namespace RefTagFinder.Forms
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Location = new System.Drawing.Point(402, 0);
+            this.btnExit.Location = new System.Drawing.Point(400, 0);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(56, 37);
             this.btnExit.TabIndex = 10;
@@ -238,7 +262,7 @@ namespace RefTagFinder.Forms
             this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Latitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.latitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.latitudeTextBox.Location = new System.Drawing.Point(183, 147);
-            this.latitudeTextBox.Mask = "00°00\'00.000\\\"E";
+            this.latitudeTextBox.Mask = "00°00\'00.000\"E";
             this.latitudeTextBox.Name = "latitudeTextBox";
             this.latitudeTextBox.Size = new System.Drawing.Size(214, 29);
             this.latitudeTextBox.TabIndex = 4;
@@ -248,7 +272,7 @@ namespace RefTagFinder.Forms
             this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Longitude", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.longitudeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Enabled", this.equipmentBindingSource, "IsDatum", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.longitudeTextBox.Location = new System.Drawing.Point(183, 182);
-            this.longitudeTextBox.Mask = "00°00\'00.000\\\"N";
+            this.longitudeTextBox.Mask = "00°00\'00.000\"N";
             this.longitudeTextBox.Name = "longitudeTextBox";
             this.longitudeTextBox.Size = new System.Drawing.Size(214, 29);
             this.longitudeTextBox.TabIndex = 5;
@@ -307,7 +331,7 @@ namespace RefTagFinder.Forms
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(393, 347);
+            this.btnSave.Location = new System.Drawing.Point(391, 360);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(65, 37);
             this.btnSave.TabIndex = 8;
@@ -325,7 +349,7 @@ namespace RefTagFinder.Forms
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(303, 347);
+            this.btnDelete.Location = new System.Drawing.Point(301, 360);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(84, 37);
             this.btnDelete.TabIndex = 9;
@@ -339,9 +363,9 @@ namespace RefTagFinder.Forms
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 387);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 400);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(457, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(455, 25);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -351,13 +375,35 @@ namespace RefTagFinder.Forms
             this.toolStripLabel1.Size = new System.Drawing.Size(111, 22);
             this.toolStripLabel1.Text = "toolStripLabel1";
             // 
+            // xPercentLabel1
+            // 
+            this.xPercentLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "XPercent", true));
+            this.xPercentLabel1.Location = new System.Drawing.Point(324, 290);
+            this.xPercentLabel1.Name = "xPercentLabel1";
+            this.xPercentLabel1.Size = new System.Drawing.Size(100, 23);
+            this.xPercentLabel1.TabIndex = 35;
+            this.xPercentLabel1.Text = "label1";
+            // 
+            // yPercentLabel1
+            // 
+            this.yPercentLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "YPercent", true));
+            this.yPercentLabel1.Location = new System.Drawing.Point(324, 320);
+            this.yPercentLabel1.Name = "yPercentLabel1";
+            this.yPercentLabel1.Size = new System.Drawing.Size(100, 23);
+            this.yPercentLabel1.TabIndex = 36;
+            this.yPercentLabel1.Text = "label1";
+            // 
             // frmEquipment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(457, 412);
+            this.ClientSize = new System.Drawing.Size(455, 425);
+            this.Controls.Add(yPercentLabel);
+            this.Controls.Add(this.yPercentLabel1);
+            this.Controls.Add(xPercentLabel);
+            this.Controls.Add(this.xPercentLabel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -420,5 +466,7 @@ namespace RefTagFinder.Forms
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.Label xPercentLabel1;
+        private System.Windows.Forms.Label yPercentLabel1;
     }
 }
