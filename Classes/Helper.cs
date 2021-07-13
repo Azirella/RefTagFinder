@@ -98,7 +98,7 @@ namespace RefTagFinder
 }
 namespace RefTagFinder.Classes.DataControl
 {
-    public partial class Unit
+    /*public partial class Unit
     {
         public bool IsValid
         {
@@ -111,7 +111,7 @@ namespace RefTagFinder.Classes.DataControl
                         File.Exists(ImagePath) &&
                         File.Exists(PIDPath) &&
                         !string.IsNullOrEmpty(UnitName) &&
-                        100 <= UnitID && UnitID <= 9999 && UnitID.GetType() == typeof(int)
+                        100 <= UnitID && UnitID <= 10000 && UnitID.GetType() == typeof(int)
                         ) { check = true; }
                 }
                 catch (Exception ex)
@@ -122,7 +122,7 @@ namespace RefTagFinder.Classes.DataControl
             }
 
         }
-    }
+    }*/
 
     public partial class EquipmentType
     {

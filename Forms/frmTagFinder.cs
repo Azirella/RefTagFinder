@@ -34,15 +34,21 @@ namespace RefTagFinder
         EquipmentType _CurrentEquipmentType;// = new EquipmentType();
 
         List<Equipment> _AllEquipments;// = new List<Equipment>();
-        //Equipment _CurrentEquipment;// = new Equipment();
+        Equipment _CurrentEquipment;// = new Equipment();
 
         bool loadIsFinished = false;
+        bool firstLoad = true;
         public enum ClickedTask
         {
             AddEquipment, DeleteEquipment, nulll
         }
         ClickedTask my_clickedTask = ClickedTask.nulll;
 
+        public enum SelectEquipments
+        {
+            UnitSelected, TypeSelected, UnitAndType, onlyOneTag, nulll
+        }
+        SelectEquipments my_SelectEquipments = SelectEquipments.nulll;
 
         public frmTagFinder()
         {
@@ -58,92 +64,121 @@ namespace RefTagFinder
         {
             loadIsFinished = false;
 
-            #region reposition
-            btnExit.Top = 0;
-            btnExit.Left = this.Width - btnExit.Width;
-
-            btnMinimize.Top = 0;
-            btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
-
-            pnlTop.Height = btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
-            pnlUnit.Width = btnEdit.Left + btnEdit.Width;
-            pnlEquipment.Width = btnEditEquipmentType.Left + btnEditEquipmentType.Width;
-
-            unitImagePictureBox.Dock = DockStyle.Fill;
-            #endregion
-
-            #region Binding
-            /*unitBindingSource.DataSource = _CurrentUnit;
-            unitBindingSource.ResetBindings(true);
-
-            equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
-            equipmentTypeBindingSource.ResetBindings(true);
-
-            equipmentBindingSource.DataSource = _CurrentEquipment;
-            equipmentBindingSource.ResetBindings(true);*/
-            #endregion
-
-            #region loadAllUnits
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+            if (firstLoad)
             {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "Unit");
-                string sql = "[dbo].[SelectTable]";
-                _AllUnins = cnn.Query<Unit>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
-            }
-            #endregion
+                #region reposition
+                btnExit.Top = 0;
+                btnExit.Left = this.Width - btnExit.Width;
 
-            #region loadAllEquipmentType
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
-            {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "EquipmentType");
-                string sql = "[dbo].[SelectTable]";
-                _AllEquipmentTypes = cnn.Query<EquipmentType>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
-            }
-            #endregion
+                btnMinimize.Top = 0;
+                btnMinimize.Left = btnExit.Left - btnExit.Width - 2;
 
-            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
-            this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
-            equipmentNameComboBox_SelectedIndexChanged(sender, null);
-            unitNameComboBox_SelectedIndexChanged(sender, null);
+                pnlTop.Height = btnExit.Height = btnMinimize.Height = this.Height * 5 / 100;
+                pnlUnit.Width = btnEdit.Left + btnEdit.Width;
+                pnlEquipment.Width = btnEditEquipmentType.Left + btnEditEquipmentType.Width;
 
+                unitImagePictureBox.Dock = DockStyle.Fill;
+                #endregion
 
-            #region loadAllEquipment
-            using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
-            {
-                var p = new DynamicParameters();
-                p.Add("@tblName", "Equipment");
-                string sql = "[dbo].[SelectTable]";
-                _AllEquipments = cnn.Query<Equipment>(sql, p,
-                    commandType: CommandType.StoredProcedure).ToList();
-                foreach (Equipment equipment in _AllEquipments)
+                #region Binding
+                /*unitBindingSource.DataSource = _CurrentUnit;
+                unitBindingSource.ResetBindings(true);
+
+                equipmentTypeBindingSource.DataSource = _CurrentEquipmentType;
+                equipmentTypeBindingSource.ResetBindings(true);
+
+                equipmentBindingSource.DataSource = _CurrentEquipment;
+                equipmentBindingSource.ResetBindings(true);*/
+                #endregion
+
+                #region loadAllUnits
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
-                    int x = 0;
-                    Int32.TryParse(equipment.XOffset.ToString(),out x);
-                    int y = 0;
-                    Int32.TryParse(equipment.YOffset.ToString(), out y);
-                    MouseEventArgs e1 = new MouseEventArgs(MouseButtons.Left, 1, x, y, 1);
-                    my_clickedTask = ClickedTask.AddEquipment;
-                    unitImagePictureBox_MouseDown(sender, e1);
-                    //e1.X = equipment.XOffset;
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "Unit");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllUnins = cnn.Query<Unit>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
                 }
+                #endregion
+
+                #region loadAllEquipmentType
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "EquipmentType");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllEquipmentTypes = cnn.Query<EquipmentType>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
+                }
+                #endregion
+
+                #region loadAllEquipment
+                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@tblName", "Equipment");
+                    string sql = "[dbo].[SelectTable]";
+                    _AllEquipments = cnn.Query<Equipment>(sql, p,
+                        commandType: CommandType.StoredProcedure).ToList();
+                    tagComboBox.DataSource = _AllEquipments.Select(x => x.Tag).ToList();
+                }
+                #endregion
+
+                this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+                this.unitNameComboBox.SelectedIndexChanged += new System.EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+                equipmentNameComboBox_SelectedIndexChanged(sender, null);
+                unitNameComboBox_SelectedIndexChanged(sender, null);
+
+                unitNameComboBox.DataSource =
+                _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+
+                equipmentNameComboBox.DataSource =
+                   _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+                //test_Timer.Start();
+                firstLoad = false;
             }
-            #endregion
+
+            List<Equipment> _AllSelectedEquipments = _AllEquipments;
+            switch (my_SelectEquipments)
+            {
+                case SelectEquipments.UnitSelected:
+                    _AllSelectedEquipments = _AllEquipments.Where(x => x.UnitID == _CurrentUnit.UnitID).ToList();
+                    break;
+                case SelectEquipments.UnitAndType:
+                    _AllSelectedEquipments = _AllEquipments.Where(x => x.UnitID == _CurrentUnit.UnitID && x.EquipmentTypeID == _CurrentEquipmentType.EquipmentTypeID).ToList();
+                    break;
+                case SelectEquipments.onlyOneTag:
+                    _AllSelectedEquipments = _AllEquipments.Where(x => x.Tag == _CurrentEquipment.Tag).ToList();
+                    break;
+
+                /*case SelectEquipments.TypeSelected:
+                    break;
+                case SelectEquipments.nulll:
+                    break;*/
+                default:
+                    break;
+            }
+            unitImagePictureBox.Controls.Clear();
+            foreach (Equipment equipment in _AllSelectedEquipments)
+            {
+                int x = 0;
+                Int32.TryParse(equipment.XOffset.ToString(),out x);
+                int y = 0;
+                Int32.TryParse(equipment.YOffset.ToString(), out y);
+                MouseEventArgs e1 = new MouseEventArgs(MouseButtons.Left, 1, x, y, 1);
+                my_clickedTask = ClickedTask.AddEquipment;
+                unitImagePictureBox_MouseDown(sender, e1);
+            }
+            
 
             
-             unitNameComboBox.DataSource =
-                _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
-            
-             equipmentNameComboBox.DataSource =
-                _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+             
 
 
             
             loadIsFinished = true;
-            //test_Timer.Start();
+            
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -160,16 +195,6 @@ namespace RefTagFinder
                 frmTagFinder_Load(sender, e);
             }*/
             //frmTagFinder_Load(sender, e);
-        }
-
-        private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            if (0 <= unitNameComboBox.SelectedIndex)
-            {
-                _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
-                unitImagePictureBox.ImageLocation = _CurrentUnit.ImagePath;
-            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -194,15 +219,9 @@ namespace RefTagFinder
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            loadIsFinished = false;
+            firstLoad = true;
             frmTagFinder_Load(sender, e);
-        }
-
-        private void equipmentNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (0 <= equipmentNameComboBox.SelectedIndex)
-            {
-                _CurrentEquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
-            }
         }
 
         private void btnEditEquipmentType_Click(object sender, EventArgs e)
@@ -212,7 +231,6 @@ namespace RefTagFinder
             frmTagFinder_Load(sender, e);
         }
 
-        
         private void unitImagePictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             toolStripStatusLabelInfo.Text = $"x: {e.X}  y:{e.Y}  location:{e.Location}" +
@@ -280,6 +298,47 @@ namespace RefTagFinder
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             my_clickedTask = ClickedTask.AddEquipment;
+        }
+
+        private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (0 <= unitNameComboBox.SelectedIndex)
+            {
+                _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+                unitImagePictureBox.ImageLocation = _CurrentUnit.ImagePath;
+                my_SelectEquipments = SelectEquipments.UnitSelected;
+                if (loadIsFinished)
+                {
+                    frmTagFinder_Load(sender, e);
+                }
+            }
+        }
+        private void equipmentNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (0 <= equipmentNameComboBox.SelectedIndex)
+            {
+                _CurrentEquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
+                my_SelectEquipments = SelectEquipments.UnitAndType;
+                if (loadIsFinished)
+                {
+                    frmTagFinder_Load(sender, e);
+                }
+            }
+        }
+        private void tagComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (0 <= tagComboBox.SelectedIndex)
+            {
+                _CurrentEquipment = _AllEquipments.Where(x => x.Tag == tagComboBox.Text).First();
+                my_SelectEquipments = SelectEquipments.onlyOneTag;
+                if (loadIsFinished)
+                {
+                    frmTagFinder_Load(sender, e);
+                }
+            }
+
         }
     }
 }

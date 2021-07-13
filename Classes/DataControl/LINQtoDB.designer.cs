@@ -20,8 +20,9 @@ namespace RefTagFinder.Classes.DataControl
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	
-	
+	using System.IO;
+
+
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
 	public partial class LINQtoDBDataContext : System.Data.Linq.DataContext
 	{
@@ -250,7 +251,29 @@ namespace RefTagFinder.Classes.DataControl
 			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
 			OnCreated();
 		}
-		
+
+		public bool IsValid
+		{
+			get
+			{
+				bool check = false;
+				try
+				{
+					if (
+						File.Exists(ImagePath) &&
+						File.Exists(PIDPath) &&
+						!string.IsNullOrEmpty(UnitName) &&
+						100 <= UnitID && UnitID < 10000 && UnitID.GetType() == typeof(int)
+						) { check = true; }
+				}
+				catch (Exception ex)
+				{
+					System.Windows.Forms.MessageBox.Show(ex.Message);
+				}
+				return check;
+			}
+
+		}
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int UnitID
 		{
