@@ -40,7 +40,7 @@ namespace RefTagFinder
         bool firstLoad = true;
         public enum ClickedTask
         {
-            AddEquipment, DeleteEquipment, nulll
+            AddEquipment, DeleteEquipment, PrintEquipment, PrintAllEquipment, nulll
         }
         ClickedTask my_clickedTask = ClickedTask.nulll;
 
@@ -139,7 +139,7 @@ namespace RefTagFinder
                 firstLoad = false;
             }
 
-            List<Equipment> _AllSelectedEquipments = _AllEquipments;
+            List<Equipment> _AllSelectedEquipments = new List<Equipment>();// = _AllEquipments;
             switch (my_SelectEquipments)
             {
                 case SelectEquipments.UnitSelected:
@@ -160,8 +160,10 @@ namespace RefTagFinder
                     break;
             }
             unitImagePictureBox.Controls.Clear();
+            _AllSelectedEquipments = currectPositionEquipments(_AllSelectedEquipments);
             foreach (Equipment equipment in _AllSelectedEquipments)
             {
+                
                 int x = 0;
                 Int32.TryParse(equipment.XOffset.ToString(),out x);
                 int y = 0;
@@ -170,14 +172,80 @@ namespace RefTagFinder
                 my_clickedTask = ClickedTask.AddEquipment;
                 unitImagePictureBox_MouseDown(sender, e1);
             }
-            
-
-            
-             
-
-
-            
             loadIsFinished = true;
+            
+        }
+
+        private List<Equipment> currectPositionEquipments(List<Equipment> allSelectedEquipments)
+        {
+            List<Equipment> TTTallSelectedEquipments = new List<Equipment>();// allSelectedEquipments;
+            foreach (Equipment equipment in allSelectedEquipments)
+            {
+                TTTallSelectedEquipments.Add(equipment);
+            }
+            if (allSelectedEquipments.Where(x => x.IsDatum != true).Count() == 0)
+            {
+                return TTTallSelectedEquipments;// = allSelectedEquipments;
+            }
+            List<Equipment> allDatums = _AllEquipments.Where(x => x.IsDatum == true && x.UnitID == allSelectedEquipments[0].UnitID).ToList();
+            
+            frmEquipment.isValidUintArea isValidUintArea1 = new frmEquipment.isValidUintArea();
+            isValidUintArea1.left = allDatums.Min(x => x.XOffset).Value;
+            isValidUintArea1.right = allDatums.Max(x => x.XOffset).Value;
+            isValidUintArea1.top = allDatums.Min(x => x.YOffset).Value;
+            isValidUintArea1.bottom = allDatums.Max(x => x.YOffset).Value;
+
+            
+            if (isValidUintArea1.isValid)
+            {
+                TTTallSelectedEquipments.Clear();// = allDatums;//.Clear();
+                foreach (Equipment equipment in allSelectedEquipments)
+                {
+                    if (equipment.IsDatum == true)
+                    {
+                        TTTallSelectedEquipments.Add(equipment);
+                    }
+                    else
+                    {
+                        double t1 = Convert.ToDouble(100 / equipment.XPercent);
+                        var p1 = (isValidUintArea1.right - isValidUintArea1.left);
+                        double a = isValidUintArea1.left + p1 / t1;
+
+                        double t2 = Convert.ToDouble(100 / equipment.YPercent);
+                        var p2 = (isValidUintArea1.bottom - isValidUintArea1.top);
+                        double b = isValidUintArea1.top + p2 / t2;
+
+                        if (equipment.XOffset - a > 5 && equipment.YOffset - b > 5)
+                        {
+                            try
+                            {
+                                using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
+                                {
+                                    string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {equipment.EquipmentID}";
+                                    int deleted = cnn.Execute(sql);
+
+                                    //INSERT INTO [dbo].[Equipment] (EquipmentID ,EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) VALUES (@EquipmentID ,@EquipmentTypeID2,@UnitID2,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)
+                                    sql = $@"INSERT INTO [dbo].[Equipment] (EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) " +
+                                          $@"VALUES (@EquipmentTypeID,@UnitID,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)";
+                                    if (deleted > 0)
+                                    {
+                                        cnn.Execute(sql, equipment);
+                                    }
+                                    
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                throw ex;
+                            }
+                        }
+                        TTTallSelectedEquipments.Add(equipment);
+                    }
+                }
+                
+            }
+
+            return TTTallSelectedEquipments;
             
         }
 
@@ -277,27 +345,49 @@ namespace RefTagFinder
 
         private void btnDynamic_click(object sender, EventArgs e)
         {
-            Equipment tttEquipment;
-            tttEquipment = _AllEquipments.Where(x => x.XOffset == (sender as Button).Location.X &&
-                                                     x.YOffset == (sender as Button).Location.Y)
-                                               .FirstOrDefault();
-            if (tttEquipment == null)
+            switch (my_clickedTask)
             {
-                tttEquipment = new Equipment();
-                tttEquipment.XOffset = (sender as Button).Location.X;
-                tttEquipment.YOffset = (sender as Button).Location.Y;
-                tttEquipment.Unit = _CurrentUnit;
-                tttEquipment.EquipmentType = _CurrentEquipmentType;
+                /*case ClickedTask.AddEquipment:
+                    break;*/
+                case ClickedTask.DeleteEquipment:
+                    break;
+                case ClickedTask.PrintEquipment:
+                    new frmPrint(unitImagePictureBox.Image,new List<Equipment>(new Equipment[] { _CurrentEquipment})).ShowDialog();
+                    my_clickedTask = ClickedTask.nulll;
+                    break;
+                case ClickedTask.PrintAllEquipment:
+                    break;
+                /*case ClickedTask.nulll:
+                    break;*/
+                default:
+                    Equipment tttEquipment;
+                    tttEquipment = _AllEquipments.Where(x => x.XOffset == (sender as Button).Location.X &&
+                                                             x.YOffset == (sender as Button).Location.Y)
+                                                       .FirstOrDefault();
+                    if (tttEquipment == null)
+                    {
+                        tttEquipment = new Equipment();
+                        tttEquipment.XOffset = (sender as Button).Location.X;
+                        tttEquipment.YOffset = (sender as Button).Location.Y;
+                        tttEquipment.Unit = _CurrentUnit;
+                        tttEquipment.EquipmentType = _CurrentEquipmentType;
 
+                    }
+                    frmEquipment f = new frmEquipment(tttEquipment);
+                    f.Location = new Point(10, 10);
+                    f.ShowDialog();
+                    break;
             }
-            frmEquipment f = new frmEquipment(tttEquipment);
-            f.Location = new Point(10, 10);
-            f.ShowDialog();
         }
 
         private void btnAddEquipment_Click(object sender, EventArgs e)
         {
             my_clickedTask = ClickedTask.AddEquipment;
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            my_clickedTask = ClickedTask.PrintEquipment;
         }
 
         private void unitNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -314,6 +404,7 @@ namespace RefTagFinder
                 }
             }
         }
+        
         private void equipmentNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (0 <= equipmentNameComboBox.SelectedIndex)
@@ -326,6 +417,7 @@ namespace RefTagFinder
                 }
             }
         }
+        
         private void tagComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -340,5 +432,6 @@ namespace RefTagFinder
             }
 
         }
+
     }
 }

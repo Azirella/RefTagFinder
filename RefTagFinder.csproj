@@ -122,6 +122,12 @@
     <Compile Include="Forms\frmEquipment.Designer.cs">
       <DependentUpon>frmEquipment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmPrint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPrint.Designer.cs">
+      <DependentUpon>frmPrint.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\User_Controls\EquipmentControlBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -220,9 +226,6 @@
     <None Include="Classes\RefDataClasses.dbml.layout">
       <DependentUpon>RefDataClasses.dbml</DependentUpon>
     </None>
-    <Content Include="DBs\db_users.ldb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -235,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEquipment.resx">
       <DependentUpon>frmEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPrint.resx">
+      <DependentUpon>frmPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\User_Controls\EquipmentControlBar.resx">
       <DependentUpon>EquipmentControlBar.cs</DependentUpon>

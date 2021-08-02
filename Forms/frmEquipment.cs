@@ -28,7 +28,7 @@ namespace RefTagFinder.Forms
 
         bool firstLoad = true;
 
-        struct isValidUintArea
+        public struct isValidUintArea
         {
             public int top;
             public int bottom;
@@ -104,8 +104,6 @@ namespace RefTagFinder.Forms
                 }
                 #endregion
 
-                
-
                 firstLoad = false;
             }
 
@@ -169,17 +167,32 @@ namespace RefTagFinder.Forms
 
         }
 
-        private double CalculateLL(double v1, double v2, double? percent)
+        public double CalculateLL(double v1, double v2, double? percent = 1)
         {
             return (double)(v1 + ((v2 - v1) / percent / 100));
         }
 
-        private double convertToDigit(string LL)
+        public double convertToDigit(string LL)
         {
-            string hhh = LL.Substring(0, 2) + LL.Substring(3, 2) + LL.Substring(6, 6);
-            double returnValue;
-            double.TryParse(hhh, out returnValue);
-            return returnValue;
+            try
+            {
+                string hhh = LL.Substring(0, 2) + LL.Substring(3, 2) + LL.Substring(6, 6);
+                double returnValue;
+                double.TryParse(hhh, out returnValue);
+                return returnValue;
+                
+            }
+            catch// (Exception ex)
+            {
+                double returnValue;
+                double.TryParse(LL, out returnValue);
+                return returnValue;
+                //MessageBox.Show(ex.Message);
+            }
+            /*finally
+            { return 0; }*/
+            
+            //return 0;
         }
 
         private List<Equipment> isDatums()
@@ -194,12 +207,15 @@ namespace RefTagFinder.Forms
                 using (IDbConnection cnn = new SqlConnection(HelperStatic.LoadConnectionString()))
                 {
                     string sql = $@"DELETE FROM  Equipment  WHERE EquipmentID = {_mainFormEquipment.EquipmentID}";
-                    cnn.Execute(sql);
+                    int deleted = cnn.Execute(sql);
 
                     //INSERT INTO [dbo].[Equipment] (EquipmentID ,EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) VALUES (@EquipmentID ,@EquipmentTypeID2,@UnitID2,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)
                     sql = $@"INSERT INTO [dbo].[Equipment] (EquipmentTypeID,UnitID,Latitude,Longitude,XOffset,YOffset,IsDatum,Tag) "+
                           $@"VALUES (@EquipmentTypeID,@UnitID,@Latitude,@Longitude,@XOffset,@YOffset,@IsDatum,@Tag)";
-                    cnn.Execute(sql, _mainFormEquipment);
+                    if (deleted > 0)
+                    {
+                        cnn.Execute(sql, _mainFormEquipment);
+                    }
                 }
             }
             catch (Exception ex)

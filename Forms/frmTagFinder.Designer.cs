@@ -55,6 +55,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.unitImagePictureBox = new System.Windows.Forms.PictureBox();
             this.test_Timer = new System.Windows.Forms.Timer(this.components);
+            this.btnPrint = new System.Windows.Forms.Button();
             unitNameLabel = new System.Windows.Forms.Label();
             equipmentNameLabel = new System.Windows.Forms.Label();
             tagLabel = new System.Windows.Forms.Label();
@@ -315,6 +316,7 @@
             // toolsPnl
             // 
             this.toolsPnl.BackColor = System.Drawing.Color.Purple;
+            this.toolsPnl.Controls.Add(this.btnPrint);
             this.toolsPnl.Controls.Add(this.btnAddEquipment);
             this.toolsPnl.Controls.Add(this.btnRefresh);
             this.toolsPnl.Dock = System.Windows.Forms.DockStyle.Right;
@@ -369,6 +371,24 @@
             // 
             this.test_Timer.Interval = 2000;
             this.test_Timer.Tick += new System.EventHandler(this.test_Timer_Tick);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrint.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnPrint.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(0, 37);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(89, 37);
+            this.btnPrint.TabIndex = 28;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // frmTagFinder
             // 
@@ -434,5 +454,6 @@
         private System.Windows.Forms.Panel pnlEquipment;
         private System.Windows.Forms.Panel pnlUnit;
         private System.Windows.Forms.ComboBox tagComboBox;
+        private System.Windows.Forms.Button btnPrint;
     }
 }
