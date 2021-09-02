@@ -377,11 +377,12 @@
             this.printPreviewControl1.Size = new System.Drawing.Size(386, 315);
             this.printPreviewControl1.TabIndex = 9;
             this.printPreviewControl1.TabStop = false;
+            //this.printPreviewControl1.Document.DefaultPageSettings.Landscape = true;
             // 
             // closeBtn
             // 
-            
-            
+
+
             this.closeBtn.FlatAppearance.BorderSize = 0;
             this.closeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
             this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));

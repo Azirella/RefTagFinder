@@ -17,6 +17,8 @@ namespace RefTagFinder.Forms
     public partial class frmPrint : Form
     {
         List<Equipment> Equipments = new List<Equipment>();
+        public bool printCenterImage = true;
+
         public frmPrint()
         {
             InitializeComponent();
@@ -57,10 +59,61 @@ namespace RefTagFinder.Forms
             }
             OutputPath = OutputPath + "\\" + "forPrint" + ".jpg";
             new Bitmap(pixUnit.Image).Save(OutputPath, ImageFormat.Jpeg);
-        }
+        } 
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            RectangleF marginBounds = e.MarginBounds;
+            RectangleF printableArea = e.PageSettings.PrintableArea;
+
+            int availableWidth = (int)Math.Floor(printDocument1.OriginAtMargins
+                ? marginBounds.Width
+                : (e.PageSettings.Landscape
+                    ? printableArea.Height
+                    : printableArea.Width));
+
+            int availableHeight = (int)Math.Floor(printDocument1.OriginAtMargins
+                ? marginBounds.Height
+                : (e.PageSettings.Landscape
+                    ? printableArea.Width
+                    : printableArea.Height));
+
+            if (availableWidth > pixUnit.Image.Width && availableHeight > pixUnit.Image.Height)
+            {
+                int x = 0, y = 0;
+                if (printCenterImage)
+                {
+                    x = (availableWidth - pixUnit.Image.Width) / 2;
+                    y = (availableHeight - pixUnit.Image.Height) / 2;
+                }
+                e.Graphics.DrawImage(pixUnit.Image, x, y, pixUnit.Image.Width, pixUnit.Image.Height);
+            }
+            else
+            {
+                double scaleW = availableWidth / (double)pixUnit.Image.Width;
+                double scaleH = availableHeight / (double)pixUnit.Image.Height;
+
+                if (scaleW < scaleH)
+                {
+                    int x = 0, y = 0;
+                    if (printCenterImage)
+                    {
+                        x = (availableWidth - Convert.ToInt32(pixUnit.Image.Width * scaleW)) / 2;
+                        y = (availableHeight - Convert.ToInt32(pixUnit.Image.Height * scaleW)) / 2;
+                    }
+                    e.Graphics.DrawImage(pixUnit.Image, x, y, availableWidth, Convert.ToInt32(pixUnit.Image.Height * scaleW));
+                }
+                else
+                {
+                    int x = 0, y = 0;
+                    if (printCenterImage)
+                    {
+                        x = (availableWidth - Convert.ToInt32(pixUnit.Image.Width * scaleH)) / 2;
+                        y = (availableHeight - Convert.ToInt32(pixUnit.Image.Height * scaleH)) / 2;
+                    }
+                    e.Graphics.DrawImage(pixUnit.Image, x, y, Convert.ToInt32(pixUnit.Image.Width * scaleH), availableHeight);
+                }
+            }
             //pixUnit.Image
             //e.Graphics.DrawImage(bmp, 0, 0);
         }
@@ -90,8 +143,6 @@ namespace RefTagFinder.Forms
                 if (pf.ShowDialog() == DialogResult.OK && printDialog1.ShowDialog() == DialogResult.OK) printDocument1.Print();
                 pf.Dispose();
             }
-
-            MessageBox.Show("Test");
         }
 
         private void btnSendTo_Click(object sender, EventArgs e)

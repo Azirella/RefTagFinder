@@ -9,8 +9,9 @@ namespace RefTagFinder.Forms
 	partial class PrintForm : Form
 	{
 		private MainForm owner;
+        private bool FirstLoad = true;
 
-		public PrintForm(PrintDocument pd, string docTitle)
+        public PrintForm(PrintDocument pd, string docTitle)
 		{
 			InitializeComponent();
 			/*SetDraggableControls(new List<Control>() { 
@@ -106,8 +107,12 @@ namespace RefTagFinder.Forms
 
 			//centerCheckbox.Checked = owner.printCenterImage;
 			marginsCheckBox.Checked = printPreviewControl1.Document.OriginAtMargins;
+            if (FirstLoad)
+            {
+				this.printPreviewControl1.Document.DefaultPageSettings.Landscape = true;
+			}
 			horizontalCheckBox.Checked = printPreviewControl1.Document.DefaultPageSettings.Landscape;
-
+			FirstLoad = false;
 		}
 
 		
