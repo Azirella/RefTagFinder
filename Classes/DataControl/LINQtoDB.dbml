@@ -1,12 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Ref5thDBSQL" Class="LINQtoDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBs\Ref5thDBSQL.mdf;Integrated Security=True" SettingsObjectName="RefTagFinder.Properties.Settings" SettingsPropertyName="Ref5thDBSQLConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Equipment" Member="Equipments">
+    <Type Name="Equipment">
+      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="XPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="YPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
+      <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
+    <Type Name="EquipmentType">
+      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EquipmentName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="X_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Y_" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
+    </Type>
+  </Table>
   <Table Name="dbo.Unit" Member="Units">
     <Type Name="Unit">
       <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="isValid" Type="System.String" CanBeNull="false" />
       <Association Name="Unit_Equipment" Member="Equipments" ThisKey="UnitID" OtherKey="UnitID" Type="Equipment" />
     </Type>
   </Table>
@@ -35,42 +60,6 @@
       <Association Name="User_LoginLog" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.EquipmentType" Member="EquipmentTypes">
-    <Type Name="EquipmentType">
-      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EquipmentName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="X_" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Y_" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="EquipmentType_Equipment" Member="Equipments" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="Equipment" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Equipment" Member="Equipments">
-    <Type Name="Equipment">
-      <Column Name="EquipmentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="EquipmentTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Latitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Longitude" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="XOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YOffset" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="XPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="YPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="IsDatum" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Tag" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="EquipmentType_Equipment" Member="EquipmentType" ThisKey="EquipmentTypeID" OtherKey="EquipmentTypeID" Type="EquipmentType" IsForeignKey="true" />
-      <Association Name="Unit_Equipment" Member="Unit" ThisKey="UnitID" OtherKey="UnitID" Type="Unit" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.SelectTable" Method="SelectTable">
-    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
-    <ElementType Name="SelectTableResult">
-      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.DeleteFromTable" Method="DeleteFromTable">
     <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
@@ -108,6 +97,16 @@
     <Parameter Name="PermissionCode" Parameter="permissionCode" Type="System.String" DbType="NVarChar(10)" />
     <Parameter Name="Temp" Parameter="temp" Type="System.Int32" DbType="Int" />
     <ElementType Name="InsertToTableResult">
+      <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ImagePath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.SelectTable" Method="SelectTable">
+    <Parameter Name="tblName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <ElementType Name="SelectTableResult">
       <Column Name="UnitID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="UnitName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PIDPath" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />

@@ -20,10 +20,9 @@ namespace RefTagFinder.Classes.DataControl
 	using System.Linq.Expressions;
 	using System.ComponentModel;
 	using System;
-	using System.IO;
+    using System.IO;
 
-
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
+    [global::System.Data.Linq.Mapping.DatabaseAttribute(Name="Ref5thDBSQL")]
 	public partial class LINQtoDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -31,18 +30,18 @@ namespace RefTagFinder.Classes.DataControl
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertEquipment(Equipment instance);
+    partial void UpdateEquipment(Equipment instance);
+    partial void DeleteEquipment(Equipment instance);
+    partial void InsertEquipmentType(EquipmentType instance);
+    partial void UpdateEquipmentType(EquipmentType instance);
+    partial void DeleteEquipmentType(EquipmentType instance);
     partial void InsertUnit(Unit instance);
     partial void UpdateUnit(Unit instance);
     partial void DeleteUnit(Unit instance);
     partial void InsertUser(User instance);
     partial void UpdateUser(User instance);
     partial void DeleteUser(User instance);
-    partial void InsertEquipmentType(EquipmentType instance);
-    partial void UpdateEquipmentType(EquipmentType instance);
-    partial void DeleteEquipmentType(EquipmentType instance);
-    partial void InsertEquipment(Equipment instance);
-    partial void UpdateEquipment(Equipment instance);
-    partial void DeleteEquipment(Equipment instance);
     #endregion
 		
 		public LINQtoDBDataContext() : 
@@ -75,6 +74,22 @@ namespace RefTagFinder.Classes.DataControl
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Equipment> Equipments
+		{
+			get
+			{
+				return this.GetTable<Equipment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EquipmentType> EquipmentTypes
+		{
+			get
+			{
+				return this.GetTable<EquipmentType>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Unit> Units
 		{
 			get
@@ -105,29 +120,6 @@ namespace RefTagFinder.Classes.DataControl
 			{
 				return this.GetTable<LoginLog>();
 			}
-		}
-		
-		public System.Data.Linq.Table<EquipmentType> EquipmentTypes
-		{
-			get
-			{
-				return this.GetTable<EquipmentType>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Equipment> Equipments
-		{
-			get
-			{
-				return this.GetTable<Equipment>();
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SelectTable")]
-		public ISingleResult<SelectTableResult> SelectTable([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tblName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tblName, iD);
-			return ((ISingleResult<SelectTableResult>)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.DeleteFromTable")]
@@ -174,6 +166,13 @@ namespace RefTagFinder.Classes.DataControl
 			return ((ISingleResult<InsertToTableResult>)(result.ReturnValue));
 		}
 		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SelectTable")]
+		public ISingleResult<SelectTableResult> SelectTable([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tblName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ID", DbType="Int")] System.Nullable<int> iD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tblName, iD);
+			return ((ISingleResult<SelectTableResult>)(result.ReturnValue));
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateTable")]
 		public ISingleResult<UpdateTableResult> UpdateTable(
 					[global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string tblName, 
@@ -209,618 +208,6 @@ namespace RefTagFinder.Classes.DataControl
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), tblName, iD, unitID, unitName, pIDPath, imagePath, userName, password, timeOfRegister, userID, timeOfLogin, timeOfLogout, equipmentTypeID, equipmentName, x_, y_, equipmentID, equipmentTypeID2, unitID2, latitude, longitude, xOffset, yOffset, xPercent, yPercent, isDatum, tag, userID2, permissionCode, temp);
 			return ((ISingleResult<UpdateTableResult>)(result.ReturnValue));
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Unit")]
-	public partial class Unit : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UnitID;
-		
-		private string _UnitName;
-		
-		private string _PIDPath;
-		
-		private string _ImagePath;
-		
-		private string _isValid;
-		
-		private EntitySet<Equipment> _Equipments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUnitIDChanging(int value);
-    partial void OnUnitIDChanged();
-    partial void OnUnitNameChanging(string value);
-    partial void OnUnitNameChanged();
-    partial void OnPIDPathChanging(string value);
-    partial void OnPIDPathChanged();
-    partial void OnImagePathChanging(string value);
-    partial void OnImagePathChanged();
-    partial void OnisValidChanging(string value);
-    partial void OnisValidChanged();
-    #endregion
-		
-		public Unit()
-		{
-			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
-			OnCreated();
-		}
-
-		public bool IsValid
-		{
-			get
-			{
-				bool check = false;
-				try
-				{
-					if (
-						File.Exists(ImagePath) &&
-						File.Exists(PIDPath) &&
-						!string.IsNullOrEmpty(UnitName) &&
-						100 <= UnitID && UnitID < 10000 && UnitID.GetType() == typeof(int)
-						) { check = true; }
-				}
-				catch (Exception ex)
-				{
-					System.Windows.Forms.MessageBox.Show(ex.Message);
-				}
-				return check;
-			}
-
-		}
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int UnitID
-		{
-			get
-			{
-				return this._UnitID;
-			}
-			set
-			{
-				if ((this._UnitID != value))
-				{
-					this.OnUnitIDChanging(value);
-					this.SendPropertyChanging();
-					this._UnitID = value;
-					this.SendPropertyChanged("UnitID");
-					this.OnUnitIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UnitName
-		{
-			get
-			{
-				return this._UnitName;
-			}
-			set
-			{
-				if ((this._UnitName != value))
-				{
-					this.OnUnitNameChanging(value);
-					this.SendPropertyChanging();
-					this._UnitName = value;
-					this.SendPropertyChanged("UnitName");
-					this.OnUnitNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PIDPath", DbType="NVarChar(MAX)")]
-		public string PIDPath
-		{
-			get
-			{
-				return this._PIDPath;
-			}
-			set
-			{
-				if ((this._PIDPath != value))
-				{
-					this.OnPIDPathChanging(value);
-					this.SendPropertyChanging();
-					this._PIDPath = value;
-					this.SendPropertyChanged("PIDPath");
-					this.OnPIDPathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="NVarChar(MAX)")]
-		public string ImagePath
-		{
-			get
-			{
-				return this._ImagePath;
-			}
-			set
-			{
-				if ((this._ImagePath != value))
-				{
-					this.OnImagePathChanging(value);
-					this.SendPropertyChanging();
-					this._ImagePath = value;
-					this.SendPropertyChanged("ImagePath");
-					this.OnImagePathChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isValid", CanBeNull=false)]
-		public string isValid
-		{
-			get
-			{
-				return this._isValid;
-			}
-			set
-			{
-				if ((this._isValid != value))
-				{
-					this.OnisValidChanging(value);
-					this.SendPropertyChanging();
-					this._isValid = value;
-					this.SendPropertyChanged("isValid");
-					this.OnisValidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Unit_Equipment", Storage="_Equipments", ThisKey="UnitID", OtherKey="UnitID")]
-		public EntitySet<Equipment> Equipments
-		{
-			get
-			{
-				return this._Equipments;
-			}
-			set
-			{
-				this._Equipments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Unit = this;
-		}
-		
-		private void detach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.Unit = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _UserID;
-		
-		private string _Username;
-		
-		private string _Password;
-		
-		private System.DateTime _TimeOfRegister;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUserIDChanging(int value);
-    partial void OnUserIDChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnTimeOfRegisterChanging(System.DateTime value);
-    partial void OnTimeOfRegisterChanged();
-    #endregion
-		
-		public User()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this.OnUserIDChanging(value);
-					this.SendPropertyChanging();
-					this._UserID = value;
-					this.SendPropertyChanged("UserID");
-					this.OnUserIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfRegister", DbType="DateTime NOT NULL")]
-		public System.DateTime TimeOfRegister
-		{
-			get
-			{
-				return this._TimeOfRegister;
-			}
-			set
-			{
-				if ((this._TimeOfRegister != value))
-				{
-					this.OnTimeOfRegisterChanging(value);
-					this.SendPropertyChanging();
-					this._TimeOfRegister = value;
-					this.SendPropertyChanged("TimeOfRegister");
-					this.OnTimeOfRegisterChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserPermission")]
-	public partial class UserPermission
-	{
-		
-		private int _UserID;
-		
-		private string _PermissionCode;
-		
-		public UserPermission()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionCode", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string PermissionCode
-		{
-			get
-			{
-				return this._PermissionCode;
-			}
-			set
-			{
-				if ((this._PermissionCode != value))
-				{
-					this._PermissionCode = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoginLog")]
-	public partial class LoginLog
-	{
-		
-		private int _UserID;
-		
-		private System.DateTime _TimeOfLogin;
-		
-		private System.Nullable<System.DateTime> _TimeOfLogout;
-		
-		public LoginLog()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
-		public int UserID
-		{
-			get
-			{
-				return this._UserID;
-			}
-			set
-			{
-				if ((this._UserID != value))
-				{
-					this._UserID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfLogin", DbType="DateTime NOT NULL")]
-		public System.DateTime TimeOfLogin
-		{
-			get
-			{
-				return this._TimeOfLogin;
-			}
-			set
-			{
-				if ((this._TimeOfLogin != value))
-				{
-					this._TimeOfLogin = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfLogout", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TimeOfLogout
-		{
-			get
-			{
-				return this._TimeOfLogout;
-			}
-			set
-			{
-				if ((this._TimeOfLogout != value))
-				{
-					this._TimeOfLogout = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentType")]
-	public partial class EquipmentType : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _EquipmentTypeID;
-		
-		private string _EquipmentName;
-		
-		private System.Nullable<int> _X_;
-		
-		private System.Nullable<int> _Y_;
-		
-		private EntitySet<Equipment> _Equipments;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEquipmentTypeIDChanging(int value);
-    partial void OnEquipmentTypeIDChanged();
-    partial void OnEquipmentNameChanging(string value);
-    partial void OnEquipmentNameChanged();
-    partial void OnX_Changing(System.Nullable<int> value);
-    partial void OnX_Changed();
-    partial void OnY_Changing(System.Nullable<int> value);
-    partial void OnY_Changed();
-    #endregion
-		
-		public EquipmentType()
-		{
-			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentTypeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int EquipmentTypeID
-		{
-			get
-			{
-				return this._EquipmentTypeID;
-			}
-			set
-			{
-				if ((this._EquipmentTypeID != value))
-				{
-					this.OnEquipmentTypeIDChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentTypeID = value;
-					this.SendPropertyChanged("EquipmentTypeID");
-					this.OnEquipmentTypeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string EquipmentName
-		{
-			get
-			{
-				return this._EquipmentName;
-			}
-			set
-			{
-				if ((this._EquipmentName != value))
-				{
-					this.OnEquipmentNameChanging(value);
-					this.SendPropertyChanging();
-					this._EquipmentName = value;
-					this.SendPropertyChanged("EquipmentName");
-					this.OnEquipmentNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_X_", DbType="Int")]
-		public System.Nullable<int> X_
-		{
-			get
-			{
-				return this._X_;
-			}
-			set
-			{
-				if ((this._X_ != value))
-				{
-					this.OnX_Changing(value);
-					this.SendPropertyChanging();
-					this._X_ = value;
-					this.SendPropertyChanged("X_");
-					this.OnX_Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Y_", DbType="Int")]
-		public System.Nullable<int> Y_
-		{
-			get
-			{
-				return this._Y_;
-			}
-			set
-			{
-				if ((this._Y_ != value))
-				{
-					this.OnY_Changing(value);
-					this.SendPropertyChanging();
-					this._Y_ = value;
-					this.SendPropertyChanged("Y_");
-					this.OnY_Changed();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_Equipments", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID")]
-		public EntitySet<Equipment> Equipments
-		{
-			get
-			{
-				return this._Equipments;
-			}
-			set
-			{
-				this._Equipments.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentType = this;
-		}
-		
-		private void detach_Equipments(Equipment entity)
-		{
-			this.SendPropertyChanging();
-			entity.EquipmentType = null;
 		}
 	}
 	
@@ -890,7 +277,21 @@ namespace RefTagFinder.Classes.DataControl
 			this._Unit = default(EntityRef<Unit>);
 			OnCreated();
 		}
-		
+
+		public bool IsValid
+		{
+			get
+			{
+				bool check = false;
+				if (!string.IsNullOrEmpty(Tag))
+				{
+
+					check = true;
+				}
+				return check;
+			}
+		}
+
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int EquipmentID
 		{
@@ -1208,7 +609,626 @@ namespace RefTagFinder.Classes.DataControl
 		}
 	}
 	
-	public partial class SelectTableResult
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EquipmentType")]
+	public partial class EquipmentType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _EquipmentTypeID;
+		
+		private string _EquipmentName;
+		
+		private System.Nullable<int> _X_;
+		
+		private System.Nullable<int> _Y_;
+		
+		private EntitySet<Equipment> _Equipments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEquipmentTypeIDChanging(int value);
+    partial void OnEquipmentTypeIDChanged();
+    partial void OnEquipmentNameChanging(string value);
+    partial void OnEquipmentNameChanged();
+    partial void OnX_Changing(System.Nullable<int> value);
+    partial void OnX_Changed();
+    partial void OnY_Changing(System.Nullable<int> value);
+    partial void OnY_Changed();
+    #endregion
+		
+		public EquipmentType()
+		{
+			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
+			OnCreated();
+		}
+		public bool IsValid
+		{
+			get
+			{
+				bool check = false;
+				try
+				{
+					int tttnumber;
+					if (!string.IsNullOrEmpty(EquipmentName) &&
+						Int32.TryParse(X_.ToString(), out tttnumber) &&
+						Int32.TryParse(Y_.ToString(), out tttnumber)
+						)
+					{
+						if (
+							EquipmentName.Length >= 3 &&
+							X_ > 0 && Y_ > 0 && X_ < 99 && Y_ < 99
+							)
+						{
+							check = true;
+						}
+					}
+				}
+				catch (Exception ex)
+				{
+
+					throw ex;
+				}
+				return check;
+			}
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentTypeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int EquipmentTypeID
+		{
+			get
+			{
+				return this._EquipmentTypeID;
+			}
+			set
+			{
+				if ((this._EquipmentTypeID != value))
+				{
+					this.OnEquipmentTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentTypeID = value;
+					this.SendPropertyChanged("EquipmentTypeID");
+					this.OnEquipmentTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EquipmentName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string EquipmentName
+		{
+			get
+			{
+				return this._EquipmentName;
+			}
+			set
+			{
+				if ((this._EquipmentName != value))
+				{
+					this.OnEquipmentNameChanging(value);
+					this.SendPropertyChanging();
+					this._EquipmentName = value;
+					this.SendPropertyChanged("EquipmentName");
+					this.OnEquipmentNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_X_", DbType="Int")]
+		public System.Nullable<int> X_
+		{
+			get
+			{
+				return this._X_;
+			}
+			set
+			{
+				if ((this._X_ != value))
+				{
+					this.OnX_Changing(value);
+					this.SendPropertyChanging();
+					this._X_ = value;
+					this.SendPropertyChanged("X_");
+					this.OnX_Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Y_", DbType="Int")]
+		public System.Nullable<int> Y_
+		{
+			get
+			{
+				return this._Y_;
+			}
+			set
+			{
+				if ((this._Y_ != value))
+				{
+					this.OnY_Changing(value);
+					this.SendPropertyChanging();
+					this._Y_ = value;
+					this.SendPropertyChanged("Y_");
+					this.OnY_Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EquipmentType_Equipment", Storage="_Equipments", ThisKey="EquipmentTypeID", OtherKey="EquipmentTypeID")]
+		public EntitySet<Equipment> Equipments
+		{
+			get
+			{
+				return this._Equipments;
+			}
+			set
+			{
+				this._Equipments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentType = this;
+		}
+		
+		private void detach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.EquipmentType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Unit")]
+	public partial class Unit : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UnitID;
+		
+		private string _UnitName;
+		
+		private string _PIDPath;
+		
+		private string _ImagePath;
+		
+		private EntitySet<Equipment> _Equipments;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUnitIDChanging(int value);
+    partial void OnUnitIDChanged();
+    partial void OnUnitNameChanging(string value);
+    partial void OnUnitNameChanged();
+    partial void OnPIDPathChanging(string value);
+    partial void OnPIDPathChanged();
+    partial void OnImagePathChanging(string value);
+    partial void OnImagePathChanged();
+    #endregion
+		
+		public Unit()
+		{
+			this._Equipments = new EntitySet<Equipment>(new Action<Equipment>(this.attach_Equipments), new Action<Equipment>(this.detach_Equipments));
+			OnCreated();
+		}
+
+		public bool IsValid
+		{
+			get
+			{
+				bool check = false;
+				try
+				{
+					if (
+						File.Exists(ImagePath) &&
+						File.Exists(PIDPath) &&
+						!string.IsNullOrEmpty(UnitName) &&
+						100 <= UnitID && UnitID <= 10000 && UnitID.GetType() == typeof(int)
+						) { check = true; }
+				}
+				catch (Exception ex)
+				{
+					System.Windows.Forms.MessageBox.Show(ex.Message);
+				}
+				return check;
+			}
+
+		}
+
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UnitID
+		{
+			get
+			{
+				return this._UnitID;
+			}
+			set
+			{
+				if ((this._UnitID != value))
+				{
+					this.OnUnitIDChanging(value);
+					this.SendPropertyChanging();
+					this._UnitID = value;
+					this.SendPropertyChanged("UnitID");
+					this.OnUnitIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UnitName
+		{
+			get
+			{
+				return this._UnitName;
+			}
+			set
+			{
+				if ((this._UnitName != value))
+				{
+					this.OnUnitNameChanging(value);
+					this.SendPropertyChanging();
+					this._UnitName = value;
+					this.SendPropertyChanged("UnitName");
+					this.OnUnitNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PIDPath", DbType="NVarChar(MAX)")]
+		public string PIDPath
+		{
+			get
+			{
+				return this._PIDPath;
+			}
+			set
+			{
+				if ((this._PIDPath != value))
+				{
+					this.OnPIDPathChanging(value);
+					this.SendPropertyChanging();
+					this._PIDPath = value;
+					this.SendPropertyChanged("PIDPath");
+					this.OnPIDPathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ImagePath", DbType="NVarChar(MAX)")]
+		public string ImagePath
+		{
+			get
+			{
+				return this._ImagePath;
+			}
+			set
+			{
+				if ((this._ImagePath != value))
+				{
+					this.OnImagePathChanging(value);
+					this.SendPropertyChanging();
+					this._ImagePath = value;
+					this.SendPropertyChanged("ImagePath");
+					this.OnImagePathChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Unit_Equipment", Storage="_Equipments", ThisKey="UnitID", OtherKey="UnitID")]
+		public EntitySet<Equipment> Equipments
+		{
+			get
+			{
+				return this._Equipments;
+			}
+			set
+			{
+				this._Equipments.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Unit = this;
+		}
+		
+		private void detach_Equipments(Equipment entity)
+		{
+			this.SendPropertyChanging();
+			entity.Unit = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserID;
+		
+		private string _Username;
+		
+		private string _Password;
+		
+		private System.DateTime _TimeOfRegister;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIDChanging(int value);
+    partial void OnUserIDChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
+    partial void OnTimeOfRegisterChanging(System.DateTime value);
+    partial void OnTimeOfRegisterChanged();
+    #endregion
+		
+		public User()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this.OnUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._UserID = value;
+					this.SendPropertyChanged("UserID");
+					this.OnUserIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Password
+		{
+			get
+			{
+				return this._Password;
+			}
+			set
+			{
+				if ((this._Password != value))
+				{
+					this.OnPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Password = value;
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfRegister", DbType="DateTime NOT NULL")]
+		public System.DateTime TimeOfRegister
+		{
+			get
+			{
+				return this._TimeOfRegister;
+			}
+			set
+			{
+				if ((this._TimeOfRegister != value))
+				{
+					this.OnTimeOfRegisterChanging(value);
+					this.SendPropertyChanging();
+					this._TimeOfRegister = value;
+					this.SendPropertyChanged("TimeOfRegister");
+					this.OnTimeOfRegisterChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserPermission")]
+	public partial class UserPermission
+	{
+		
+		private int _UserID;
+		
+		private string _PermissionCode;
+		
+		public UserPermission()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PermissionCode", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string PermissionCode
+		{
+			get
+			{
+				return this._PermissionCode;
+			}
+			set
+			{
+				if ((this._PermissionCode != value))
+				{
+					this._PermissionCode = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LoginLog")]
+	public partial class LoginLog
+	{
+		
+		private int _UserID;
+		
+		private System.DateTime _TimeOfLogin;
+		
+		private System.Nullable<System.DateTime> _TimeOfLogout;
+		
+		public LoginLog()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserID", DbType="Int NOT NULL")]
+		public int UserID
+		{
+			get
+			{
+				return this._UserID;
+			}
+			set
+			{
+				if ((this._UserID != value))
+				{
+					this._UserID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfLogin", DbType="DateTime NOT NULL")]
+		public System.DateTime TimeOfLogin
+		{
+			get
+			{
+				return this._TimeOfLogin;
+			}
+			set
+			{
+				if ((this._TimeOfLogin != value))
+				{
+					this._TimeOfLogin = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeOfLogout", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TimeOfLogout
+		{
+			get
+			{
+				return this._TimeOfLogout;
+			}
+			set
+			{
+				if ((this._TimeOfLogout != value))
+				{
+					this._TimeOfLogout = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertToTableResult
 	{
 		
 		private int _UnitID;
@@ -1219,7 +1239,7 @@ namespace RefTagFinder.Classes.DataControl
 		
 		private string _ImagePath;
 		
-		public SelectTableResult()
+		public InsertToTableResult()
 		{
 		}
 		
@@ -1288,7 +1308,7 @@ namespace RefTagFinder.Classes.DataControl
 		}
 	}
 	
-	public partial class InsertToTableResult
+	public partial class SelectTableResult
 	{
 		
 		private int _UnitID;
@@ -1299,7 +1319,7 @@ namespace RefTagFinder.Classes.DataControl
 		
 		private string _ImagePath;
 		
-		public InsertToTableResult()
+		public SelectTableResult()
 		{
 		}
 		

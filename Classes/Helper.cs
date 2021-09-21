@@ -124,7 +124,7 @@ namespace RefTagFinder.Classes.DataControl
         }
     }*/
 
-    public partial class EquipmentType
+    /*public partial class EquipmentType
     {
         public bool IsValid
         {
@@ -156,9 +156,9 @@ namespace RefTagFinder.Classes.DataControl
                 return check;
             }
         }
-    }
+    }*/
 
-    public partial class Equipment
+    /*public partial class Equipment
     {
         public bool IsValid
         {
@@ -173,6 +173,6 @@ namespace RefTagFinder.Classes.DataControl
                 return check;
             }
         }
-    }
+    }*/
 
 }
