@@ -86,7 +86,7 @@ namespace RefTagFinder.Forms
 					LangMan.Get("print-margins-error"),
 					DarkMode
 				);*/
-                MessageBox.Show("Test");
+                MessageBox.Show("i Can't so 3000000000000rry");
             }
 		}
 
