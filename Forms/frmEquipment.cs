@@ -16,8 +16,8 @@ namespace RefTagFinder.Forms
     public partial class frmEquipment : Form
     {
         Equipment _mainFormEquipment = new Equipment();
-        Unit _CurrentUnit;
-        EquipmentType _CurrentEquipmentType;
+        //Unit _CurrentUnit;
+        //EquipmentType _CurrentEquipmentType;
 
         List<Unit> _AllUnins;
         List<EquipmentType> _AllEquipmentTypes;
@@ -104,6 +104,23 @@ namespace RefTagFinder.Forms
                 }
                 #endregion
 
+                #region comboBoxes_Binding
+                unitNameComboBox.DataSource =
+                    _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
+
+                equipmentNameComboBox.DataSource =
+                   _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
+
+
+                unitNameComboBox.Text = (_AllUnins.Where(x => x.UnitID == _mainFormEquipment.UnitID).FirstOrDefault())
+                    .UnitName;
+                equipmentNameComboBox.Text = (_AllEquipmentTypes.Where(x => x.EquipmentTypeID == _mainFormEquipment.EquipmentTypeID).FirstOrDefault())
+                    .EquipmentName;
+
+                this.unitNameComboBox.SelectedIndexChanged += new EventHandler(this.unitNameComboBox_SelectedIndexChanged);
+                this.equipmentNameComboBox.SelectedIndexChanged += new EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
+                #endregion
+
                 firstLoad = false;
             }
 
@@ -148,22 +165,7 @@ namespace RefTagFinder.Forms
                 }
             }
 
-            #region comboBoxes_Binding
-            unitNameComboBox.DataSource =
-                _AllUnins.OrderBy(x => x.UnitName).Select(x => x.UnitName).ToList();
             
-             equipmentNameComboBox.DataSource =
-                _AllEquipmentTypes.OrderBy(x => x.EquipmentName).Select(x => x.EquipmentName).ToList();
-
-
-            unitNameComboBox.Text = (_AllUnins.Where(x => x.UnitID == _mainFormEquipment.UnitID).FirstOrDefault())
-                .UnitName;
-            equipmentNameComboBox.Text = (_AllEquipmentTypes.Where(x => x.EquipmentTypeID == _mainFormEquipment.EquipmentTypeID).FirstOrDefault())
-                .EquipmentName;
-
-            this.unitNameComboBox.SelectedIndexChanged += new EventHandler(this.unitNameComboBox_SelectedIndexChanged);
-            this.equipmentNameComboBox.SelectedIndexChanged += new EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
-            #endregion
 
         }
 
@@ -233,9 +235,11 @@ namespace RefTagFinder.Forms
         {
             if (0 <= equipmentNameComboBox.SelectedIndex)
             {
-                _CurrentEquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
-                _mainFormEquipment.EquipmentTypeID = _CurrentEquipmentType.EquipmentTypeID;
-                equipmentNameComboBox.Text = _CurrentEquipmentType.EquipmentName;
+                //_CurrentEquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
+                _mainFormEquipment.EquipmentType = _AllEquipmentTypes.Where(x => x.EquipmentName == equipmentNameComboBox.Text).First();
+                /*int a = _CurrentEquipmentType.EquipmentTypeID;
+                _mainFormEquipment.EquipmentTypeID = a;*/
+                //equipmentNameComboBox.Text = _CurrentEquipmentType.EquipmentName;
             }
             //formGeneralChange();
         }
@@ -244,14 +248,16 @@ namespace RefTagFinder.Forms
         {
             if (0 <= unitNameComboBox.SelectedIndex)
             {
-                _CurrentUnit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
-                _mainFormEquipment.UnitID = _CurrentUnit.UnitID;
-                unitNameComboBox.Text = _CurrentUnit.UnitName;
+                //_CurrentEquipmentType = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+                _mainFormEquipment.Unit = _AllUnins.Where(x => x.UnitName == unitNameComboBox.Text).First();
+                /*int a = _CurrentEquipmentType.EquipmentTypeID;
+                _mainFormEquipment.EquipmentTypeID = a;*/
+                //unitNameComboBox.Text = _mainFormEquipment.Unit.UnitName;
             }
-            //formGeneralChange();
+
         }
 
-        private void formGeneralChange()
+        /*private void formGeneralChange()
         {
             if (_CurrentUnit != null)
             {
@@ -262,7 +268,7 @@ namespace RefTagFinder.Forms
                 unitNameComboBox.Text = _CurrentUnit.UnitName;
             }
 
-        }
+        }*/
 
         private void btnDelete_Click(object sender, EventArgs e)
         {

@@ -230,17 +230,19 @@ namespace RefTagFinder.Forms
             // 
             this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "EquipmentType.EquipmentName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentBindingSource, "EquipmentTypeID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.equipmentNameComboBox.DataSource = this.equipmentBindingSource;
+            this.equipmentNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.equipmentBindingSource, "EquipmentTypeID", true));
             this.equipmentNameComboBox.FormattingEnabled = true;
             this.equipmentNameComboBox.Location = new System.Drawing.Point(183, 76);
             this.equipmentNameComboBox.Name = "equipmentNameComboBox";
             this.equipmentNameComboBox.Size = new System.Drawing.Size(214, 29);
             this.equipmentNameComboBox.TabIndex = 2;
+            this.equipmentNameComboBox.SelectedIndexChanged += new System.EventHandler(this.equipmentNameComboBox_SelectedIndexChanged);
             // 
             // unitNameComboBox
             // 
             this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.equipmentBindingSource, "Unit.UnitName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("ValueMember", this.equipmentBindingSource, "UnitID", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.unitNameComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.equipmentBindingSource, "UnitID", true));
             this.unitNameComboBox.FormattingEnabled = true;
             this.unitNameComboBox.Location = new System.Drawing.Point(183, 111);
             this.unitNameComboBox.Name = "unitNameComboBox";
@@ -363,9 +365,9 @@ namespace RefTagFinder.Forms
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 400);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 394);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(455, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(455, 31);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
