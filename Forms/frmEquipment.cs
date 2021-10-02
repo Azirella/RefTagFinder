@@ -165,8 +165,14 @@ namespace RefTagFinder.Forms
                 }
             }
 
-            
-
+            if (_mainFormEquipment.Unit.UnitName != "")
+            {
+                unitNameComboBox.Text = _mainFormEquipment.Unit.UnitName;
+            }
+            if (_mainFormEquipment.EquipmentType.EquipmentName != "")
+            {
+                equipmentNameComboBox.Text = _mainFormEquipment.EquipmentType.EquipmentName;
+            }
         }
 
         public double CalculateLL(double v1, double v2, double? percent = 1)
